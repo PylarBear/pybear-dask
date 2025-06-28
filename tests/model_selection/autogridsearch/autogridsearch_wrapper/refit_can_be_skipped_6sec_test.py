@@ -6,35 +6,23 @@
 
 
 
-from typing import Callable
-
-from pybear.model_selection.autogridsearch._autogridsearch_wrapper. \
-    _refit_can_be_skipped import _refit_can_be_skipped
-
 import pytest
 
-from sklearn.experimental import enable_halving_search_cv
-from sklearn.model_selection import (
-    GridSearchCV as SklearnGridSearchCV,
-    RandomizedSearchCV as SklearnRandomizedSearchCV,
-    HalvingGridSearchCV,
-    HalvingRandomSearchCV
-)
+from typing import Callable
+
+from pybear_dask.model_selection.autogridsearch._autogridsearch_wrapper. \
+    _refit_can_be_skipped import _refit_can_be_skipped
 
 from dask_ml.model_selection import GridSearchCV as DaskGridSearchCV
 
-from pybear.model_selection.GSTCV._GSTCV import GSTCV
-from pybear.model_selection.GSTCV._GSTCVDask import GSTCVDask
+from pybear_dask.model_selection.GSTCV._GSTCVDask import GSTCVDask
 
 
 
 class TestRefitCanBeSkipped:
 
 
-    _parent_gscvs = (
-        SklearnGridSearchCV, SklearnRandomizedSearchCV, HalvingGridSearchCV,
-        HalvingRandomSearchCV, DaskGridSearchCV, GSTCV, GSTCVDask
-    )
+    _parent_gscvs = (DaskGridSearchCV, GSTCVDask)
 
 
     @pytest.mark.parametrize('_GridSearchParent', _parent_gscvs)
@@ -53,14 +41,12 @@ class TestRefitCanBeSkipped:
     def test_accuracy(self, _GridSearchParent, _scoring, _total_passes):
 
         # can only return True if:
-        #   sklearn or pybear GSCV (must have refit param, these are guaranteed
+        #   pybear GSTCVDask (must have refit param, this is guaranteed
         #   to have it)
         #   not multimetric
         #   total_passes > 1
 
-        _allowed = (
-            SklearnGridSearchCV, SklearnRandomizedSearchCV, GSTCV, GSTCVDask
-        )
+        _allowed = (GSTCVDask, )
 
         # if parent GSCV doesnt have a scoring method (not likely to happen),
         # False is passed to _refit_can_be_skipped, and then we assume

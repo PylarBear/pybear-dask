@@ -17,10 +17,7 @@ import scipy.sparse as ss
 
 from pybear_dask.base import is_classifier
 
-# from xgboost import (
-#     XGBClassifier,
-#     XGBRegressor
-# )
+
 
 from sklearn.linear_model import (
     LogisticRegression as sklearn_LogisticRegression,
