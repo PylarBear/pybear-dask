@@ -1,0 +1,32 @@
+# Python bytecode
+*.pyc
+*.pyo
+__pycache__/
+
+# Virtual environments
+*.egg-info/
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Build artifacts
+_build/
+build/
+dist/
+
+# Unit test / coverage reports
+.tox/
+.coverage
+.pytest_cache/
+
+# IDE files
+.idea/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Log and backup files
+*.log
+*.bak
