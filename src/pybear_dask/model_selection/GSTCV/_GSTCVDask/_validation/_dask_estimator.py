@@ -63,13 +63,14 @@ def _val_dask_estimator(
         raise AttributeError(f"'{__estimator.__class__.__name__}' is not "
             f"a valid classifier")
 
-    # 24_08_04_07_28_00 change raise to warn
+    # 24_08_04 change raise to warn
     # to allow XGBClassifier, reference errors associated with
     # DaskXGBClassifier and dask GridSearch CV
-    __ = str(_module).lower()
-    if 'dask_ml' not in __:
-        warnings.warn(f"'{__estimator.__class__.__name__}' does not "
-            f"appear to be a dask classifier.")
+    # 25_06_28 no longer checking for non-dask estimator
+    # __ = str(_module).lower()
+    # if 'dask_ml' not in __:
+    #     warnings.warn(f"'{__estimator.__class__.__name__}' does not "
+    #         f"appear to be a dask classifier.")
     # if 'dask' not in __ and 'conftest' not in __:  # allow pytest with
     # mock clf
         # raise TypeError(f"'{__estimator.__class__.__name__}' is not a

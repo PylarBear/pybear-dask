@@ -12,6 +12,7 @@ from typing_extensions import Union
 import numpy.typing as npt
 
 import time
+from uuid import uuid4
 
 import numpy as np
 import pandas as pd
@@ -19,17 +20,10 @@ import scipy.sparse as ss
 import polars as pl
 import dask.array as da
 import dask.dataframe as ddf
-from distributed import Client
-from uuid import uuid4
 
 from sklearn.preprocessing import StandardScaler as sk_StandardScaler
 
 from sklearn.linear_model import LogisticRegression as sk_LogisticRegression
-
-from sklearn.pipeline import Pipeline
-
-from sklearn.model_selection import GridSearchCV as sk_GSCV
-from sklearn.model_selection import ParameterGrid
 
 from sklearn.metrics import (
     precision_score,
@@ -38,10 +32,8 @@ from sklearn.metrics import (
     balanced_accuracy_score
 )
 
-from pybear.model_selection.GSTCV._GSTCV.GSTCV import GSTCV as sk_GSTCV
-from pybear.model_selection.GSTCV._GSTCVDask.GSTCVDask import GSTCVDask as dask_GSTCV
-from pybear.model_selection.GSTCV._GSTCVMixin._validation._scoring \
-    import master_scorer_dict
+from pybear_dask.model_selection.GSTCV._GSTCVDask.GSTCVDask import \
+    GSTCVDask as dask_GSTCV
 
 
 

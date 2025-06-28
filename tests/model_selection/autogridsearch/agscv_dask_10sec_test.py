@@ -14,6 +14,8 @@
 
 import pytest
 
+# pizza this is a test for pybear (wrapper isnt in pybear_dask)
+# decide if u want keep this
 from pybear.model_selection.autogridsearch import autogridsearch_wrapper
 
 from dask_ml.model_selection import (

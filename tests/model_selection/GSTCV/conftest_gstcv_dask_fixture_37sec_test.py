@@ -10,8 +10,8 @@ import pytest
 
 from dask_ml.model_selection import GridSearchCV as dask_GridSearchCV
 
-from pybear.model_selection.GSTCV._GSTCVDask.GSTCVDask import GSTCVDask as \
-    dask_GSTCV
+from pybear_dask.model_selection.GSTCV._GSTCVDask.GSTCVDask import \
+    GSTCVDask as dask_GSTCV
 
 
 

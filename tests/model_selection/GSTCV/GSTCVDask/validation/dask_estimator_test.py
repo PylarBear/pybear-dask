@@ -20,14 +20,14 @@ from dask_ml.linear_model import LogisticRegression as dask_LogisticRegression
 
 class TestValDaskEstimator:
 
-
-    @pytest.mark.parametrize('non_dask_classifier', (sk_LogisticRegression, ))
-    def test_warns_on_non_dask_classifiers(self, non_dask_classifier):
-
-        exp_warn = (f"'{non_dask_classifier().__class__.__name__}' does not "
-            f"appear to be a dask classifier.")
-        with pytest.warns(match=exp_warn):
-            _val_dask_estimator(non_dask_classifier())
+    # 25_06_28 no longer checking for non-dask estimator
+    # @pytest.mark.parametrize('non_dask_classifier', (sk_LogisticRegression, ))
+    # def test_warns_on_non_dask_classifiers(self, non_dask_classifier):
+    #
+    #     exp_warn = (f"'{non_dask_classifier().__class__.__name__}' does not "
+    #         f"appear to be a dask classifier.")
+    #     with pytest.warns(match=exp_warn):
+    #         _val_dask_estimator(non_dask_classifier())
 
         # the old way pre-warn
         # with pytest.raises(TypeError):
