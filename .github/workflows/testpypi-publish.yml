@@ -55,7 +55,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: testpypi
-      url: https://test.pypi.org/p/pybear/
+      url: https://test.pypi.org/p/pybear-dask/
     permissions:
       id-token: write
     steps:

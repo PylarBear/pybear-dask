@@ -155,12 +155,15 @@ class TestInitValidation:
         self, special_gstcv_dask, non_dask_classifier, X_da, y_da, _client
     ):
 
-        exp_warn = (f"'{non_dask_classifier().__class__.__name__}' does not "
-            f"appear to be a dask classifier.")
+        pass
 
-        with pytest.warns(match=exp_warn):
-            special_gstcv_dask.set_params(estimator=non_dask_classifier())
-            special_gstcv_dask.fit(X_da, y_da)
+        # 25_06_28 no longer checking for non-dask estimator
+        # exp_warn = (f"'{non_dask_classifier().__class__.__name__}' does not "
+        #     f"appear to be a dask classifier.")
+        #
+        # with pytest.warns(match=exp_warn):
+        # special_gstcv_dask.set_params(estimator=non_dask_classifier())
+        # special_gstcv_dask.fit(X_da, y_da)
 
 
     def test_accepts_classifiers(self, special_gstcv_dask, X_da, y_da, _client):

@@ -44,12 +44,14 @@ class TestValWrappedDaskEstimator:
     )
     def test_warns_on_non_dask_CCCV(self, non_dask_est):
 
-        exp_warn = (f"'{non_dask_est().__class__.__name__}' does not "
-            f"appear to be a dask classifier.")
-        with pytest.warns(match=exp_warn):
-            assert _val_dask_estimator(
-                CalibratedClassifierCV(self._pipeline(non_dask_est()))
-            ) is None
+        # 25_06_28 no longer checking for non-dask estimator
+        # exp_warn = (f"'{non_dask_est().__class__.__name__}' does not "
+        #     f"appear to be a dask classifier.")
+        # with pytest.warns(match=exp_warn):
+
+        assert _val_dask_estimator(
+            CalibratedClassifierCV(self._pipeline(non_dask_est()))
+        ) is None
 
 
     def test_accepts_dask_CCCV(self):
@@ -76,10 +78,12 @@ class TestValWrappedDaskEstimator:
     @pytest.mark.parametrize('non_dask_classifier', (sk_LogisticRegression, ))
     def test_warns_on_non_dask_classifiers(self, non_dask_classifier):
 
-        exp_warn = (f"'{non_dask_classifier().__class__.__name__}' does not "
-            f"appear to be a dask classifier.")
-        with pytest.warns(match=exp_warn):
-            _val_dask_estimator(self._pipeline(non_dask_classifier()))
+        # 25_06_28 no longer checking for non-dask estimator
+        # exp_warn = (f"'{non_dask_classifier().__class__.__name__}' does not "
+        #     f"appear to be a dask classifier.")
+        # with pytest.warns(match=exp_warn):
+
+        assert _val_dask_estimator(self._pipeline(non_dask_classifier())) is None
 
         # the old way pre-warn
         # with pytest.raises(TypeError):
@@ -102,19 +106,20 @@ class TestValWrappedDaskEstimator:
 
     def test_warns_on_wrapped_non_dask_CCCV(self):
 
-        exp_warn = (f"'{sk_RidgeClassifier().__class__.__name__}' does not "
-            f"appear to be a dask classifier.")
-        with pytest.warns(match=exp_warn):
-            assert _val_dask_estimator(
-                self._pipeline(CalibratedClassifierCV(sk_RidgeClassifier()))
-            ) is None
+        # 25_06_28 no longer checking for non-dask estimator
+        # exp_warn = (f"'{sk_RidgeClassifier().__class__.__name__}' does not "
+        #     f"appear to be a dask classifier.")
+        # with pytest.warns(match=exp_warn):
+        assert _val_dask_estimator(
+            self._pipeline(CalibratedClassifierCV(sk_RidgeClassifier()))
+        ) is None
 
-        exp_warn = (f"'{sk_SGDClassifier().__class__.__name__}' does not "
-            f"appear to be a dask classifier.")
-        with pytest.warns(match=exp_warn):
-            assert _val_dask_estimator(
-                self._pipeline(CalibratedClassifierCV(sk_SGDClassifier()))
-            ) is None
+        # exp_warn = (f"'{sk_SGDClassifier().__class__.__name__}' does not "
+        #     f"appear to be a dask classifier.")
+        # with pytest.warns(match=exp_warn):
+        assert _val_dask_estimator(
+            self._pipeline(CalibratedClassifierCV(sk_SGDClassifier()))
+        ) is None
 
 
     def test_accepts_wrapped_dask_CCCV(self):
@@ -189,10 +194,11 @@ class TestValWrappedDaskEstimator:
         sk_pipeline, dask_pipeline_1, dask_pipeline_2, dask_pipeline_3
     ):
 
-        exp_warn = (f"'{sk_LogisticRegression().__class__.__name__}' does not "
-            f"appear to be a dask classifier.")
-        with pytest.warns(match=exp_warn):
-            assert _val_dask_estimator(sk_pipeline) is None
+        # 25_06_28 no longer checking for non-dask estimator
+        # exp_warn = (f"'{sk_LogisticRegression().__class__.__name__}' does not "
+        #     f"appear to be a dask classifier.")
+        # with pytest.warns(match=exp_warn):
+        assert _val_dask_estimator(sk_pipeline) is None
 
         # the old way pre-warn
         # with pytest.raises(TypeError):
@@ -201,10 +207,10 @@ class TestValWrappedDaskEstimator:
         assert _val_dask_estimator(dask_pipeline_1) is None
         assert _val_dask_estimator(dask_pipeline_2) is None
 
-        exp_warn = (f"'{sk_LogisticRegression().__class__.__name__}' does not "
-            f"appear to be a dask classifier.")
-        with pytest.warns(match=exp_warn):
-            assert _val_dask_estimator(dask_pipeline_3) is None
+        # exp_warn = (f"'{sk_LogisticRegression().__class__.__name__}' does not "
+        #     f"appear to be a dask classifier.")
+        # with pytest.warns(match=exp_warn):
+        assert _val_dask_estimator(dask_pipeline_3) is None
 
         # the old way pre-warn
         # with pytest.raises(TypeError):

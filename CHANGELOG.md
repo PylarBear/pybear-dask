@@ -14,12 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     is_classifier
 
 - model_selection:
-    autogridsearch_wrapper,
-    GSTCV,
     GSTCVDask,
-    AutoGridSearchCV,
     AutoGridSearchCVDask,
-    AutoGSTCV,
     AutoGSTCVDask
 
 ### Changed
