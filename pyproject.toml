@@ -12,7 +12,7 @@ readme = "README.rst"
 homepage = "https://github.com/PylarBear/pybear-dask"
 repository = "https://github.com/PylarBear/pybear-dask"
 #documentation
-keywords = ["python data analytics for dask data containers"]
+keywords = ["python data analytics with dask"]
 #classifiers
 packages = [
 	{ include = "pybear_dask", from = "src"}

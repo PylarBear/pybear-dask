@@ -16,7 +16,8 @@ import pytest
 
 # pizza this is a test for pybear (wrapper isnt in pybear_dask)
 # decide if u want keep this
-from pybear.model_selection.autogridsearch import autogridsearch_wrapper
+from pybear.model_selection.autogridsearch.autogridsearch_wrapper import \
+    autogridsearch_wrapper
 
 from dask_ml.model_selection import (
     GridSearchCV as DaskGridSearchCV,
@@ -270,7 +271,7 @@ class TestDaskSuccessiveHalving:
 
         AutoGridSearch.fit(X_da, y_da, classes=(0, 1))
 
-        # assertions ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * **
+        # assertions ** * ** * ** * ** * ** * ** * ** * ** * ** * ** *
         assert AutoGridSearch.total_passes >= _total_passes
         assert AutoGridSearch.total_passes_is_hard is _tpih
         assert AutoGridSearch.max_shifts == _max_shifts
@@ -294,7 +295,7 @@ class TestDaskSuccessiveHalving:
 
         # END assertions ** * ** * ** * ** * ** * ** * ** * ** * ** * **
 
-# END dask gscvs that need a partial_fit exposed ** * ** * ** * ** * ** *
+# END dask gscvs that need a partial_fit exposed ** * ** * ** * ** * **
 # ** * ** * ** * ** * ** ** * ** * ** * ** * ** ** * ** * ** * ** * **
 
 
