@@ -110,7 +110,7 @@ class TestFitAccuracy:
         TestCls = GSTCVDask(
             estimator=special_sk_est_log,
             param_grid=_param_grid,
-            thresholds=[0.5],
+            thresholds=[0.50000000000],
             cv=_cv_iter,
             error_score=standard_error_score,
             refit=False,
