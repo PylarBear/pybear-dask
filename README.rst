@@ -1,7 +1,8 @@
 pybear-dask
 ===========
 
-|Tests||Coverage|
+|Tests|
+|Coverage|
 |Test Status 313|
 |Test Status 312|
 |Test Status 311|
@@ -9,7 +10,7 @@ pybear-dask
 |Test Status 39|
 
 .. |Tests| image:: https://raw.githubusercontent.com/PylarBear/pybear-dask/main/.github/badges/tests-badge.svg
-   :target: https://github.com/PylarBear/pybear-dask/actions/workflows/matrix-tests-py312.yml
+   :target: https://github.com/PylarBear/pybear-dask/actions
 
 .. |Coverage| image:: https://raw.githubusercontent.com/PylarBear/pybear-dask/main/.github/badges/coverage-badge.svg
    :target: https://github.com/PylarBear/pybear-dask/actions
