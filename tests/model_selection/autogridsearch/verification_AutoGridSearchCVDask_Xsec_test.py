@@ -25,7 +25,7 @@ import numpy as np
 from pybear_dask.model_selection.autogridsearch.AutoGridSearchCVDask import \
     AutoGridSearchCVDask
 
-pytest.skip(reason=f'tests make zero progress in 20 min', allow_module_level=True)
+pytest.skip(reason=f'tests make zero progress in 35 min', allow_module_level=True)
 
 class TestAutoGridSearchDask:
 
