@@ -12,7 +12,6 @@ import numbers
 
 import numpy as np
 import dask.array as da
-from distributed import Client
 
 from sklearn.linear_model import LogisticRegression as sk_logistic
 from sklearn.linear_model import Ridge
