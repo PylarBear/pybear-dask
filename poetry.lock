@@ -1734,14 +1734,14 @@ test = ["jupyter-server (>=2.0.0)", "pytest (>=7.0)", "pytest-jupyter[server] (>
 
 [[package]]
 name = "jupyterlab"
-version = "4.4.3"
+version = "4.4.4"
 description = "JupyterLab computational environment"
 optional = false
 python-versions = ">=3.9"
 groups = ["dev"]
 files = [
-    {file = "jupyterlab-4.4.3-py3-none-any.whl", hash = "sha256:164302f6d4b6c44773dfc38d585665a4db401a16e5296c37df5cba63904fbdea"},
-    {file = "jupyterlab-4.4.3.tar.gz", hash = "sha256:a94c32fd7f8b93e82a49dc70a6ec45a5c18281ca2a7228d12765e4e210e5bca2"},
+    {file = "jupyterlab-4.4.4-py3-none-any.whl", hash = "sha256:711611e4f59851152eb93316c3547c3ec6291f16bb455f1f4fa380d25637e0dd"},
+    {file = "jupyterlab-4.4.4.tar.gz", hash = "sha256:163fee1ef702e0a057f75d2eed3ed1da8a986d59eb002cbeb6f0c2779e6cd153"},
 ]
 
 [package.dependencies]
@@ -2780,50 +2780,6 @@ polars-cloud = ["polars-cloud (>=0.0.1a1)"]
 pyarrow = ["pyarrow (>=7.0.0)"]
 pydantic = ["pydantic"]
 sqlalchemy = ["polars[pandas]", "sqlalchemy"]
-style = ["great-tables (>=0.8.0)"]
-timezone = ["tzdata ; platform_system == \"Windows\""]
-xlsx2csv = ["xlsx2csv (>=0.8.0)"]
-xlsxwriter = ["xlsxwriter"]
-
-[[package]]
-name = "polars-lts-cpu"
-version = "1.31.0"
-description = "Blazingly fast DataFrame library"
-optional = false
-python-versions = ">=3.9"
-groups = ["main"]
-files = [
-    {file = "polars_lts_cpu-1.31.0-cp39-abi3-macosx_10_12_x86_64.whl", hash = "sha256:f699d5ab25781a116adb7288a7d34b333626014b37d61c75f700db201da5aa30"},
-    {file = "polars_lts_cpu-1.31.0-cp39-abi3-macosx_11_0_arm64.whl", hash = "sha256:7c63d36eca8f534662eaf92fc80217e6821183d609ceff24029473b9c4d0cd18"},
-    {file = "polars_lts_cpu-1.31.0-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:81870f8bf27258d34bd474bc5b9213534834a647e39f4e18b4aa49600356f982"},
-    {file = "polars_lts_cpu-1.31.0-cp39-abi3-manylinux_2_24_aarch64.whl", hash = "sha256:9cea1c270b080aa5215d64d14ec251e643525f386fb669d064dea6176f45e533"},
-    {file = "polars_lts_cpu-1.31.0-cp39-abi3-win_amd64.whl", hash = "sha256:a639c014fca4a497b24c5e16d6aabe3f9d29ddd8169d6d9aea87483138b5ece0"},
-    {file = "polars_lts_cpu-1.31.0-cp39-abi3-win_arm64.whl", hash = "sha256:5e9583f21ebfa7a6e36e2527d64416a3f2892f957c68fd3adbc5516fd96eacdb"},
-    {file = "polars_lts_cpu-1.31.0.tar.gz", hash = "sha256:574a7b077aa5f71add4a099d491a28b31e9ec72e020b27b1c9731fc9a638280a"},
-]
-
-[package.extras]
-adbc = ["adbc-driver-manager[dbapi]", "adbc-driver-sqlite[dbapi]"]
-all = ["polars-lts-cpu[async,cloudpickle,database,deltalake,excel,fsspec,graph,iceberg,numpy,pandas,plot,pyarrow,pydantic,style,timezone]"]
-async = ["gevent"]
-calamine = ["fastexcel (>=0.9)"]
-cloudpickle = ["cloudpickle"]
-connectorx = ["connectorx (>=0.3.2)"]
-database = ["polars-lts-cpu[adbc,connectorx,sqlalchemy]"]
-deltalake = ["deltalake (>=1.0.0)"]
-excel = ["polars-lts-cpu[calamine,openpyxl,xlsx2csv,xlsxwriter]"]
-fsspec = ["fsspec"]
-gpu = ["cudf-polars-cu12"]
-graph = ["matplotlib"]
-iceberg = ["pyiceberg (>=0.7.1)"]
-numpy = ["numpy (>=1.16.0)"]
-openpyxl = ["openpyxl (>=3.0.0)"]
-pandas = ["pandas", "polars-lts-cpu[pyarrow]"]
-plot = ["altair (>=5.4.0)"]
-polars-cloud = ["polars-cloud (>=0.0.1a1)"]
-pyarrow = ["pyarrow (>=7.0.0)"]
-pydantic = ["pydantic"]
-sqlalchemy = ["polars-lts-cpu[pandas]", "sqlalchemy"]
 style = ["great-tables (>=0.8.0)"]
 timezone = ["tzdata ; platform_system == \"Windows\""]
 xlsx2csv = ["xlsx2csv (>=0.8.0)"]
@@ -4261,4 +4217,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.9, <3.14"
-content-hash = "932fe7d172dfb325b7a68d704649b894120524e8d6a86bdd20c6d8c78eb36095"
+content-hash = "b3f1feced3f88d8f46a8567ad8e9bd2190cf58a7a3999bd53356d29ba903d06b"

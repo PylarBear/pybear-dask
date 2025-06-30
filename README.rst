@@ -86,10 +86,9 @@ pybear-dask requires:
 
 - Python (|PythonVersion|)
 - dask (|DaskVersion|)
-- dask_ml (|DaskMLVersion|)
+- dask-ml (|DaskMLVersion|)
 - distributed (|DistributedVersion|)
 - pybear (|PybearVersion|)
-
 
 pybear-dask 0.2 is tested via GitHub Actions to run on Linux, Windows, and MacOS,
 with Python versions 3.9, 3.10, 3.11, and 3.12. pybear-dask is not tested on earlier
@@ -133,7 +132,7 @@ the dask_ml/scikit-learn GridSearchCV API.
 - Access via pybear-dask.model_selection.GSTCVDask.
 
 AutoGSTCVDask (AutoGridSearchThresholdCV for Dask)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Perform multiple uninterrupted passes of grid search with pybear-dask GSTCVDask
 utilizing progressively narrower search grids.
 
@@ -192,7 +191,7 @@ Help and Support
 Documentation
 ~~~~~~~~~~~~~
 
-- Documentation is not expected to be made available via a website for this
+Documentation is not expected to be made available via a website for this
 package. Use the documentation for similar packages in the main pybear package.
 See the repo for pybear: https://github.com/PylarBear/pybear/
 

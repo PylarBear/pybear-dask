@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pybear-dask"
-version = "0.1.0"
+version = "0.1.1"
 description = "Python modules for data analytics applications with dask"
 license = "BSD-3-clause"
 authors = ["Bill Sousa <WKSJR99@msn.com>"]
@@ -12,7 +12,7 @@ readme = "README.rst"
 homepage = "https://github.com/PylarBear/pybear-dask"
 repository = "https://github.com/PylarBear/pybear-dask"
 #documentation
-keywords = ["python data analytics with dask"]
+keywords = ["python data analytics pybear dask"]
 #classifiers
 packages = [
 	{ include = "pybear_dask", from = "src"}
