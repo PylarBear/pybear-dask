@@ -14,11 +14,12 @@
 
 # demo_test incidentally handles testing of all autogridsearch_wrapper
 # functionality except fit() (because demo bypasses fit().) This test
-# module handles fit() for the GSTCVDask module.
+# module handles fit().
 
 
 
 import pytest
+
 import numpy as np
 
 from pybear_dask.model_selection.autogridsearch.AutoGSTCVDask import AutoGSTCVDask
@@ -73,7 +74,7 @@ class TestAutoGSTCVDask:
             'thresholds': [0.4, 0.6],
             'scoring': _scorer,
             'n_jobs': None,
-            'cv': 4,
+            'cv': 2,
             'verbose': 0,
             'error_score': 'raise',
             'return_train_score': False,
@@ -83,7 +84,7 @@ class TestAutoGSTCVDask:
             'scheduler': None
         }
 
-        AutoGridSearch = AutoGSTCVDask(**AGSTCV_params)
+        AGSTCVD = AutoGSTCVDask(**AGSTCV_params)
 
         # 25_04_19 changed fit() to raise ValueError when best_params_
         # is not exposed. it used to be that agscv code was shrink-wrapped
@@ -97,35 +98,35 @@ class TestAutoGSTCVDask:
         # expose 'best_params_'. Try to fit, if ValueError is raised, look to
         # see that 'best_params_' is not exposed and go to the next test.
         try:
-            AutoGridSearch.fit(X_da, y_da)
-            assert isinstance(getattr(AutoGridSearch, 'best_params_'), dict)
+            AGSTCVD.fit(X_da, y_da)
+            assert isinstance(getattr(AGSTCVD, 'best_params_'), dict)
         except ValueError:
-            assert not hasattr(AutoGridSearch, 'best_params_')
+            assert not hasattr(AGSTCVD, 'best_params_')
             pytest.skip(reason=f'cant do any later tests without fit')
         except Exception as e:
             raise e
 
         # assertions ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * **
-        assert AutoGridSearch.total_passes >= _total_passes
-        assert AutoGridSearch.total_passes_is_hard is _tpih
-        assert AutoGridSearch.max_shifts == _max_shifts
-        assert AutoGridSearch.agscv_verbose is False
-        assert AutoGridSearch.scoring == _scorer
-        assert AutoGridSearch.refit == _refit
+        assert AGSTCVD.total_passes >= _total_passes
+        assert AGSTCVD.total_passes_is_hard is _tpih
+        assert AGSTCVD.max_shifts == _max_shifts
+        assert AGSTCVD.agscv_verbose is False
+        assert AGSTCVD.scoring == _scorer
+        assert AGSTCVD.refit == _refit
 
         # cannot test MockEstimator for scoring or scorer_
 
         if _refit:
             assert isinstance(
-                AutoGridSearch.best_estimator_,
+                AGSTCVD.best_estimator_,
                 type(mock_estimator)
             )
         else:
             with pytest.raises(AttributeError):
-                AutoGridSearch.best_estimator_
+                AGSTCVD.best_estimator_
 
 
-        best_params_ = AutoGridSearch.best_params_
+        best_params_ = AGSTCVD.best_params_
         assert isinstance(best_params_, dict)
         assert sorted(list(best_params_)) == sorted(list(mock_estimator_params))
         assert all(map(
@@ -137,7 +138,7 @@ class TestAutoGSTCVDask:
         # best_threshold_ should always be exposed with one scorer
         if isinstance(_refit, str) or callable(_scorer) or \
                 isinstance(_scorer, str) or len(_scorer) == 1:
-            best_threshold_ = AutoGridSearch.best_threshold_
+            best_threshold_ = AGSTCVD.best_threshold_
             assert isinstance(best_threshold_, float)
             assert 0 <= best_threshold_ <= 1
 

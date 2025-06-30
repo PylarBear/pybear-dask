@@ -6,16 +6,12 @@
 
 
 
-# demo_test incidentally handles testing of all autogridsearch_wrapper
-# functionality except fit() (because demo bypasses fit().) This test
-# module handles fit() for all dask gridsearch modules.
+# This test module verifies that agscv works for all dask GSCV modules.
 
 
 
 import pytest
 
-# pizza this is a test for pybear (wrapper isnt in pybear_dask)
-# decide if u want keep this
 from pybear.model_selection.autogridsearch.autogridsearch_wrapper import \
     autogridsearch_wrapper
 
@@ -83,7 +79,7 @@ class TestDaskGSCVSThatDontNeedPartialFit:
 
         # 25_04_19 changed fit() to raise ValueError when best_params_
         # is not exposed. it used to be that agscv code was shrink-wrapped
-        # around sklearn  gscv quirks as to when it does/doesnt expose
+        # around dask gscv quirks as to when it does/doesnt expose
         # best_params_. there are no longer any bandaids that condition params
         # for the parent gscvs to get them to "properly" expose 'best_params_',
         # and there are no more predictive shrink-wraps to block failure.
@@ -297,9 +293,6 @@ class TestDaskSuccessiveHalving:
 
 # END dask gscvs that need a partial_fit exposed ** * ** * ** * ** * **
 # ** * ** * ** * ** * ** ** * ** * ** * ** * ** ** * ** * ** * ** * **
-
-
-
 
 
 
