@@ -6,42 +6,15 @@
 
 
 
-_rows
-_cols
-X_np
+_shape
 X_da
-COLUMNS
-X_pd
-X_ddf
-y_np
 y_da
-y_pd
-y_ddf
-standard_WIP_scorer
-sk_log_init_params
-dask_log_init_params
-sk_standard_scaler
-sk_est_log
-dask_est_log
-param_grid_sk_log
-param_grid_dask_log
-standard_thresholds
-standard_cv_int
-standard_refit
-one_scorer
-two_scorers
-standard_error_score
-standard_n_jobs
-standard_cache_cv
-standard_iid
-sk_gscv_init_params
-sk_gstcv_init_params
-dask_gstcv_init_params
-dask_GSTCV_est_log_one_scorer_prefit
-dask_GSTCV_est_log_one_scorer_postfit_refit_str_fit_on_da
-dask_GSTCV_est_log_two_scorers_postfit_refit_str_fit_on_da
-_format_helper
-_mock_classifier
+mock_estimator
+mock_estimator_params
+dask_estimator_1
+dask_params_1
+dask_estimator_2
+dask_params_2
 
 
 

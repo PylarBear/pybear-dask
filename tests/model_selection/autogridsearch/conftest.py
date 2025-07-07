@@ -4,7 +4,7 @@
 # License: BSD 3 clause
 #
 
-# pizza remember to clean this out when done with agscv
+
 
 import pytest
 
@@ -14,13 +14,7 @@ import numpy as np
 import dask.array as da
 
 from sklearn.linear_model import LogisticRegression as sk_logistic
-from sklearn.linear_model import Ridge
 from sklearn.linear_model import SGDClassifier as sk_SGDClassifier
-
-from sklearn.model_selection import GridSearchCV as sk_GridSearchCV
-
-from pybear.model_selection.autogridsearch.autogridsearch_wrapper import \
-    autogridsearch_wrapper
 
 from pybear.base.mixins._GetParamsMixin import GetParamsMixin
 from pybear.base.mixins._SetParamsMixin import SetParamsMixin
@@ -35,16 +29,6 @@ def _shape():
 
 
 @pytest.fixture(scope='session')
-def X_np(_shape):
-    return np.random.randint(0, 10, _shape)
-
-
-@pytest.fixture(scope='session')
-def y_np(_shape):
-    return np.random.randint(0, 2, (_shape[0], ))
-
-
-@pytest.fixture(scope='session')
 def X_da(_shape):
     return da.random.randint(0, 10, _shape)
 
@@ -52,12 +36,6 @@ def X_da(_shape):
 @pytest.fixture(scope='session')
 def y_da(_shape):
     return da.random.randint(0, 2, (_shape[0], ))
-
-
-@pytest.fixture(scope='session')
-def SKAutoGridSearch():
-    # dont use AutoGridSearchCV, under some circumstance it may not exist
-    return autogridsearch_wrapper(sk_GridSearchCV)
 
 
 @pytest.fixture(scope='session')
@@ -145,50 +123,6 @@ def mock_estimator_params():
         'param_a': [np.logspace(-5, 5, 3), 3, 'soft_float'],
         'param_b': [[1, 2], 2, 'fixed_integer']
     }
-
-
-@pytest.fixture(scope='session')
-def sk_estimator_1():
-
-    return sk_logistic(
-        penalty='l2',
-        dual=False,
-        tol=0.0001,
-        C=1e-5,
-        fit_intercept=False,
-        intercept_scaling=1.0,
-        class_weight=None,
-        random_state=None,
-        solver='lbfgs',
-        max_iter=100,
-        multi_class='deprecated',
-        verbose=0,
-        warm_start=False,
-        n_jobs=None,
-        # solver_kwargs=None
-    )
-
-
-@pytest.fixture(scope='session')
-def sk_params_1():
-    return {
-        'C': [np.logspace(-5, 5, 3), 3, 'soft_float'],
-        'fit_intercept': [[True, False], 2, 'fixed_bool']
-    }
-
-
-@pytest.fixture(scope='session')
-def sk_estimator_2():
-    return Ridge(
-        # alpha=1.0,  use this in AGSCV
-        # fit_intercept=True, use this in AGSCV
-        copy_X=True,
-        # max_iter=None, use this in AGSCV
-        tol=0.0001,
-        # solver='auto',  use this in AGSCV
-        positive=False,
-        random_state=None
-    )
 
 
 @pytest.fixture(scope='session')
