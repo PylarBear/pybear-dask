@@ -11,12 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - base:
-    is_classifier
+
+        is_classifier
 
 - model_selection:
-    GSTCVDask,
-    AutoGridSearchCVDask,
-    AutoGSTCVDask
+    
+        GSTCVDask
+        AutoGridSearchCVDask
+        AutoGSTCVDask
 
 ### Changed
 - None
