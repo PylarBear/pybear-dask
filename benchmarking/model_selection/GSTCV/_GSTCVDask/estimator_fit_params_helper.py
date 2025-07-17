@@ -9,7 +9,7 @@ import numpy as np
 import dask.array as da
 
 
-from pybear.model_selection.GSTCV._GSTCVDask._fit._estimator_fit_params_helper \
+from pybear_dask.model_selection.GSTCV._GSTCVDask._fit._estimator_fit_params_helper \
     import _estimator_fit_params_helper
 
 

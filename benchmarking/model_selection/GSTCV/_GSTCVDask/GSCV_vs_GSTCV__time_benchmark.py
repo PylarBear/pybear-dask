@@ -14,7 +14,8 @@ from dask_ml.model_selection import GridSearchCV as dask_GridSearchCV
 from dask_ml.linear_model import LogisticRegression as dask_Logistic
 import distributed
 
-from pybear.model_selection import GSTCV, GSTCVDask
+from pybear.model_selection import GSTCV
+from pybear_dask.model_selection import GSTCVDask
 from pybear.utilities._benchmarking import time_memory_benchmark as tmb
 
 # ----------------------------

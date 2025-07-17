@@ -9,7 +9,7 @@
 
 
 
-from model_selection import AutoGridSearchCVDask
+from pybear_dask.model_selection import AutoGridSearchCVDask
 
 import time
 import numpy as np
