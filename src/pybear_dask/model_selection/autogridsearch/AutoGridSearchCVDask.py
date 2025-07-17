@@ -28,14 +28,6 @@ from dask_ml.model_selection import GridSearchCV as dask_GridSearchCV
 class AutoGridSearchCVDask(autogridsearch_wrapper(dask_GridSearchCV)):
 
 
-    #     AutoGridSearchCV = type(
-    #         'SklearnAutoGridSearch',
-    #         (autogridsearch_wrapper(GridSearchCV),),
-    #         {'__doc__': autogridsearch_docs,
-    #          '__init__.__doc__': autogridsearch_docs}
-    #     )
-
-
     __doc__ = autogridsearch_docs.__doc__
 
 
@@ -58,7 +50,7 @@ class AutoGridSearchCVDask(autogridsearch_wrapper(dask_GridSearchCV)):
         **parent_gscv_kwargs
     ):
 
-        """Initialize the AutoGridSearchCVDask instance."""
+        """Initialize the `AutoGridSearchCVDask` instance."""
 
         super().__init__(
             estimator,

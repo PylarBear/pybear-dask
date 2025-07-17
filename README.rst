@@ -7,7 +7,6 @@ pybear-dask
 |Test Status 312|
 |Test Status 311|
 |Test Status 310|
-|Test Status 39|
 
 .. |Tests| image:: https://raw.githubusercontent.com/PylarBear/pybear-dask/main/.github/badges/tests-badge.svg
    :target: https://github.com/PylarBear/pybear-dask/actions
@@ -26,9 +25,6 @@ pybear-dask
 
 .. |Test Status 310| image:: https://github.com/PylarBear/pybear-dask/actions/workflows/matrix-tests-py310.yml/badge.svg
    :target: https://github.com/PylarBear/pybear-dask/actions/workflows/matrix-tests-py310.yml
-
-.. |Test Status 39| image:: https://github.com/PylarBear/pybear-dask/actions/workflows/matrix-tests-py39.yml/badge.svg
-   :target: https://github.com/PylarBear/pybear-dask/actions/workflows/matrix-tests-py39.yml
 
 |PyPI Build Status|
 |TestPyPI Build Status|
@@ -56,11 +52,12 @@ pybear-dask
 
 
 
-.. |PythonVersion| replace:: >=3.9, <3.14
-.. |DaskVersion| replace:: >=X.X.X
-.. |DaskMLVersion| replace:: >=X.X.X
-.. |DistributedVersion| replace:: >=X.X.X
+.. |PythonVersion| replace:: >=3.10, <3.13
+.. |DaskVersion| replace:: <2025.1.0
+.. |DaskMLVersion| replace:: <2025.1.0
+.. |DistributedVersion| replace:: <2025.1.0
 .. |PybearVersion| replace:: >=0.1.19
+.. |PytestVersion| replace:: >=7.0.0
 
 
 
@@ -91,8 +88,12 @@ pybear-dask requires:
 - pybear (|PybearVersion|)
 
 pybear-dask 0.2 is tested via GitHub Actions to run on Linux, Windows, and MacOS,
-with Python versions 3.9, 3.10, 3.11, and 3.12. pybear-dask is not tested on earlier
+with Python versions 3.10, 3.11, and 3.12. pybear-dask is not tested on earlier
 versions, but some features may work.
+
+If you want to test pybear yourself, you will need:
+
+- pytest (|PytestVersion|)
 
 User installation
 ~~~~~~~~~~~~~~~~~
@@ -109,6 +110,31 @@ In the future, pip install from PyPI using ``pip``::
 
 Conda distributions are expected to be made available sometime after release to
 PyPI.
+
+=======
+
+Usage
+-----
+The folder structure of pybear-dask is nearly identical to scikit-learn. This
+is so those that are familiar with the scikit layout and have experience with
+writing the associated import statements have an easy transition to pybear-dask.
+The pybear-dask subfolders are *base* and *model_selection*.
+
+You can import pybear-dask's packages in the same way you would with scikit.
+Here are a few examples of how you could import and use pybear-dask modules:
+
+.. code-block:: console
+
+    from pybear-dask.model_selection import GSTCVDask
+
+    search = GSTCVDask()
+    search.fit(X, y)
+
+    from pybear-dask import model_selection as ms
+
+    search = ms.AutoGridSearchCVDask()
+    search.fit(X, y)
+
 
 =======
 

@@ -18,26 +18,21 @@ from sklearn.pipeline import Pipeline
 def _val_dask_estimator(
     _estimator: ClassifierProtocol
 ) -> None:
+    """Warn if the estimator is not a dask classifier, either from dask
+    itself, or from XGBoost or LightGBM.
 
-    """
-    The GSTCVDask module is expected to most likely encounter dask_ml,
+    The `GSTCVDask` module is expected to most likely encounter dask_ml,
     xgboost, and lightgbm dask estimators. The estimator must be passed
     as an instance, not the class itself.
 
-    Warn if the estimator is not a dask classifier, either from dask
-    itself, or from XGBoost or LightGBM.
-
-
     Parameters
     ----------
-    _estimator:
+    _estimator : ClassifierProtocol
         the estimator to be validated
 
-
-    Return
-    ------
-    -
-        None
+    Returns
+    -------
+    None
 
     """
 

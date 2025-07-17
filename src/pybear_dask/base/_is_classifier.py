@@ -11,10 +11,10 @@ from sklearn.pipeline import Pipeline
 from sklearn.base import is_classifier as sk_is_classifier
 
 
-def is_classifier(estimator_) -> bool:
 
-    """
-    Return True if the given estimator is a classifier, False otherwise.
+def is_classifier(estimator_) -> bool:
+    """Return True if the given estimator is a classifier, False otherwise.
+
     Works on stand-alone and nested scikit-style estimators. This module
     was originally intended to extend the functionality of scikit-learn's
     is_classifier function to work on dask_ml estimators, but it also
@@ -38,29 +38,24 @@ def is_classifier(estimator_) -> bool:
 
         BlockwiseVotingRegressor
 
-
     Parameters
     ----------
-    estimator_:
+    estimator_ : object
         scikit-learn, dask_ml, xgboost, or lightgbm estimator to test.
 
-
-    Return
-    ------
-    -
-        bool: True if the estimator is a classifier, False otherwise.
-
+    Returns
+    -------
+    _is_classifier : bool
+        True if the estimator is a classifier, False otherwise.
 
     See Also
     --------
     sklearn.base.is_classifier
 
-
     Notes
     -----
     Also supports non-estimator objects, returning False for any object
     that is not a classifier.
-
 
     Examples
     --------
