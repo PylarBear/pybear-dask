@@ -25,39 +25,36 @@ def _fold_splitter(
     test_idxs: DaskSlicerType,
     *data_objects: Union[DaskXType, DaskYType]
 ) -> tuple[DaskSplitType, ...]:
+    """Split given data objects into train / test pairs using the given
+    train and test indices.
 
-    """
-    Split given data objects into train / test pairs using the given
-    train and test indices. The train and test indices independently
-    slice the given data objects; the entire data object need not be
-    consumed in a train / test split and the splits can also possibly
-    share indices. Standard indexing rules apply. Returns a tuple whose
-    length is equal to the number of data objects passed, holding tuples
-    of the train / test splits for the respective data objects.
-    train_idxs and test_idxs must be 1D vectors of indices, not booleans.
-
+    The train and test indices independently slice the given data objects;
+    the entire data object need not be consumed in a train / test split
+    and the splits can also possibly share indices. Standard indexing
+    rules apply. Returns a tuple whose length is equal to the number of
+    data objects passed, holding tuples of the train / test splits for
+    the respective data objects. `train_idxs` and `test_idxs` must be 1D
+    vectors of indices, not booleans.
 
     Parameters
     ----------
-    train_idxs:
-        DaskSlicerType - 1D vector of row indices used to slice train
-        sets out of every given data object.
-    test_idxs:
-        DaskSlicerType - 1D vector of row indices used to slice test
-        sets out of every given data object.
-    *data_objects:
-        Union[DaskXType, DaskYType] - The data objects to slice. Need
-        not be of equal size, and need not be completely consumed in the
-        train / test splits. However, standard indexing rules apply when
-        slicing by train_idxs and test_idxs.
+    train_idxs : DaskSlicerType
+        1D vector of row indices used to slice train sets out of every
+        given data object.
+    test_idxs : DaskSlicerType
+        1D vector of row indices used to slice test sets out of every
+        given data object.
+    *data_objects : Union[DaskXType, DaskYType]
+        The data objects to slice. Need not be of equal size, and need
+        not be completely consumed in the train / test splits. However,
+        standard indexing rules apply when slicing by `train_idxs` and
+        `test_idxs`.
 
-
-    Return
-    ------
-    -
-        SPLITS: tuple[DaskSplitType, ...] - return the train / test
-        splits for the given data objects in the order
-        passed in a tuple of tuples, each inner tuple containing a
+    Returns
+    -------
+    SPLITS : tuple[DaskSplitType, ...]
+        Return the train / test splits for the given data objects in the
+        order passed in a tuple of tuples, each inner tuple containing a
         train/test pair.
 
     """

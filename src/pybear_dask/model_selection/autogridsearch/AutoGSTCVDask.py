@@ -6,8 +6,15 @@
 
 
 
-from typing import Optional, Sequence, Tuple
-from typing_extensions import Any, Union
+from typing import (
+    Optional,
+    Sequence,
+    Tuple
+)
+from typing_extensions import (
+    Any,
+    Union
+)
 
 import numbers
 
@@ -19,14 +26,6 @@ from ..GSTCV._GSTCVDask.GSTCVDask import GSTCVDask
 
 
 class AutoGSTCVDask(autogridsearch_wrapper(GSTCVDask)):
-
-
-    #     AutoGridSearchCV = type(
-    #         'SklearnAutoGridSearch',
-    #         (autogridsearch_wrapper(GSTCVDask),),
-    #         {'__doc__': autogridsearch_docs,
-    #          '__init__.__doc__': autogridsearch_docs}
-    #     )
 
 
     __doc__ = autogridsearch_docs.__doc__
@@ -51,7 +50,7 @@ class AutoGSTCVDask(autogridsearch_wrapper(GSTCVDask)):
         **parent_gscv_kwargs
     ):
 
-        """Initialize the AutoGSTCVDask instance."""
+        """Initialize the `AutoGSTCVDask` instance."""
 
 
         super().__init__(

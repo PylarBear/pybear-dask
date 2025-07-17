@@ -8,9 +8,7 @@
 
 from typing import (
     Callable,
-    Literal,
     Iterable,
-    Sequence,
     Optional
 )
 from typing_extensions import (
@@ -26,8 +24,11 @@ from ._type_aliases import (
 )
 from pybear.model_selection.GSTCV._type_aliases import (
     ClassifierProtocol,
+    ErrorScoreType,
     ParamGridInputType,
     ParamGridsInputType,
+    ScorerInputType,
+    ThresholdsInputType,
     ThresholdsWIPType,
     MaskedHolderType,
     NDArrayHolderType
@@ -58,79 +59,71 @@ from pybear.model_selection.GSTCV._GSTCVMixin._GSTCVMixin import _GSTCVMixin
 
 
 class GSTCVDask(_GSTCVMixin):
+    """Exhaustive cross-validated search over a grid of hyperparameter
+    values and decision thresholds for a binary classifier.
 
-    """
-    Exhaustive cross-validated search over a grid of hyperparameter
-    values and decision thresholds for a binary classifier. The optimal
-    hyperparameters and decision threshold selected are those that
-    maximize the average score (and minimize the average loss) of the
-    held-out data (test sets).
+    The optimal hyperparameters and decision threshold selected are
+    those that maximize the average score (and minimize the average
+    loss) of the held-out data (test sets).
 
-    pybear GSTCVDask is intended to closely parallel the interface and
-    user-experience of dask_ml and sci-kit learn GridSearchCV. Users who
-    are familiar with those GridSearch implementations should find that
-    GSTCVDask differs with respect to 4 things:
+    pybear `GSTCVDask` is intended to closely parallel the interface and
+    user-experience of dask_ml and scikit-learn `GridSearchCV`. Users
+    who are familiar with those GridSearch implementations should find
+    that `GSTCVDask` differs with respect to 4 things:
 
-    1) the init parameter :param: `thresholds` (which can also be passed
-    as a parameter to :param: `param_grid`)
+    1) the init parameter `thresholds` (which can also be passed as a
+    parameter to `param_grid`)
 
-    2) additional columns in the :attr: `cv_results_` attribute to
-    report the best thresholds for each scorer
+    2) additional columns in the :attr:`cv_results_` attribute to report
+    the best thresholds for each scorer
 
-    3) one post-run attribute, :attr: `best_threshold_`, which informs
+    3) a new post-run attribute, :attr:`best_threshold_`, which informs
     about the overall best threshold
 
-    4) callables passed to :param: `scoring` SHOULD NOT be wrapped in
-    'make_scorer' as would be done with GridSearchCV. Pass scoring
-    callables in raw metric form. See the dask_ml and sci-kit learn docs
+    4) callables passed to `scoring` SHOULD NOT be wrapped in
+    'make_scorer' as would be done with `GridSearchCV`. Pass scoring
+    callables in raw metric form. See the dask_ml and scikit-learn docs
     for more information about 'make_scorer' and 'metrics'. Also see the
-    'Parameters' section of the GSTCVDask docs.
+    'Parameters' section of the `GSTCVDask` docs.
 
     Users who are familiar with the dask_ml implementation of GridSearch
-    should focus on the above 4 areas in the GSTCVDask 'Parameters' and
-    'Attributes' sections of the docs for mastery of GSTCVDask.
+    should focus on the above 4 areas in the `GSTCVDask` 'Parameters' and
+    'Attributes' sections of the docs for mastery of `GSTCVDask`.
 
-    GSTCVDask implements `fit`, `predict_proba`, `predict`, `score`,
+    `GSTCVDask` implements `fit`, `predict_proba`, `predict`, `score`,
     `get_params`, and `set_params` methods. It also implements
     `decision_function`, `predict_log_proba`, `score_samples`,
     `transform` and `inverse_transform` if they are exposed by the
-    classifier passed to :param: `estimator`.
-
+    classifier passed to `estimator`.
 
     Parameters
     ----------
-    estimator:
-        estimator object - Required. Must be a binary classifier that
-        conforms to the sci-kit learn estimator API interface. The
-        classifier must have the `fit`, `set_params`, `get_params`, and
-        `predict_proba` methods. If the classifier does not have
-        `predict_proba`, try to wrap with CalibratedClassifierCV. The
-        classifier does not need a `score` method, as GSTCVDask never
-        accesses the estimator `score` method because it always uses a
-        0.5 threshold.
+    estimator : object
+        Required. Must be a binary classifier that conforms to the
+        scikit-learn estimator API interface. The classifier must have
+        the `fit`, `set_params`, `get_params`, and `predict_proba`
+        methods. If the classifier does not have `predict_proba`, try
+        to wrap with `CalibratedClassifierCV`. The classifier does not
+        need a `score` method, as `GSTCVDask` never accesses the
+        estimator `score` method because it always uses a 0.5 threshold.
 
-        GSTCVDask warns when a non-dask estimator is used, but does not
-        strictly prohibit them. GSTCVDask is explicitly designed for use
-        with dask objects (estimators, arrays, and dataframes.) GSTCV is
-        recommended for non-dask classifiers.
-
-    param_grid:
-        dict[str, Sequence[Any] or Sequence[dict[str, Sequency[Any]]] -
+        `GSTCVDask` does not strictly prohibit non-dask classifiers, but
+        is explicitly designed for use with dask objects (estimators,
+        arrays, and dataframes.) pybear `GSTCV` is recommended for
+        non-dask classifiers.
+    param_grid : Union[ParamGridInputType, ParamGridsInputType]
         Required. A dictionary with hyperparameters names (str) as keys
         and list-likes of respective settings to try as values. Can also
         be a list-like of such dictionaries, and the grids spanned by
         each are explored. This enables searching over any combination
         of hyperparameter settings.
-
-    thresholds:
-        Optional[Union[None, numbers.Real, Sequence[numbers.Real]],
-        default=None - The decision threshold search grid to use when
-        performing the hyperparameter search. Other GridSearchCV modules
-        only use the conventional decision threshold for binary
-        classifiers, which is 0.5. This module can search over any set
-        of decision threshold values in the 0 to 1 interval (inclusive)
-        in the same manner as any other hyperparameter while performing
-        the grid search.
+    thresholds : ThresholdsInputType, default=None
+        The decision threshold search grid to use when performing the
+        hyperparameter search. Other `GridSearchCV` modules only use the
+        conventional decision threshold for binary classifiers, which is
+        0.5. This module can search over any set of decision threshold
+        values in the 0 to 1 interval (inclusive) in the same manner as
+        any other hyperparameter while performing the grid search.
 
         The thresholds value passed via the init parameter can be None,
         a single number from 0 to 1 (inclusive) or a list-like of such
@@ -140,31 +133,27 @@ class GSTCVDask(_GSTCVMixin):
 
         Thresholds may also be passed to individual param grids via a
         'thresholds' key. However, when passed directly to a param grid,
-        thresholds cannot be None or a single number, it must be a
+        'thresholds' cannot be None or a single number, it must be a
         list-like of numbers as is normally done with param grids.
 
-        Because 'thresholds' can be passed in 2 different ways, there
+        Because `thresholds` can be passed in 2 different ways, there
         is a hierarchy that dictates which thresholds are used during
         searching and scoring. Any threshold values passed directly
         within a param grid always supersede any passed (or not passed)
-        to the `thresholds` init parameter. When no thresholds are passed
-        inside a param grid, the value passed as an init parameter is
-        used -- if no values were passed to the init parameter, then the
-        GSTCVDask default values are used. For example, if all passed
-        param grids have no 'thresholds' entry, then whatever is passed
-        to the init parameter is used for all of them; if the init
-        parameter is left as default (None), then the GSTCVDask default
-        threshold grid is used for all the grids.
+        to the `thresholds` init parameter. When a param grid does not
+        have any thresholds passed inside it, the value passed to the
+        init parameter is used -- if a value was not passed to the init
+        parameter, then the `GSTCVDask` default value is used.
 
         When one scorer is used, the best threshold is always exposed
-        and is accessible via the `best_threshold_` attribute. When
-        multiple scorers are used, the `best_threshold_` attribute is
-        only exposed when a string value is passed to `refit`. The best
-        threshold is never reported in the `best_params_` attribute,
-        even if thresholds were passed via a param grid; the best
-        threshold is only available via the `best_threshold_` attribute.
-        Another way to discover the best threshold for each scorer is
-        by inspection of the `cv_results_` attribute.
+        and is accessible via the :attr:`best_threshold_` attribute.
+        When multiple scorers are used, the `best_threshold_` attribute
+        is only exposed when a string value is passed to `refit`. The
+        best threshold is never reported in the :attr:`best_params_`
+        attribute, even if thresholds were passed via a param grid; the
+        best threshold is only available via the `best_threshold_`
+        attribute. Another way to discover the best threshold for each
+        scorer is by inspection of the :attr:`cv_results_` attribute.
 
         The scores reported for test data in `cv_results_` are those for
         the best threshold. Also note that when `return_train_score` is
@@ -175,12 +164,10 @@ class GSTCVDask(_GSTCVMixin):
         That best score and best threshold is reported for the test data.
         Then when scoring train data, only the best threshold is scored
         and reported in `cv_results_`.
-
-    scoring:
-        Optional[Union[str, Sequence[str], Callable, dict[str, Callable]]],
-        default='accuracy' - Strategy to evaluate the performance of the
-        cross-validated model on the test set (and also train set, if
-        `return_train_score` is True.)
+    scoring : ScorerInputType, default='accuracy'
+        Strategy to evaluate the performance of the cross-validated model
+        on the test set (and also train set, if `return_train_score` is
+        True.)
 
         For any number of scorers, scoring can be a dictionary with
         user-assigned scorer names as keys and callables as values. See
@@ -194,21 +181,21 @@ class GSTCVDask(_GSTCVMixin):
         For evaluating multiple metrics, scoring can be a vector-like of
         unique strings, containing a combination of the allowed strings.
 
-        The default scorer of the estimator cannot used by this module
+        The default scorer of the estimator cannot be used by this module
         because the decision threshold cannot be manipulated. Therefore,
         `scoring` cannot accept a None argument.
 
         About the scorer callable:
         This module's scorers differ from other GSCV implementations
         in an important way. Some of those implementations accept
-        make_scorer functions, e.g. sklearn.metrics.make_scorer, but
-        this module cannot accept this. make_scorer implicitly assumes a
-        decision threshold of 0.5, but this module needs to be able to
+        'make_scorer' functions, e.g. `sklearn.metrics.make_scorer`, but
+        this module cannot accept this. 'make_scorer' implicitly assumes
+        a decision threshold of 0.5, but this module needs to be able to
         calculate predictions based on any user-entered threshold.
-        Therefore, in place of make_scorer functions, this module uses
+        Therefore, in place of 'make_scorer' functions, this module uses
         scoring metrics directly (whereas they would otherwise be passed
-        to make_scorer.) An example of a valid scoring metric is
-        sklearn.metrics.accuracy_score.
+        to 'make_scorer'.) An example of a valid scoring metric is
+        `sklearn.metrics.accuracy_score`.
 
         Additionally, this module can accept any scoring function that
         has signature (y_true, y_pred) and returns a single number. Note
@@ -223,31 +210,27 @@ class GSTCVDask(_GSTCVMixin):
 
         def your_metric_wrapper(y_true, y_pred):
             return your_metric(y_true, y_pred, **hard_coded_kwargs)
-
-    iid:
-        Optional[bool], default=True - iid is ignored when :param: `cv`
-        is an iterable. Indicates whether the data's examples are
-        believed to have random distribution (True) or if the examples
-        are organized non-randomly in some way (False). If the data is
-        not iid, KFold will cross chunk boundaries when reading the
-        data in an attempt to randomize it; this can be an expensive
-        process. Otherwise, if the data is iid, KFold can handle the
-        data as contiguous chunks which is much more efficient.
-
-    refit:
-        Optional[Union[bool, str, Callable]], default=True - After the
-        grid search is done, fit the whole dataset on the estimator
-        using the best found hyperparameters and expose this fitted
-        estimator via the :attr: `best_estimator_` attribute. Also,
+    iid : Optional[bool], default=True
+        `iid` is ignored when `cv` is an iterable. Indicates whether
+        the data's examples are believed to have random distribution
+        (True) or if the examples are organized non-randomly in some
+        way (False). If the data is not iid, KFold will cross chunk
+        boundaries when reading the data in an attempt to randomize it;
+        this can be an expensive process. Otherwise, if the data is iid,
+        KFold can handle the data as contiguous chunks which is much
+        more efficient.
+    refit : Optional[Union[bool, str, Callable]], default=True
+        After the grid search is done, fit the whole dataset on the
+        estimator using the best found hyperparameters and expose this
+        fitted estimator via the :attr:`best_estimator_` attribute. Also,
         when the estimator is refit on the best hyperparameters, the
-        GSTCV instance itself becomes the best estimator, exposing
-        the :meth: `predict_proba`, :meth: `predict`, and :meth: `score`
-        methods (and possibly others.) When refit is not performed,
-        the search simply finds the best hyperparameters and exposes
-        them via the `best_params_` attribute (unless there are multiple
-        scorers and `refit` is False, in which case information about
-        the grid search is only available via the :attr: `cv_results_`
-        attribute.)
+        `GSTCVDask` instance itself becomes the best estimator, exposing
+        the :meth:`predict_proba`, :meth:`predict`, and :meth:`score`
+        methods (and possibly others.) When refit is not performed, the
+        search simply finds the best hyperparameters and exposes them via
+        the `best_params_` attribute (unless there are multiple scorers
+        and `refit` is False, in which case information about the grid
+        search is only available via the `cv_results_` attribute.)
 
         The values accepted by `refit` depend on the scoring scheme, that
         is, whether a single or multiple scorers are used. In all cases,
@@ -260,113 +243,97 @@ class GSTCVDask(_GSTCVMixin):
 
         Where there are considerations other than maximum score in
         choosing a best estimator, `refit` can be set to a function that
-        takes in :attr: `cv_results_` and returns :attr: `best_index_`
-        (an integer). In that case, the returned `best_index_` sets both
-        the :attr: `best_estimator_` and :attr: `best_params_` attributes.
-        When more than one scorer is used, the :attr: `best_score_`
-        and :attr: `best_threshold_` attributes will not be available,
-        but are available if there is only one scorer.
+        takes in `cv_results_` and returns :attr:`best_index_` (an
+        integer). In that case, the returned `best_index_` sets both the
+        `best_estimator_` and `best_params_` attributes. When more than
+        one scorer is used, the :attr:`best_score_` and `best_threshold_`
+        attributes will not be available, but are available if there is
+        only one scorer.
 
-        See the :param: `scoring` parameter to know more about multiple
-        metric evaluation.
-
-    cv:
-        Optional[Union[numbers.Integral, Iterable, None]], default=None -
+        See the `scoring` parameter to know more about multiple metric
+        evaluation.
+    cv : Optional[Union[numbers.Integral, Iterable, None]], default=None
         Sets the cross-validation splitting strategy.
 
         Possible inputs for cv are:
 
         1) None, to use the default 5-fold cross validation,
-
         2) an integer, must be 2 or greater, to specify the number of
-        folds in a KFold split,
-
+            folds in a KFold split,
         3) an iterable yielding pairs of (train, test) split indices as
-        arrays.
+            arrays.
 
         For passed iterables:
         This module will convert generators to lists. No validation is
         done beyond verifying that it is an iterable that contains pairs
-        of iterables. GSTCVDask will catch out of range indices and raise
-        an error but any validation beyond that is up to the user outside
-        of GSTCV.
-
-    verbose:
-        Optional[numbers.Real], default=0 - The amount of verbosity to
-        display to screen during the grid search. Accepts integers from
-        0 to 10. 0 means no information displayed to the screen, 10
-        means full verbosity. Non-numbers are rejected. Boolean False is
-        set to 0, boolean True is set to 10. Negative numbers are
-        rejected. Numbers greater than 10 are set to 10. Floats are
-        rounded to integers.
-
-    error_score:
-        Optional[Union[numbers.Real, Literal['raise']]], default='raise' -
+        of iterables. `GSTCVDask` will catch out of range indices and
+        raise an error but any validation beyond that is up to the user
+        outside of `GSTCVDask`.
+    verbose : Optional[numbers.Real], default=0
+        The amount of verbosity to display to screen during the grid
+        search. Accepts integers from 0 to 10. 0 means no information
+        displayed to the screen, 10 means full verbosity. Non-numbers
+        are rejected. Boolean False is set to 0, boolean True is set to
+        10. Negative numbers are rejected. Numbers greater than 10 are
+        set to 10. Floats are rounded to integers.
+    error_score : Optional[ErrorScoreType], default='raise'
         Score to assign if the estimator raises an error while fitting
         on a train fold. If set to ‘raise’, the error is raised. If a
         numeric value is given, a warning is raised and the error score
         value is inserted into the subsequent calculations in place of
         the missing value(s). This parameter does not affect the refit
         step, which will always raise the error.
+    return_train_score : Optional[bool]
+        If False, the `cv_results_` attribute will not include training
+        scores. If True, the train data is scored using all the scorers
+        at the best respective threshold(s) found for the test data.
+        Computing training scores is used to assess conditions of under-
+        or over-fittedness. However, computing the scores on the training
+        set can be computationally expensive and is not required to
+        select the hyperparameters that yield the best performance.
+    scheduler : Optional[Union[Client, Scheduler, None]], default=None
+        A passed scheduler supersedes all other external schedulers.
+        When a scheduler is explicitly passed, `GSTCVDask` does not
+        perform any validation or verification but allows that to be
+        handled by dask at compute time.
 
-    return_train_score:
-        Optional[bool] - If False, the :attr: `cv_results_` attribute
-        will not include training scores. If True, the train data is
-        scored using all the scorers at the best respective threshold(s)
-        found for the test data. Computing training scores is used to
-        assess conditions of under- or over-fittedness. However,
-        computing the scores on the training set can be computationally
-        expensive and is not required to select the hyperparameters that
-        yield the best performance.
-
-    scheduler:
-        Optional[Union[distributed.Client, distributed.scheduler.Scheduler,
-        None]], default=None - A passed scheduler supersedes all other
-        external schedulers. When a scheduler is explicitly passed,
-        GSTCVDask does not perform any validation or verification but
-        allows that to be handled by dask at compute time.
-
-        If 'None' is passed (the default), GSTCVDask looks for an
-        external context manager or global scheduler using get_client.
-        If one exists, GSTCVDask uses that as the scheduler. If an
-        external scheduler does not exist, GSTCVDask instantiates a
+        If 'None' is passed (the default), `GSTCVDask` looks for an
+        external context manager or global scheduler using `get_client`.
+        If one exists, `GSTCVDask` uses that as the scheduler. If an
+        external scheduler does not exist, `GSTCVDask` instantiates a
         multiprocessing distributed.Client() (which defaults to
-        LocalCluster) with n_workers=n_jobs and 1 thread per worker.
-        If :param: `n_jobs` is None, GSTCVDask uses the default
-        distributed.Client behavior when n_workers is set to None.
+        LocalCluster) with `n_workers=n_jobs` and 1 thread per worker.
+        If `n_jobs` is None `GSTCVDask` uses the default Client behavior
+        when `n_workers` is set to None.
 
         This module intentionally disallows any shorthand methods for
         internally setting up a scheduler (such as strings like 'thread-
         ing' and 'multiprocessing', which are ultimately passed to
         dask.base.get_scheduler.) All of these types of configurations
-        should be handled by the user external to the GSTCVDask module.
+        should be handled by the user external to the `GSTCVDask` module.
         As much as possible, dask and distributed objects are allowed to
         flow through without any hard-coded input.
-
-    n_jobs:
-        Optional[Union[int, None]], default=None - Active only if no
-        scheduler is available. That is, if a scheduler is not passed
-        to :param: `scheduler`, if no global scheduler is available, and
-        if there is no scheduler context manager, only then does n_jobs
-        become effectual. In this case, GSTCVDask creates a Client
-        instance using local multiprocessing with n_workers=n_jobs.
-
-    cache_cv:
-        Optional[bool], default=True - Indicates if the train/test folds
-        of the data are to be stored when first generated, or if the
-        folds are generated from X, y and the KFold indices at each
-        point of need. Caching all the folds for each split of the data
-        is memory-intensive.
-
+    n_jobs : Optional[Union[int, None]], default=None
+        Active only if no scheduler is available. That is, if a
+        scheduler is not passed to `scheduler`, if no global scheduler
+        is available, and if there is no scheduler context manager, only
+        then does `n_jobs` become effectual. In this case, `GSTCVDask`
+        creates a Client instance using local multiprocessing with
+        `n_workers=n_jobs`.
+    cache_cv : Optional[bool], default=True
+        Indicates if the train/test folds of the data are to be stored
+        when first generated, or if the folds are generated from X, y
+        and the KFold indices at each point of need. Caching all the
+        folds for each split of the data is memory-intensive.
 
     Attributes
     ----------
-    cv_results_:
-        CVResultsType - A dictionary with column headers as keys and
-        results as values, that can be conveniently converted into a
-        pandas DataFrame. Always exposed after fit.
+    cv_results_ : CVResultsType
+        A dictionary with column headers as keys and results as values,
+        that can be conveniently converted into a pandas DataFrame.
+        Always exposed after fit.
 
-        Below is an example of cv_results_ for a logistic classifier,
+        Below is an example of `cv_results_` for a logistic classifier,
         with:
             cv=3,
 
@@ -437,77 +404,66 @@ class GSTCVDask(_GSTCVMixin):
         'std_score_time' are all in seconds.
 
         For single-metric evaluation, the scores for the single scorer
-        are available in the cv_results_ dict at the keys ending with
+        are available in the `cv_results_` dict at the keys ending with
         '_score'. For multi-metric evaluation, the scores for all the
-        scorers are available in the cv_results_ dict at the keys ending
-        with that scorer’s name ('_<scorer_name>').
+        scorers are available in the `cv_results_` dict at the keys
+        ending with that scorer’s name ('_<scorer_name>').
         (‘split0_test_precision’, ‘mean_train_precision’ etc.)
-
-    best_estimator_:
-        estimator - The estimator that was chosen by the search, i.e.
-        the estimator which gave the highest score (or smallest loss)
-        on the held-out (test) data. Only exposed when `refit` is not
-        False; see the `refit` parameter for more information on allowed
-        values.
-
-    best_score_:
-        float - The mean of the scores of the hold out (test) cv folds
-        for the best estimator with the best threshold applied. Always
-        exposed when there is one scorer, or when `refit` is specified
-        as a string for 2+ scorers.
-
-    best_params_:
-        dict[str, Any] - The dictionary found in the `cv_results_`
-        'params' column in the `best_index_` position, which gives the
+    best_estimator_ : object
+        The estimator that was chosen by the search, i.e. the estimator
+        which gave the highest score (or smallest loss) on the held-out
+        (test) data. Only exposed when `refit` is not False; see the
+        `refit` parameter for more information on allowed values.
+    best_score_ : float
+        The mean of the scores of the hold out (test) cv folds for the
+        best estimator with the best threshold applied. Always exposed
+        when there is one scorer, or when `refit` is specified as a
+        string for 2+ scorers.
+    best_params_ : dict[str, Any]
+        The dictionary found in the :attr:`cv_results_` 'params'
+        column in the :attr:`best_index_` position, which gives the
         hyperparameter settings that resulted in the highest mean score
         (best_score_) on the hold out (test) data with the best threshold
         applied.
 
-        `best_params_` never holds the best threshold. Access the best
-        threshold via the `best_threshold_` attribute (if available) or
-        the `cv_results_` attribute.
+        `best_params_` never holds the best threshold. Access the
+        best threshold via the :attr:`best_threshold_` attribute (if
+        available) or the `cv_results_` attribute.
 
         `best_params_` is always exposed when there is one scorer, or
         when `refit` is not False for 2+ scorers.
-
-    best_index_:
-        int - The index of the `cv_results_` arrays which corresponds to
-        the best hyperparameter settings. Always exposed when there is
-        one scorer, or when `refit` is not False for 2+ scorers.
-
-    scorer_:
-        dict - Scorer metric(s) used on the held out data to choose the
-        best hyperparameters for the model. Always exposed after fit.
+    best_index_ : int
+        The index of the `cv_results_` arrays which corresponds to the
+        best hyperparameter settings. Always exposed when there is one
+        scorer, or when `refit` is not False for 2+ scorers.
+    scorer_ : dict
+        Scorer metric(s) used on the held out data to choose the best
+        hyperparameters for the model. Always exposed after fit.
 
         This attribute holds the validated scoring dictionary which maps
         the scorer key to the scorer metric callable, i.e., a dictionary
         of {scorer_name: scorer_metric}.
+    n_splits_ : int
+        The number of cross-validation splits (folds). Always exposed
+        after fit.
+    refit_time_ : float
+        Seconds elapsed when refitting the best model on the whole
+        dataset. Only exposed when `refit` is not False.
 
-    n_splits_:
-        int -  The number of cross-validation splits (folds). Always
-        exposed after fit.
-
-    refit_time_:
-        float - Seconds elapsed when refitting the best model on the
-        whole dataset. Only exposed when `refit` is not False.
-
-    multimetric_:
-        bool - Whether several scoring metrics were used. False if one
-        scorer was used, otherwise True. Always exposed after fit.
-
-    classes_:
-        ndarray of shape (n_classes,) - Class labels. Only exposed when
-        refit` is not False. Because GSTCVDask imposes a restriction
-        that y must be binary in [0, 1], this must always return [0, 1].
-
-    feature_names_in_:
-        ndarray of shape (n_features_in_,) - Names of features seen
-        during fit. Only exposed when `refit` is not False and a
-        container that has feature names was passed to :meth: `fit`.
-
-    best_threshold_:
-        float - The threshold that, along with the hyperparameter values
-        found in `best_params_`, yields the highest score for the given
+    multimetric_ : bool
+        Whether several scoring metrics were used. False if one scorer
+        was used, otherwise True. Always exposed after fit.
+    classes_ : ndarray of shape (n_classes,)
+        Class labels. Only exposed when `refit` is not False. Because
+        `GSTCVDask` imposes a restriction that y must be binary in
+        [0, 1], this must always return [0, 1].
+    feature_names_in_ : ndarray of shape (n_features_in_,)
+        Names of features seen during fit. Only exposed when `refit` is
+        not False and a container that has feature names was passed to
+        :meth: `fit`.
+    best_threshold_ : float
+        The threshold that, along with the hyperparameter values found
+        in `best_params_`, yields the highest score for the given
         estimator and data.
 
         The best threshold is only available conditionally via the
@@ -518,10 +474,10 @@ class GSTCVDask(_GSTCVMixin):
         threshold for each scorer and overall is by inspection of
         `cv_results_`.
 
-
     Notes
     -----
-    Type Aliases
+
+    **Type Aliases**
 
     class ClassifierProtocol(Protocol):
         def fit(self, X: Any, y: Any) -> Self
@@ -575,10 +531,7 @@ class GSTCVDask(_GSTCVMixin):
         Union[bool, ScorerNameTypes, RefitCallableType]
 
     DaskSchedulerType:
-        Union[
-            distributed.scheduler.Scheduler,
-            distributed.client.Client,
-        ]
+        Union[distributed.scheduler.Scheduler, distributed.client.Client]
 
     DaskXType:
         Iterable
@@ -644,15 +597,13 @@ class GSTCVDask(_GSTCVMixin):
         estimator: ClassifierProtocol,
         param_grid: Union[ParamGridInputType, ParamGridsInputType],
         *,
-        thresholds: Optional[Union[None, numbers.Real, Sequence[numbers.Real]]]=None,
-        scoring: Optional[
-            Union[str, Sequence[str], Callable, dict[str, Callable]]
-        ]='accuracy',
+        thresholds: ThresholdsInputType=None,
+        scoring: ScorerInputType='accuracy',
         iid: Optional[bool]=True,
         refit: Optional[Union[bool, str, Callable]] = True,
         cv: Optional[Union[numbers.Integral, Iterable, None]]=None,
         verbose: Optional[numbers.Real]=0,
-        error_score: Optional[Union[Literal['raise'], numbers.Real]]='raise',
+        error_score: Optional[ErrorScoreType]='raise',
         return_train_score: Optional[bool]=False,
         scheduler: Optional[
             Union[distributed.Client, distributed.scheduler.Scheduler, None]
@@ -660,8 +611,7 @@ class GSTCVDask(_GSTCVMixin):
         n_jobs: Optional[Union[numbers.Integral, None]]=None,
         cache_cv: Optional[bool]=True
     ) -> None:
-
-        """Initialize the GSTCVDask instance."""
+        """Initialize the `GSTCVDask` instance."""
 
         self.estimator = estimator
         self.param_grid = param_grid
@@ -679,39 +629,31 @@ class GSTCVDask(_GSTCVMixin):
 
 
     def _val_y(self, _y: DaskYType) -> None:
+        """Implements `GSTCVDask` _val_y in methods in `_GSTCVMixin`.
 
-        """
-        Implements GSTCVDask _val_y in methods in _GSTCVMixin. See the
-        docs for GSTCVDask _val_y.
-
+        See the docs for `GSTCVDask` _val_y.
 
         Parameters
         ----------
-        _y:
-            DaskYType - the target for the data.
-
+        _y : DaskYType
+            The target for the data.
 
         Returns
         -------
-        -
-            None
+        None
 
         """
 
-        # KEEP val of X & y separate, the all methods need X & y everytime
+        # KEEP val y separate
         _val_y(_y)
 
 
     def _val_params(self) -> None:
-
-        """
-        Validate init params that are unique to GSTCVDask.
-
+        """Validate init params that are unique to `GSTCVDask`.
 
         Returns
         -------
-        -
-            None
+        None
 
         """
 
@@ -724,24 +666,19 @@ class GSTCVDask(_GSTCVMixin):
         _X: DaskXType,
         _y: DaskYType
     ) -> None:
-
-        """
-        Condition GSTCVDask-only init params into format for internal
+        """Condition GSTCVDask-only init params into format for internal
         processing.
-
 
         Parameters
         ----------
-        _X:
-            DaskXType: The data.
-        _y:
-            DaskYType: The target for the data.
-
+        _X : DaskXType
+            The data.
+        _y : DaskYType
+            The target for the data.
 
         Returns
         -------
-        -
-            None
+        None
 
         """
 
@@ -771,31 +708,26 @@ class GSTCVDask(_GSTCVMixin):
         _grid:dict[str, Any],
         _fit_params
     ) -> list[tuple[ClassifierProtocol, float, bool], ...]:
-
-        """
-        Fit on each train/test split for one single set of hyperparameter
-        values (one permutation of GSCV).
-
+        """Fit on each train/test split for one single set of
+        hyperparameter values (one permutation of GSCV).
 
         Parameters
         ----------
-        _X:
-            DaskXType - the data.
-        _y:
-            DaskYType - the target for the data.
-        _grid:
-            dict[str, Any] - the values for the hyperparameters for this
-            permutation of grid search.
-
+        _X : DaskXType
+            The data.
+        _y : DaskYType
+            The target for the data.
+        _grid : dict[str, Any]
+            The values for the hyperparameters for this permutation of
+            grid search.
 
         Returns
         -------
-        -
-            list[tuple[ClassifierProtocol, float, bool], ...] - a list
-            of tuples, one tuple for each fold, with each tuple holding
-            the respective fitted estimator for that fold of train/test
-            data, the fit time, and a bool indicating whether the fit
-            raised an error.
+        FIT_OUTPUT : list[tuple[ClassifierProtocol, float, bool], ...]
+            A list of tuples, one tuple for each fold, with each tuple
+            holding the respective fitted estimator for that fold of
+            train/test data, the fit time, and a bool indicating whether
+            the fit raised an error.
 
         """
 
@@ -856,8 +788,6 @@ class GSTCVDask(_GSTCVMixin):
 
         return FIT_OUTPUT
 
-        # END FIT ALL FOLDS ###############################################
-
 
     def _score_all_folds_and_thresholds(
         self,
@@ -866,42 +796,35 @@ class GSTCVDask(_GSTCVMixin):
         _FIT_OUTPUT:list[tuple[ClassifierProtocol, float, bool], ...],
         _THRESHOLDS:ThresholdsWIPType
     ) -> list[tuple[MaskedHolderType, MaskedHolderType], ...]:
-
-        """
-        For each fitted estimator associated with each fold, produce the
-        y_pred vector for that fold's test data and score it against the
-        actual y.
-
+        """For each fitted estimator associated with each fold, produce
+        the y_pred vector for that fold's test data and score it against
+        the actual y.
 
         Parameters
         ----------
-        _X:
-            DaskXType - the data.
-        _y:
-            DaskYType - the target for the data.
-        _FIT_OUTPUT:
-            list[tuple[ClassifierProtocol, float, bool], ...] - a list
-            of tuples, one tuple for each fold, with each tuple holding
-            the respective fitted estimator for that fold of train/test
-            data, the fit time, and a bool indicating whether the fit
-            raised an error.
-        _THRESHOLDS:
-            ThresholdsWIPType - the thresholds for which to calculate
-            scores.
-
+        _X : DaskXType
+            The data.
+        _y : DaskYType
+            The target for the data.
+        _FIT_OUTPUT : list[tuple[ClassifierProtocol, float, bool], ...]
+            A list of tuples, one tuple for each fold, with each tuple
+            holding the respective fitted estimator for that fold of
+            train/test data, the fit time, and a bool indicating whether
+            the fit raised an error.
+        _THRESHOLDS : ThresholdsWIPType
+            The thresholds for which to calculate scores.
 
         Returns
         -------
-        -
-            list[tuple[MaskedHolderType, MaskedHolderType], ...] -
-            TEST_THRESHOLD_x_SCORER__SCORE_LAYER:
-                MaskedHolderType - masked array of shape (n_thresholds,
-                n_scorers) holding the scores for each scorer on each
-                threshold for one fold of test data.
-            TEST_THRESHOLD_x_SCORER__SCORE_TIME_LAYER:
-                MaskedHolderType - masked array of shape (n_thresholds,
-                n_scorers) holding the times to score each scorer on
-                each threshold for one fold of test data.
+        TEST_SCORER_OUT : list[tuple[MaskedHolderType, MaskedHolderType], ...]
+            TEST_THRESHOLD_x_SCORER__SCORE_LAYER : MaskedHolderType
+                Masked array of shape (n_thresholds, n_scorers) holding
+                the scores for each scorer on each threshold for one
+                fold of test data.
+            TEST_THRESHOLD_x_SCORER__SCORE_TIME_LAYER : MaskedHolderType
+                Masked array of shape (n_thresholds, n_scorers) holding
+                the times to score each scorer on each threshold for one
+                fold of test data.
 
         """
 
@@ -940,38 +863,32 @@ class GSTCVDask(_GSTCVMixin):
         _BEST_THRESHOLDS_BY_SCORER:NDArrayHolderType
     ) -> list[MaskedHolderType]:
         # TRAIN_SCORER_OUT is TRAIN_SCORER__SCORE_LAYER
-
-        """
-        Using the fitted estimator for each fold, all the scorers, and
-        the best thresholds for each scorer, score the train data for
-        each fold using all the scorers and the single best threshold
+        """Using the fitted estimator for each fold, all the scorers,
+        and the best thresholds for each scorer, score the train data
+        for each fold using all the scorers and the single best threshold
         for the respective scorer.
-
 
         Parameters
         ----------
-        _X:
-            DaskXType - the data.
-        _y:
-            DaskYType - the target for the data.
-        _FIT_OUTPUT:
-            list[tuple[ClassifierProtocol, float, bool], ...] - a list
-            of tuples, one tuple for each fold, with each tuple holding
-            the respective fitted estimator for that fold of train/test
-            data, the fit time, and a bool indicating whether the fit
-            raised an error.
-        _BEST_THRESHOLDS_BY_SCORER:
-            NDArrayHolderType - the best threshold for each scorer as
-            found by averaging the scores across each fold of test data.
-
+        _X : DaskXType
+            The data.
+        _y : DaskYType
+            The target for the data.
+        _FIT_OUTPUT : list[tuple[ClassifierProtocol, float, bool], ...]
+            A list of tuples, one tuple for each fold, with each tuple
+            holding the respective fitted estimator for that fold of
+            train/test data, the fit time, and a bool indicating whether
+            the fit raised an error.
+        _BEST_THRESHOLDS_BY_SCORER : NDArrayHolderType
+            The best threshold for each scorer as found by averaging the
+            scores across each fold of test data.
 
         Returns
         -------
-        -
-            list[MaskedHolderType] - list of masked arrays where
-            each masked array holds the scores for a fold of train data
-            using every scorer and the best threshold associated with
-            that scorer.
+        TRAIN_SCORER_OUT : list[MaskedHolderType]
+            List of masked arrays where each masked array holds the
+            scores for a fold of train data using every scorer and the
+            best threshold associated with that scorer.
 
         """
 

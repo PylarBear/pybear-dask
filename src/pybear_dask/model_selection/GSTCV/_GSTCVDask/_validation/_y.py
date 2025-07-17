@@ -20,29 +20,23 @@ import dask.dataframe as ddf
 def _val_y(
     _y: Iterable[numbers.Integral]  # not DaskYType... see the notes.
 ) -> None:
+    """Validate `_y`.
 
-    """
-    Validate y.
-
-    y must be single label and binary in [0, 1].
+    `_y` must be single label and binary in [0, 1].
 
     The validation is considerably looser than what would be for
     DaskYType. This allows *any* 1D container holding 0's and 1's.
     Let the estimator raise an error if there is a problem with the
     container.
 
-
     Parameters
     ----------
-    _y:
-        vector-like of shape (n_samples,) or (n_samples, 1) - The target
-        for the data.
+    _y : vector-like of shape (n_samples,) or (n_samples, 1)
+        The target for the data.
 
-
-    Return
-    ------
-    -
-        None
+    Returns
+    -------
+    None
 
     """
 

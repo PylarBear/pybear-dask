@@ -9,22 +9,20 @@
 def _val_iid(
     _iid: bool
 ) -> None:
+    """Validate `iid`.
 
-    """
     `iid` can only be boolean. Indicates whether the data is believed to
     have random distribution of examples (True) or if the data is
     organized non-randomly in some way (False).
 
-
     Parameters
     ----------
-    _iid:
-        bool - to be validated
+    _iid : bool
+        To be validated.
 
-    Return
-    ------
-    -
-        _iid: bool - validated boolean _iid
+    Returns
+    -------
+    None
 
     """
 
