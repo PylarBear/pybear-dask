@@ -8,7 +8,7 @@
 # this checks the general functionality of the AutoGSTCVDask module.
 
 
-from model_selection import AutoGSTCVDask
+from pybear_dask.model_selection import AutoGSTCVDask
 
 import time
 import numpy as np

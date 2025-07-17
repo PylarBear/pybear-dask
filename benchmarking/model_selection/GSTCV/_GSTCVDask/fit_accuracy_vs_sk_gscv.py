@@ -29,7 +29,7 @@ from sklearn.metrics import (
     balanced_accuracy_score
 )
 
-from pybear.model_selection.GSTCV._GSTCVDask.GSTCVDask import GSTCVDask
+from pybear_dask.model_selection.GSTCV._GSTCVDask.GSTCVDask import GSTCVDask
 
 
 
