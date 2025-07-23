@@ -18,7 +18,7 @@ from dask_ml.wrappers import (
     ParallelPostFit
 )
 
-from pybear.preprocessing import ColumnDeduplicateTransformer as CDT
+from pybear.preprocessing import ColumnDeduplicator as CDT
 
 
 

@@ -407,8 +407,8 @@ class GSTCVDask(_GSTCVMixin):
         are available in the `cv_results_` dict at the keys ending with
         '_score'. For multi-metric evaluation, the scores for all the
         scorers are available in the `cv_results_` dict at the keys
-        ending with that scorer’s name ('_<scorer_name>').
-        (‘split0_test_precision’, ‘mean_train_precision’ etc.)
+        ending with that scorer’s name ('_<scorer_name>'). E.g.,
+        ‘split0_test_precision’, ‘mean_train_precision’, etc.
     best_estimator_ : object
         The estimator that was chosen by the search, i.e. the estimator
         which gave the highest score (or smallest loss) on the held-out
@@ -453,14 +453,9 @@ class GSTCVDask(_GSTCVMixin):
     multimetric_ : bool
         Whether several scoring metrics were used. False if one scorer
         was used, otherwise True. Always exposed after fit.
-    classes_ : ndarray of shape (n_classes,)
-        Class labels. Only exposed when `refit` is not False. Because
-        `GSTCVDask` imposes a restriction that y must be binary in
-        [0, 1], this must always return [0, 1].
-    feature_names_in_ : ndarray of shape (n_features_in_,)
-        Names of features seen during fit. Only exposed when `refit` is
-        not False and a container that has feature names was passed to
-        :meth: `fit`.
+    classes_
+    n_features_in_
+    feature_names_in_
     best_threshold_ : float
         The threshold that, along with the hyperparameter values found
         in `best_params_`, yields the highest score for the given
@@ -543,7 +538,7 @@ class GSTCVDask(_GSTCVMixin):
         dict[str, np.ma.masked_array[Any]]
 
     FeatureNamesInType:
-        npt.NDArray[str]
+        numpy.ndarray[str]
 
 
     Examples
