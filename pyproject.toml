@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pybear-dask"
-version = "0.1.2"
+version = "0.1.3"
 description = "Python modules for data analytics applications with dask"
 license = "BSD-3-clause"
 authors = ["Bill Sousa <WKSJR99@msn.com>"]
@@ -28,11 +28,11 @@ include = [
 
 [tool.poetry.dependencies]
 # These packages are mandatory and form the core of this package’s distribution.
-python = "^3.10, <3.14"
+python = "^3.10, <3.13"
 dask = "<2025.1"
 dask-ml = "<2025.1"
 distributed = "<2025.1"
-pybear = { version = "^0.1.19", source = "testpypi" }
+pybear = { version = ">=0.1.19", source = "testpypi" }
 scikit-learn = "<1.7"
 
 
