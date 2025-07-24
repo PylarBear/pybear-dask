@@ -28,7 +28,7 @@ include = [
 
 [tool.poetry.dependencies]
 # These packages are mandatory and form the core of this package’s distribution.
-python = "^3.10, <3.14"
+python = "^3.10, <3.13"
 dask = "<2025.1"
 dask-ml = "<2025.1"
 distributed = "<2025.1"
