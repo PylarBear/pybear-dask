@@ -52,7 +52,7 @@ pybear-dask
 
 
 
-.. |PythonVersion| replace:: >=3.10, <3.13
+.. |PythonVersion| replace:: >=3.10, <3.14
 .. |DaskVersion| replace:: <2025.1.0
 .. |DaskMLVersion| replace:: <2025.1.0
 .. |DistributedVersion| replace:: <2025.1.0
