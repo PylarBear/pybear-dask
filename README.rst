@@ -56,7 +56,7 @@ pybear-dask
 .. |DaskVersion| replace:: <2025.1.0
 .. |DaskMLVersion| replace:: <2025.1.0
 .. |DistributedVersion| replace:: <2025.1.0
-.. |PybearVersion| replace:: >=0.1.19
+.. |PybearVersion| replace:: >=0.1.22
 .. |PytestVersion| replace:: >=7.0.0
 
 
