@@ -26,31 +26,25 @@ pybear-dask
 .. |Test Status 310| image:: https://github.com/PylarBear/pybear-dask/actions/workflows/matrix-tests-py310.yml/badge.svg
    :target: https://github.com/PylarBear/pybear-dask/actions/workflows/matrix-tests-py310.yml
 
-|PyPI Build Status|
 |TestPyPI Build Status|
-
-.. |PyPI Build Status| image:: https://github.com/PylarBear/pybear-dask/actions/workflows/pypi-publish.yml/badge.svg
-   :target: https://github.com/PylarBear/pybear-dask/actions/workflows/pypi-publish.yml
 
 .. |TestPyPI Build Status| image:: https://github.com/PylarBear/pybear-dask/actions/workflows/testpypi-publish.yml/badge.svg
    :target: https://github.com/PylarBear/pybear-dask/actions/workflows/testpypi-publish.yml
 
+|PyPI Build Status|
+|Version|
 |PyPI Downloads|
 
-.. |PyPI Downloads| image:: https://img.shields.io/pypi/dm/pybear-dask.svg?label=PyPI%20downloads
-   :target: https://pypi.org/project/pybear-dask/
+.. |PyPI Build Status| image:: https://github.com/PylarBear/pybear-dask/actions/workflows/pypi-publish.yml/badge.svg
+   :target: https://github.com/PylarBear/pybear-dask/actions/workflows/pypi-publish.yml
 
-|Version Status|
-
-.. |Version Status| image:: https://img.shields.io/pypi/v/pybear-dask.svg
-   :target: https://pypi.python.org/pypi/pybear-dask/
-
-|PyPi|
-
-.. |PyPi| image:: https://img.shields.io/pypi/v/pybear-dask
+.. |Version| image:: https://img.shields.io/pypi/v/pybear-dask
    :target: https://pypi.org/project/pybear-dask
+   :alt: PyPI Version
 
-
+.. |PyPI Downloads| image:: https://static.pepy.tech/badge/pybear-dask
+   :target: https://pepy.tech/project/pybear-dask/
+   :alt: PyPI Downloads
 
 .. |PythonVersion| replace:: >=3.10, <3.14
 .. |DaskVersion| replace:: <2025.1.0
@@ -87,26 +81,12 @@ pybear-dask requires:
 - distributed (|DistributedVersion|)
 - pybear (|PybearVersion|)
 
-pybear-dask 0.2 is tested via GitHub Actions to run on Linux, Windows, and MacOS,
-with Python versions 3.10, 3.11, and 3.12. pybear-dask is not tested on earlier
-versions, but some features may work.
-
-If you want to test pybear yourself, you will need:
-
-- pytest (|PytestVersion|)
-
 User installation
 ~~~~~~~~~~~~~~~~~
 
-pybear-dask has not been released to PyPI yet. First publish to PyPI is
-anticipated to be July 2025. If you really want to try it out, the only way to
-install pybear-dask is from TestPyPI using ``pip``::
+Install pybear-dask from the online PyPI package repository using ``pip``::
 
-   pip install -i https://test.pypi.org/simple/ pybear-dask
-
-In the future, pip install from PyPI using ``pip``::
-
-   pip install pybear-dask
+   (your-env) $ pip install pybear-dask
 
 Conda distributions are expected to be made available sometime after release to
 PyPI.
@@ -181,7 +161,7 @@ Important links
 ~~~~~~~~~~~~~~~
 
 - Official source code repo: https://github.com/PylarBear/pybear-dask
-- Download releases: https://test.pypi.org/project/pybear-dask/ (pypi coming soon!)
+- Download releases: https://pypi.org/project/pybear-dask/
 - Issue tracker: https://github.com/PylarBear/pybear-dask/issues
 
 Source code
@@ -199,10 +179,24 @@ pybear-dask is not ready for contributions at this time!
 Testing
 ~~~~~~~
 
-After installation, you can launch the test suite from outside the pybear-dask
-root directory (you will need to have pytest installed in your environment)::
+pybear-dask 0.2 is tested via GitHub Actions to run on Linux, Windows, and MacOS,
+with Python versions 3.10, 3.11, and 3.12. pybear-dask is not tested on earlier
+versions, but some features may work.
 
-    pytest pybear-dask
+If you want to test pybear-dask yourself, you will need:
+
+- pytest (|PytestVersion|)
+
+The tests are not available in the PyPI pip installation. You can get
+the tests by downloading the tarball from the pybear-dask project page on
+`pypi.org <https://pypi.org/project/pybear-dask/>`_ or cloning the pybear-dask
+repo from `GitHub <https://github.com/PylarBear/pybear-dask>`_. Once you have
+the source files in a local project folder, create a poetry environment for the
+project and install the test dependencies. After installation, launch the poetry
+environment shell and you can launch the test suite from the root of your
+pybear-dask project folder with::
+
+    (your-pybear-dask-env) you@your_computer:/path/to/pybear-dask/project$ pytest tests/
 
 Project History
 ---------------
