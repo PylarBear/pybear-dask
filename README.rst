@@ -46,7 +46,7 @@ pybear-dask
    :target: https://pepy.tech/project/pybear-dask/
    :alt: PyPI Downloads
 
-.. |PythonVersion| replace:: >=3.10, <3.14
+.. |PythonVersion| replace:: >=3.10, <3.13
 .. |DaskVersion| replace:: <2025.1.0
 .. |DaskMLVersion| replace:: <2025.1.0
 .. |DistributedVersion| replace:: <2025.1.0
