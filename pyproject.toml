@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pybear-dask"
-version = "0.1.4"
+version = "0.2.0"
 description = "Python modules for data analytics applications with dask"
 license = "BSD-3-clause"
 authors = ["Bill Sousa <WKSJR99@msn.com>"]
@@ -32,7 +32,7 @@ python = "^3.10, <3.13"
 dask = "<2025.1"
 dask-ml = "<2025.1"
 distributed = "<2025.1"
-pybear = { version = ">=0.1.22", source = "testpypi" }
+pybear = ">=0.2.0"    #{ version = ">=0.1.22", source = "testpypi" }
 scikit-learn = "<1.7"
 polars-lts-cpu = "^1.31.0"
 
@@ -66,10 +66,10 @@ pytest-html = "*"
 # If you publish your package on PyPI, they will appear in the Project Links section.
 
 
-[[tool.poetry.source]]
-name = "testpypi"
-url = "https://test.pypi.org/simple/"
-priority = "explicit"
+#[[tool.poetry.source]]
+#name = "testpypi"
+#url = "https://test.pypi.org/simple/"
+#priority = "explicit"
 
 
 [tool.coverage.run]

@@ -2733,14 +2733,14 @@ test = ["cffi", "hypothesis", "pandas", "pytest", "pytz"]
 
 [[package]]
 name = "pybear"
-version = "0.1.22"
+version = "0.2.0"
 description = "Python modules for miscellaneous data analytics applications"
 optional = false
-python-versions = ">=3.10,<3.14"
+python-versions = "<3.14,>=3.10"
 groups = ["main"]
 files = [
-    {file = "pybear-0.1.22-py3-none-any.whl", hash = "sha256:53868f6d70a01ceedc3aa2aa11aeebdcb6b1ba53e89657d60b19c0429b23a74d"},
-    {file = "pybear-0.1.22.tar.gz", hash = "sha256:ac1b97941c5901c5a0bbc6aadcc24c0e9115ab207c7756348dcb27bdc9622ebd"},
+    {file = "pybear-0.2.0-py3-none-any.whl", hash = "sha256:29fb14b9b97064eb7bedf04accbe528cdabb308315f70b4eee7c6b47206714ec"},
+    {file = "pybear-0.2.0.tar.gz", hash = "sha256:eb717a385a0eaff40c999787b5ad5ea84079824e6092eaf5488dba3832e28077"},
 ]
 
 [package.dependencies]
@@ -2752,11 +2752,6 @@ psutil = ">=5.7.0"
 scikit-learn = ">=1.5.2"
 scipy = ">=1.15.0"
 typing_extensions = ">=4.12.0"
-
-[package.source]
-type = "legacy"
-url = "https://test.pypi.org/simple"
-reference = "testpypi"
 
 [[package]]
 name = "pycparser"
@@ -4000,5 +3995,5 @@ type = ["pytest-mypy"]
 
 [metadata]
 lock-version = "2.1"
-python-versions = "^3.10, <3.14"
-content-hash = "b2abfc9e7c4488150c51e97a07edb28944cec30eac064f4a57a2cfb6e343c3f2"
+python-versions = "^3.10, <3.13"
+content-hash = "c3353be7a6e776dcede38765257499bf1ea2fe88f5547d0b700d41b601a3c2eb"
