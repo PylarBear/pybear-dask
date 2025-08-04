@@ -46,6 +46,12 @@ pybear-dask
    :target: https://pepy.tech/project/pybear-dask/
    :alt: PyPI Downloads
 
+|DOI|
+
+.. |DOI| image:: https://zenodo.org/badge/1009051313.svg
+   :target: https://doi.org/10.5281/zenodo.16548280
+   :alt: DOI
+
 .. |PythonVersion| replace:: >=3.10, <3.13
 .. |DaskVersion| replace:: <2025.1.0
 .. |DaskMLVersion| replace:: <2025.1.0
