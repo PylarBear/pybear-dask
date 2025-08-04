@@ -4,5 +4,5 @@ authors:
   - name: "The pybear-dask developers"
 title: "pybear-dask"
 version: 0.2.0
-# doi: https://doi.org/10.5281/zenodo.1234567  # Will be added after first release
+doi: https://doi.org/10.5281/zenodo.16548280
 url: "https://github.com/PylarBear/pybear-dask"
