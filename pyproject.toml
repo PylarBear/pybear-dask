@@ -34,7 +34,6 @@ dask-ml = "<2025.1"
 distributed = "<2025.1"
 pybear = ">=0.2.0"    #{ version = ">=0.1.22", source = "testpypi" }
 scikit-learn = "<1.7"
-polars-lts-cpu = "^1.31.0"
 
 
 [tool.poetry.group.dev.dependencies]
