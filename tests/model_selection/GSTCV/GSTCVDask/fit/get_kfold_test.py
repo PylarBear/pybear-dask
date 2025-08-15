@@ -7,6 +7,7 @@
 
 
 import pytest
+
 import inspect
 
 import numpy as np
@@ -23,7 +24,7 @@ class TestGetDaskKFold:
     #     _n_splits: int,
     #     _iid: bool,
     #     _verbose: int,
-    #     _y: Optional[DaskYType] = None
+    #     _y: DaskYType | None = None
     # ) -> Iterator[DaskKFoldType]:
 
     # X, y must both be da.array

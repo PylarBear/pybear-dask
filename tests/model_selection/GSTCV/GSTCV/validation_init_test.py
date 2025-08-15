@@ -25,20 +25,20 @@ class TestInitValidation:
     #     def __init__(
     #         self,
     #         estimator: ClassifierProtocol,
-    #         param_grid: Union[ParamGridInputType, ParamGridsInputType],
+    #         param_grid: ParamGridInputType | ParamGridsInputType,
     #         *,
-    #         thresholds: Optional[Union[None, numbers.Real, Sequence[numbers.Real]]]=None,
+    #         thresholds: Optional[None | numbers.Real | Sequence[numbers.Real]]=None,
     #         scoring: Optional[
-    #             Union[str, Sequence[str], Callable, dict[str, Callable]]
+    #             str | Sequence[str] | Callable | dict[str, Callable]
     #         ]='accuracy',
-    #         n_jobs: Optional[Union[numbers.Integral, None]]=None,
-    #         refit: Optional[Union[bool, str, Callable]]=True,
-    #         cv: Optional[Union[numbers.Integral, Iterable, None]]=None,
+    #         n_jobs: Optional[numbers.Integral | None]=None,
+    #         refit: Optional[bool | str | Callable]=True,
+    #         cv: Optional[numbers.Integral | Iterable | None]=None,
     #         verbose: Optional[numbers.Real]=0,
     #         pre_dispatch: Optional[
-    #             Union[Literal['all'], str, numbers.Integral]
+    #             Literal['all'] | str | numbers.Integral]
     #         ]='2*n_jobs',
-    #         error_score: Optional[Union[Literal['raise'], numbers.Real]]='raise',
+    #         error_score: Optional[Literal['raise'] | numbers.Real]='raise',
     #         return_train_score: Optional[bool]=False
     #     ) -> None:
 

@@ -8,7 +8,6 @@
 
 from typing import (
     Iterator,
-    Optional
 )
 from .._type_aliases import (
     DaskXType,
@@ -27,7 +26,7 @@ def _get_kfold(
     _n_splits: int,
     _iid: bool,
     _verbose: int,
-    _y: Optional[DaskYType] = None
+    _y: DaskYType | None = None
 ) -> Iterator[DaskKFoldType]:
     """Use dask_ml KFold to get train / test splits when cv is passed as
     an integer.
@@ -64,7 +63,7 @@ def _get_kfold(
         A number from 0 to 10 indicating the amount of information to
         display to screen during the grid search trials. 0 means no
         output, 10 means full output.
-    _y : Optional[DaskYType]
+    _y : DaskYType | None, default = None
         The target the data is being fit against, to be split in the
         same way as the data.
 

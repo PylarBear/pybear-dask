@@ -7,13 +7,8 @@
 
 
 from typing import (
-    Optional,
-    Sequence,
-    Tuple
-)
-from typing_extensions import (
     Any,
-    Union
+    Sequence
 )
 
 import numbers
@@ -36,17 +31,17 @@ class AutoGridSearchCVDask(autogridsearch_wrapper(dask_GridSearchCV)):
         estimator,
         params: dict[
             str,
-            Sequence[Tuple[
+            Sequence[tuple[
                 Sequence[Any],
-                Union[numbers.Integral, Sequence[numbers.Integral]],
+                numbers.Integral | Sequence[numbers.Integral],
                 str
             ]]
         ],
         *,
-        total_passes:Optional[numbers.Integral] = 5,
-        total_passes_is_hard:Optional[bool] = False,
-        max_shifts:Optional[Union[None, numbers.Integral]] = None,
-        agscv_verbose:Optional[bool] = False,
+        total_passes:numbers.Integral = 5,
+        total_passes_is_hard:bool = False,
+        max_shifts:int | None = None,
+        agscv_verbose:bool = False,
         **parent_gscv_kwargs
     ):
 

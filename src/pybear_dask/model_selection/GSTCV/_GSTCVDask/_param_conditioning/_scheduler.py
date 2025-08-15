@@ -6,11 +6,9 @@
 
 
 
-from typing_extensions import Union
 from .._type_aliases import DaskSchedulerType
 
 import contextlib
-import numbers
 
 from distributed import (
     Client,
@@ -20,8 +18,8 @@ from distributed import (
 
 
 def _cond_scheduler(
-    _scheduler: Union[DaskSchedulerType, None],
-    _n_jobs: Union[numbers.Integral, None]
+    _scheduler: DaskSchedulerType | None,
+    _n_jobs: int | None
 ) -> DaskSchedulerType:
     """Set the dask scheduler.
 
@@ -49,7 +47,7 @@ def _cond_scheduler(
 
     Parameters
     ----------
-    _scheduler : Union[SchedulerType, None]
+    _scheduler : SchedulerType | None
         _scheduler to be validated and used for compute
 
     Returns

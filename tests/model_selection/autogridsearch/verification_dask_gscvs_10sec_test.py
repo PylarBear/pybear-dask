@@ -35,7 +35,7 @@ class TestDaskGSCVSThatDontNeedPartialFit:
     #         params: ParamsType,
     #         total_passes: int = 5,
     #         total_passes_is_hard: bool = False,
-    #         max_shifts: Union[None, int] = None,
+    #         max_shifts: None | int = None,
     #         agscv_verbose: bool = False,
     #         **parent_gscv_kwargs
 
@@ -142,7 +142,7 @@ class TestDaskGSCVSThatNeedPartialFitButNotSuccessiveHalving:
     #         params: ParamsType,
     #         total_passes: int = 5,
     #         total_passes_is_hard: bool = False,
-    #         max_shifts: Union[None, int] = None,
+    #         max_shifts: None | int = None,
     #         agscv_verbose: bool = False,
     #         **parent_gscv_kwargs
 
@@ -226,7 +226,7 @@ class TestDaskSuccessiveHalving:
     #         params: ParamsType,
     #         total_passes: int = 5,
     #         total_passes_is_hard: bool = False,
-    #         max_shifts: Union[None, int] = None,
+    #         max_shifts: None | int = None,
     #         agscv_verbose: bool = False,
     #         **parent_gscv_kwargs
 

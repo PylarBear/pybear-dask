@@ -8,7 +8,6 @@
 
 import pytest
 
-from typing_extensions import Union
 import numpy.typing as npt
 
 import time
@@ -339,7 +338,7 @@ def _format_helper():
 
 
     def foo(
-        _base: Union[npt.NDArray, da.core.Array],
+        _base: npt.NDArray | da.core.Array,
         _format: str,
         _dim: int
     ):

@@ -10,7 +10,6 @@ from typing import (
     Literal,
     Iterable
 )
-from typing_extensions import Union
 import numpy.typing as npt
 
 import uuid
@@ -45,12 +44,12 @@ def _X_factory():
 
     def foo(
         _dupl:list[list[int]]=None,
-        _has_nan:Union[int, bool]=False,
+        _has_nan:int | bool=False,
         _format:Literal['np', 'pd', 'csc', 'csr', 'coo']='np',
         _dtype:Literal['flt','int','str','obj','hybrid']='flt',
-        _columns:Union[Iterable[str], None]=None,
-        _constants:Union[Iterable[int], None]=None,
-        _zeros:Union[float,None]=0,
+        _columns:Iterable[str] | None=None,
+        _constants:Iterable[int] | None=None,
+        _zeros:float | None=0,
         _shape:tuple[int,int]=(20,5)
     ) -> npt.NDArray[any]:
 

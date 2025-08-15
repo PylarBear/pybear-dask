@@ -7,13 +7,9 @@
 
 
 from typing import (
+    Any,
     Callable,
     Iterable,
-    Optional
-)
-from typing_extensions import (
-    Any,
-    Union
 )
 from ._type_aliases import (
     DaskXType,
@@ -111,7 +107,7 @@ class GSTCVDask(_GSTCVMixin):
         is explicitly designed for use with dask objects (estimators,
         arrays, and dataframes.) pybear `GSTCV` is recommended for
         non-dask classifiers.
-    param_grid : Union[ParamGridInputType, ParamGridsInputType]
+    param_grid : ParamGridInputType | ParamGridsInputType
         Required. A dictionary with hyperparameters names (str) as keys
         and list-likes of respective settings to try as values. Can also
         be a list-like of such dictionaries, and the grids spanned by
@@ -210,7 +206,7 @@ class GSTCVDask(_GSTCVMixin):
 
         def your_metric_wrapper(y_true, y_pred):
             return your_metric(y_true, y_pred, **hard_coded_kwargs)
-    iid : Optional[bool], default=True
+    iid : bool, default=True
         `iid` is ignored when `cv` is an iterable. Indicates whether
         the data's examples are believed to have random distribution
         (True) or if the examples are organized non-randomly in some
@@ -219,7 +215,7 @@ class GSTCVDask(_GSTCVMixin):
         this can be an expensive process. Otherwise, if the data is iid,
         KFold can handle the data as contiguous chunks which is much
         more efficient.
-    refit : Optional[Union[bool, str, Callable]], default=True
+    refit : bool | str | Callable, default=True
         After the grid search is done, fit the whole dataset on the
         estimator using the best found hyperparameters and expose this
         fitted estimator via the :attr:`best_estimator_` attribute. Also,
@@ -252,7 +248,7 @@ class GSTCVDask(_GSTCVMixin):
 
         See the `scoring` parameter to know more about multiple metric
         evaluation.
-    cv : Optional[Union[numbers.Integral, Iterable, None]], default=None
+    cv : numbers.Integral | Iterable | None, default=None
         Sets the cross-validation splitting strategy.
 
         Possible inputs for cv are:
@@ -269,21 +265,21 @@ class GSTCVDask(_GSTCVMixin):
         of iterables. `GSTCVDask` will catch out of range indices and
         raise an error but any validation beyond that is up to the user
         outside of `GSTCVDask`.
-    verbose : Optional[numbers.Real], default=0
+    verbose : numbers.Real, default=0
         The amount of verbosity to display to screen during the grid
         search. Accepts integers from 0 to 10. 0 means no information
         displayed to the screen, 10 means full verbosity. Non-numbers
         are rejected. Boolean False is set to 0, boolean True is set to
         10. Negative numbers are rejected. Numbers greater than 10 are
         set to 10. Floats are rounded to integers.
-    error_score : Optional[ErrorScoreType], default='raise'
+    error_score : ErrorScoreType, default='raise'
         Score to assign if the estimator raises an error while fitting
         on a train fold. If set to ‘raise’, the error is raised. If a
         numeric value is given, a warning is raised and the error score
         value is inserted into the subsequent calculations in place of
         the missing value(s). This parameter does not affect the refit
         step, which will always raise the error.
-    return_train_score : Optional[bool]
+    return_train_score : bool
         If False, the `cv_results_` attribute will not include training
         scores. If True, the train data is scored using all the scorers
         at the best respective threshold(s) found for the test data.
@@ -291,7 +287,7 @@ class GSTCVDask(_GSTCVMixin):
         or over-fittedness. However, computing the scores on the training
         set can be computationally expensive and is not required to
         select the hyperparameters that yield the best performance.
-    scheduler : Optional[Union[Client, Scheduler, None]], default=None
+    scheduler : Client | Scheduler | None, default=None
         A passed scheduler supersedes all other external schedulers.
         When a scheduler is explicitly passed, `GSTCVDask` does not
         perform any validation or verification but allows that to be
@@ -313,14 +309,14 @@ class GSTCVDask(_GSTCVMixin):
         should be handled by the user external to the `GSTCVDask` module.
         As much as possible, dask and distributed objects are allowed to
         flow through without any hard-coded input.
-    n_jobs : Optional[Union[int, None]], default=None
+    n_jobs : int | None, default=None
         Active only if no scheduler is available. That is, if a
         scheduler is not passed to `scheduler`, if no global scheduler
         is available, and if there is no scheduler context manager, only
         then does `n_jobs` become effectual. In this case, `GSTCVDask`
         creates a Client instance using local multiprocessing with
         `n_workers=n_jobs`.
-    cache_cv : Optional[bool], default=True
+    cache_cv : bool, default=True
         Indicates if the train/test folds of the data are to be stored
         when first generated, or if the folds are generated from X, y
         and the KFold indices at each point of need. Caching all the
@@ -490,7 +486,7 @@ class GSTCVDask(_GSTCVMixin):
         Sequence[ParamGridInputType]
 
     ThresholdsInputType:
-        Union[None, numbers.Real, Sequence[numbers.Real]]
+        None | numbers.Real | Sequence[numbers.Real]
 
     DaskSlicerType:
         dask.array.core.Array
@@ -512,27 +508,23 @@ class GSTCVDask(_GSTCVMixin):
         Callable[[Iterable, Iterable], numbers.Real]
 
     ScorerInputType:
-        Union[
-            ScorerNameTypes,
-            Sequence[ScorerNameTypes],
-            ScorerCallableType,
-            dict[str, ScorerCallableType]
-        ]
+        ScorerNameTypes | Sequence[ScorerNameTypes]
+        | ScorerCallableType | dict[str, ScorerCallableType]
 
     RefitCallableType:
         Callable[[CVResultsType], numbers.Integral]
 
     RefitType:
-        Union[bool, ScorerNameTypes, RefitCallableType]
+        bool | ScorerNameTypes | RefitCallableType
 
     DaskSchedulerType:
-        Union[distributed.scheduler.Scheduler, distributed.client.Client]
+        distributed.scheduler.Scheduler | distributed.client.Client
 
     DaskXType:
         Iterable
 
     DaskYType:
-        Union[Sequence[numbers.Integral], None]
+        Sequence[numbers.Integral] | None
 
     CVResultsType:
         dict[str, np.ma.masked_array[Any]]
@@ -590,21 +582,19 @@ class GSTCVDask(_GSTCVMixin):
     def __init__(
         self,
         estimator: ClassifierProtocol,
-        param_grid: Union[ParamGridInputType, ParamGridsInputType],
+        param_grid: ParamGridInputType | ParamGridsInputType,
         *,
-        thresholds: ThresholdsInputType=None,
-        scoring: ScorerInputType='accuracy',
-        iid: Optional[bool]=True,
-        refit: Optional[Union[bool, str, Callable]] = True,
-        cv: Optional[Union[numbers.Integral, Iterable, None]]=None,
-        verbose: Optional[numbers.Real]=0,
-        error_score: Optional[ErrorScoreType]='raise',
-        return_train_score: Optional[bool]=False,
-        scheduler: Optional[
-            Union[distributed.Client, distributed.scheduler.Scheduler, None]
-        ]=None,
-        n_jobs: Optional[Union[numbers.Integral, None]]=None,
-        cache_cv: Optional[bool]=True
+        thresholds: ThresholdsInputType = None,
+        scoring: ScorerInputType = 'accuracy',
+        iid:bool = True,
+        refit:bool | str | Callable = True,
+        cv:int | Iterable | None = None,
+        verbose:numbers.Real = 0,
+        error_score: ErrorScoreType = 'raise',
+        return_train_score:bool = False,
+        scheduler:  distributed.Client | distributed.scheduler.Scheduler | None=None,
+        n_jobs:int | None = None,
+        cache_cv:bool = True
     ) -> None:
         """Initialize the `GSTCVDask` instance."""
 
@@ -689,7 +679,7 @@ class GSTCVDask(_GSTCVMixin):
         else:  # _cv is an iterable, _cond_cv should have made list[tuple]
             self._KFOLD = self._cv
 
-        self._CACHE_CV: Union[None, list[DaskSplitType]] = None
+        self._CACHE_CV: None | list[DaskSplitType] = None
         if self.cache_cv:
             self._CACHE_CV = []
             for (train_idxs, test_idxs) in self._KFOLD:

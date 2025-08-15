@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - None
 
 ### Changed
-- None
+- Optional and Union type hints replaced with pipes
 
 ### Deprecated
 - None

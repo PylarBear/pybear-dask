@@ -9,11 +9,8 @@
 from typing import (
     ContextManager,
     Iterable,
-    Sequence
-)
-from typing_extensions import (
-    TypeAlias,
-    Union
+    Sequence,
+    TypeAlias
 )
 
 import numbers
@@ -24,7 +21,7 @@ import distributed
 
 
 DaskXType: TypeAlias = Iterable
-DaskYType: TypeAlias = Union[Sequence[numbers.Integral], None]
+DaskYType: TypeAlias = Sequence[numbers.Integral] | None
 
 DaskSlicerType: TypeAlias = dask.array.core.Array
 
@@ -32,11 +29,12 @@ DaskKFoldType: TypeAlias = tuple[DaskSlicerType, DaskSlicerType]
 
 DaskSplitType: TypeAlias = tuple[DaskXType, DaskYType]
 
-DaskSchedulerType: TypeAlias = Union[
-    distributed.scheduler.Scheduler,
-    distributed.client.Client,
-    ContextManager  # nullcontext
-]
+DaskSchedulerType: TypeAlias = (
+    distributed.scheduler.Scheduler
+    | distributed.client.Client
+    | ContextManager
+ )  # nullcontext
+
 
 
 

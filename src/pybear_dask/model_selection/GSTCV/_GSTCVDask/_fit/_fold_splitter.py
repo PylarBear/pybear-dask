@@ -6,8 +6,6 @@
 
 
 
-from typing_extensions import Union
-
 from .._type_aliases import (
     DaskSlicerType,
     DaskSplitType,
@@ -23,7 +21,7 @@ import dask.dataframe as ddf
 def _fold_splitter(
     train_idxs: DaskSlicerType,
     test_idxs: DaskSlicerType,
-    *data_objects: Union[DaskXType, DaskYType]
+    *data_objects: DaskXType | DaskYType
 ) -> tuple[DaskSplitType, ...]:
     """Split given data objects into train / test pairs using the given
     train and test indices.
@@ -44,7 +42,7 @@ def _fold_splitter(
     test_idxs : DaskSlicerType
         1D vector of row indices used to slice test sets out of every
         given data object.
-    *data_objects : Union[DaskXType, DaskYType]
+    *data_objects : DaskXType | DaskYType
         The data objects to slice. Need not be of equal size, and need
         not be completely consumed in the train / test splits. However,
         standard indexing rules apply when slicing by `train_idxs` and
