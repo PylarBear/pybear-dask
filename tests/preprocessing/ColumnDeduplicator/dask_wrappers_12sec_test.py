@@ -108,7 +108,7 @@ class TestDaskIncrementalParallelPostFit:
         # CONVERT TO NP ARRAY FOR COMPARISON AGAINST REF fit_trfm()
         TRFM_X = TRFM_X.compute()
 
-        if isinstance(TRFM_X, pd.core.frame.DataFrame):
+        if isinstance(TRFM_X, pd.DataFrame):
             TRFM_X = TRFM_X.to_numpy()
 
         assert isinstance(TRFM_X, np.ndarray)

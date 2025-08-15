@@ -9,15 +9,12 @@
 import pytest
 
 from typing import (
+    Any,
     Literal,
-    Optional,
     Sequence
 )
-from typing_extensions import (
-    Any,
-    Union
-)
 
+import numbers
 from uuid import uuid4
 import warnings
 
@@ -55,21 +52,21 @@ def _X_factory():
 
 
     def foo(
-        _dupl:Optional[list[list[int]]]=None,
-        _has_nan:Optional[Union[int, bool]]=False,
-        _format:Optional[Literal[
+        _dupl:list[list[int]] | None = None,
+        _has_nan:int | bool = False,
+        _format:Literal[
             'np','pd','pl',
             'csc_array', 'csr_array', 'coo_array', 'dia_array', 'lil_array',
             'dok_array', 'bsr_array',
             'csc_matrix', 'csr_matrix', 'coo_matrix', 'dia_matrix', 'lil_matrix',
             'dok_matrix', 'bsr_matrix'
-        ]]='np',
-        _dtype:Optional[Literal['flt','int','str','obj','hybrid']]='flt',
-        _columns:Optional[Union[Sequence[str], None]]=None,
-        _constants:Optional[Union[dict[int, Any], None]]=None,
-        _noise:Optional[float]=0,
-        _zeros:Optional[Union[float,None]]=0,
-        _shape:Optional[tuple[int,int]]=(20,5)
+        ] = 'np',
+        _dtype:Literal['flt','int','str','obj','hybrid'] = 'flt',
+        _columns:Sequence[str] | None = None,
+        _constants:dict[int, Any] | None = None,
+        _noise:float = 0,
+        _zeros:float | None = 0,
+        _shape:tuple[int,int] = (20,5)
     ):
 
         # validation ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * **
@@ -86,7 +83,7 @@ def _X_factory():
             _dupl = [__[k] for k in sorted(list(__.keys()))]
             del __
 
-        assert isinstance(_has_nan, (bool, int, float))
+        assert isinstance(_has_nan, (bool, numbers.Real))
         if not isinstance(_has_nan, bool):
             assert int(_has_nan) == _has_nan, \
                 f"'_has_nan' must be bool or int >= 0"
@@ -110,7 +107,7 @@ def _X_factory():
         elif _constants is None:
             _constants = {}
         assert not isinstance(_noise, bool)
-        assert isinstance(_noise, (int, float))
+        assert isinstance(_noise, numbers.Real)
         if _zeros is None:
             _zeros = 0
         assert not isinstance(_zeros, bool)

@@ -20,21 +20,19 @@ from sklearn.linear_model import LogisticRegression as sk_logistic
 
 
 
-
-
 class TestParallelizedScorer:
 
 
     # def _parallelized_train_scorer(
-    #     _X_train: XDaskWIPType,
-    #     _y_train: YDaskWIPType,
+    #     _X_train: DaskXType,
+    #     _y_train: DaskYType,
     #     _FIT_OUTPUT_TUPLE: tuple[ClassifierProtocol, float, bool],
     #     _f_idx: int,
     #     _SCORER_DICT: ScorerWIPType,
-    #     _best_threshold: Union[int, float],
-    #     _error_score: Union[int, float, None],
+    #     _BEST_THRESHOLDS_BY_SCORER: NDArrayHolderType,
+    #     _error_score: numbers.Real | None,
     #     _verbose: int
-    #     ) -> np.ma.masked_array:
+    # ) -> MaskedHolderType:
 
     # fixtures ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * **
 

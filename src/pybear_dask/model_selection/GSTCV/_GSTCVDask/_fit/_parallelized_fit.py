@@ -6,10 +6,9 @@
 
 
 
-from typing import Literal
-from typing_extensions import (
+from typing import (
     Any,
-    Union
+    Literal
 )
 from .._type_aliases import (
     DaskXType,
@@ -30,7 +29,7 @@ def _parallelized_fit(
     _y_train: DaskYType,
     _estimator: ClassifierProtocol,
     _grid: dict[str, Any],
-    _error_score: Union[numbers.Real, Literal['raise']],
+    _error_score: numbers.Real | Literal['raise'],
     **_fit_params
 ) -> tuple[ClassifierProtocol, float, bool]:
     """Estimator fit method designed for dask parallelism.
@@ -56,7 +55,7 @@ def _parallelized_fit(
     _grid : dict[str, Any]
         The hyperparameter values to be used during this fit. One
         permutation of all the grid search permutations.
-    _error_score : Union[numbers.Real, Literal['raise']]
+    _error_score : numbers.Real | Literal['raise']
         If a training fold excepts during fitting, the exception can be
         allowed to raise by passing the 'raise' literal. Otherwise,
         passing a number-like will cause the exception to be handled,

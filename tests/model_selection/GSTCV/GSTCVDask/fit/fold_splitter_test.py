@@ -22,7 +22,7 @@ class TestFoldSplitter:
     # def _fold_splitter(
     #     train_idxs: DaskSlicerType,
     #     test_idxs: DaskSlicerType,
-    #     *data_objects: Union[DaskXType, DaskYType]
+    #     *data_objects: DaskXType | DaskYType
     # ) -> tuple[DaskSplitType, ...]:
 
 

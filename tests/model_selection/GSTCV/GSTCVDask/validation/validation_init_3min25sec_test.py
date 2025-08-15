@@ -41,28 +41,23 @@ from pybear_dask.model_selection.GSTCV._GSTCVDask.GSTCVDask import GSTCVDask
 
 class TestInitValidation:
 
-    # def __init__(
+    #     def __init__(
     #         self,
     #         estimator: ClassifierProtocol,
-    #         param_grid: Union[ParamGridInputType, ParamGridsInputType],
+    #         param_grid: ParamGridInputType | ParamGridsInputType,
     #         *,
-    #         thresholds: Optional[Union[None, numbers.Real, Sequence[numbers.Real]]]=None,
-    #         scoring: Optional[
-    #             Union[str, Sequence[str], Callable, dict[str, Callable]]
-    #         ]='accuracy',
-    #         iid: Optional[bool]=True,
-    #         refit: Optional[Union[bool, str, Callable]] = True,
-    #         cv: Optional[Union[numbers.Integral, Iterable, None]]=None,
-    #         verbose: Optional[numbers.Real]=0,
-    #         error_score: Optional[Union[Literal['raise'], numbers.Real]]='raise',
-    #         return_train_score: Optional[bool]=False,
-    #         scheduler: Optional[
-    #             Union[distributed.Client, distributed.scheduler.Scheduler, None]
-    #         ]=None,
-    #         n_jobs: Optional[Union[numbers.Integral, None]]=None,
-    #         cache_cv: Optional[bool]=True
+    #         thresholds: ThresholdsInputType = None,
+    #         scoring: ScorerInputType = 'accuracy',
+    #         iid:bool = True,
+    #         refit:bool | str | Callable = True,
+    #         cv:numbers.Integral | Iterable | None = None,
+    #         verbose:numbers.Real = 0,
+    #         error_score: ErrorScoreType = 'raise',
+    #         return_train_score:bool = False,
+    #         scheduler:  distributed.Client | distributed.scheduler.Scheduler | None=None,
+    #         n_jobs:int | None = None,
+    #         cache_cv:bool = True
     #     ) -> None:
-
 
     # fixtures ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** **
 
@@ -237,7 +232,7 @@ class TestInitValidation:
     # joint param_grid & thresholds v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^
 
     # param_grid: dict[str, list[Any]] or list[dict[str, list[Any]]]
-    # thresholds: Optional[Union[Sequence[numbers.Real], numbers.Real, None]]=None
+    # thresholds: Sequence[numbers.Real] | numbers.Real | None = None
 
 
     @staticmethod
@@ -392,7 +387,7 @@ class TestInitValidation:
 
 
     # cv v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v
-    # cv: Optional[Union[int, Iterable, None]] = None
+    # cv: int | Iterable | None = None
 
     @pytest.mark.parametrize('junk_cv',
         (-1, 0, 1, 3.14, [0, 1], (0, 1), {0, 1}, True, False, 'trash', min,
@@ -478,7 +473,7 @@ class TestInitValidation:
 
 
     # error_score v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^
-    # Optional[Union[Literal['raise'], numbers.Real]] = 'raise'
+    # Literal['raise'] | numbers.Real = 'raise'
 
     @pytest.mark.parametrize('junk_error_score',
         (True, False, None, 'trash', min, [0, 1], (0, 1), {0, 1},
@@ -523,7 +518,7 @@ class TestInitValidation:
 
 
     # verbose v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^
-    # verbose: Optional[numbers.Real]=0
+    # verbose: numbers.Real = 0
 
     @pytest.mark.parametrize('junk_verbose',
         (-10, -1, None, 'trash', min, [0, 1], (0, 1), {0, 1}, {'a': 1}, lambda x: x)
@@ -574,7 +569,7 @@ class TestInitValidation:
 
 
     # refit v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^
-    # refit: Optional[RefitType]=True
+    # refit: RefitType = True
 
 
     one_scorer = {'accuracy': accuracy_score}
@@ -704,7 +699,7 @@ class TestInitValidation:
 
 
     # scoring v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^
-    # scoring: Optional[ScorerInputType]='accuracy'
+    # scoring: ScorerInputType = 'accuracy'
 
     @pytest.mark.parametrize('junk_scoring',
         (-1, 0, 1, 3.14, True, False, None, 'trash', min, [0, 1], (0, 1),
@@ -861,7 +856,7 @@ class TestInitValidation:
 
 
     # n_jobs v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v
-    # n_jobs: Optional[Union[int,None]]=None
+    # n_jobs: int | None = None
 
     @pytest.mark.parametrize('junk_n_jobs',
         (-2, 0, 3.14, True, False, 'trash', min, [0, 1], (0, 1), {0, 1},
@@ -911,7 +906,7 @@ class TestInitValidation:
 
 
     # return_train_score v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v
-    # return_train_score: Optional[bool]=False
+    # return_train_score: bool = False
 
     @pytest.mark.parametrize('junk_return_train_score',
         (-1, 0, 1, 3.14, None, 'trash', min, [0, 1], (0, 1), {0, 1},
@@ -945,9 +940,9 @@ class TestInitValidation:
 
 
     # cache_cv / iid / scheduler v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v
-    # cache_cv: Optional[bool]=True
-    # iid: Optional[bool]=True
-    # scheduler: Optional[Union[SchedulerType, None]]=None
+    # cache_cv: bool = True
+    # iid: bool = True
+    # scheduler:  SchedulerType | None = None
 
 
     @staticmethod
