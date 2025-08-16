@@ -8,8 +8,6 @@
 
 import pytest
 
-import numbers
-
 import numpy as np
 
 from dask_ml.model_selection import KFold as dask_KFold
