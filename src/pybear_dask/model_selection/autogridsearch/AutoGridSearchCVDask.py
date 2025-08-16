@@ -29,16 +29,9 @@ class AutoGridSearchCVDask(autogridsearch_wrapper(dask_GridSearchCV)):
     def __init__(
         self,
         estimator,
-        params: dict[
-            str,
-            Sequence[tuple[
-                Sequence[Any],
-                numbers.Integral | Sequence[numbers.Integral],
-                str
-            ]]
-        ],
+        params: dict[str, Sequence[tuple[Sequence[Any], int | Sequence[int], str]]],
         *,
-        total_passes:numbers.Integral = 5,
+        total_passes:int = 5,
         total_passes_is_hard:bool = False,
         max_shifts:int | None = None,
         agscv_verbose:bool = False,

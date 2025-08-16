@@ -11,8 +11,6 @@ from typing import (
     Sequence
 )
 
-import numbers
-
 from pybear.model_selection.autogridsearch.autogridsearch_wrapper import autogridsearch_wrapper
 from pybear.model_selection.autogridsearch import autogridsearch_docs
 
@@ -38,7 +36,7 @@ class AutoGSTCVDask(autogridsearch_wrapper(GSTCVDask)):
             ]]
         ],
         *,
-        total_passes:numbers.Integral = 5,
+        total_passes:int = 5,
         total_passes_is_hard:bool = False,
         max_shifts:int | None = None,
         agscv_verbose:bool = False,

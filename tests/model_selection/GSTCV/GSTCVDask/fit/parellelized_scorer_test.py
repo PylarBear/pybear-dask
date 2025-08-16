@@ -25,17 +25,6 @@ from sklearn.linear_model import LogisticRegression as sk_logistic
 class TestParallelizedScorer:
 
 
-    # def _parallelized_scorer(
-    #     _X_test: DaskXType,
-    #     _y_test: DaskYType,
-    #     _FIT_OUTPUT_TUPLE: tuple[ClassifierProtocol, float, bool],
-    #     _f_idx: int,
-    #     _SCORER_DICT: ScorerWIPType,
-    #     _THRESHOLDS: ThresholdsWIPType,
-    #     _error_score: numbers.Real | None,
-    #     _verbose: int
-    # ) -> tuple[MaskedHolderType, MaskedHolderType]:
-
     # fixtures ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * **
 
     @staticmethod

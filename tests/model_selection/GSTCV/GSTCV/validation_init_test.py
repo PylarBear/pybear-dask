@@ -22,27 +22,6 @@ from pybear.model_selection.GSTCV._GSTCV.GSTCV import GSTCV
 class TestInitValidation:
 
 
-    #     def __init__(
-    #         self,
-    #         estimator: ClassifierProtocol,
-    #         param_grid: ParamGridInputType | ParamGridsInputType,
-    #         *,
-    #         thresholds: Optional[None | numbers.Real | Sequence[numbers.Real]]=None,
-    #         scoring: Optional[
-    #             str | Sequence[str] | Callable | dict[str, Callable]
-    #         ]='accuracy',
-    #         n_jobs: Optional[numbers.Integral | None]=None,
-    #         refit: Optional[bool | str | Callable]=True,
-    #         cv: Optional[numbers.Integral | Iterable | None]=None,
-    #         verbose: Optional[numbers.Real]=0,
-    #         pre_dispatch: Optional[
-    #             Literal['all'] | str | numbers.Integral]
-    #         ]='2*n_jobs',
-    #         error_score: Optional[Literal['raise'] | numbers.Real]='raise',
-    #         return_train_score: Optional[bool]=False
-    #     ) -> None:
-
-
     # fixtures ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** **
 
     @staticmethod

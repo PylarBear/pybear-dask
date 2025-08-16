@@ -41,23 +41,6 @@ from pybear_dask.model_selection.GSTCV._GSTCVDask.GSTCVDask import GSTCVDask
 
 class TestInitValidation:
 
-    #     def __init__(
-    #         self,
-    #         estimator: ClassifierProtocol,
-    #         param_grid: ParamGridInputType | ParamGridsInputType,
-    #         *,
-    #         thresholds: ThresholdsInputType = None,
-    #         scoring: ScorerInputType = 'accuracy',
-    #         iid:bool = True,
-    #         refit:bool | str | Callable = True,
-    #         cv:numbers.Integral | Iterable | None = None,
-    #         verbose:numbers.Real = 0,
-    #         error_score: ErrorScoreType = 'raise',
-    #         return_train_score:bool = False,
-    #         scheduler:  distributed.Client | distributed.scheduler.Scheduler | None=None,
-    #         n_jobs:int | None = None,
-    #         cache_cv:bool = True
-    #     ) -> None:
 
     # fixtures ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** **
 

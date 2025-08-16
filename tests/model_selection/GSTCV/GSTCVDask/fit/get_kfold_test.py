@@ -19,13 +19,6 @@ from pybear_dask.model_selection.GSTCV._GSTCVDask._fit._get_kfold import _get_kf
 
 class TestGetDaskKFold:
 
-    # def _get_kfold(
-    #     _X: DaskXType,
-    #     _n_splits: int,
-    #     _iid: bool,
-    #     _verbose: int,
-    #     _y: DaskYType | None = None
-    # ) -> Iterator[DaskKFoldType]:
 
     # X, y must both be da.array
     # AS OF 25_04_28 ONLY DASK ARRAYS CAN BE PASSED TO
