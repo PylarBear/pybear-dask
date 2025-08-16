@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Optional and Union type hints replaced with pipes
+- numbers.Integral in docs and type hints changed to int
 
 ### Deprecated
 - None

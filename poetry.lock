@@ -996,14 +996,14 @@ tests = ["asttokens (>=2.1.0)", "coverage", "coverage-enable-subprocess", "ipyth
 
 [[package]]
 name = "fastjsonschema"
-version = "2.21.1"
+version = "2.21.2"
 description = "Fastest Python implementation of JSON schema"
 optional = false
 python-versions = "*"
 groups = ["dev"]
 files = [
-    {file = "fastjsonschema-2.21.1-py3-none-any.whl", hash = "sha256:c9e5b7e908310918cf494a434eeb31384dd84a98b57a30bcb1f535015b554667"},
-    {file = "fastjsonschema-2.21.1.tar.gz", hash = "sha256:794d4f0a58f848961ba16af7b9c85a3e88cd360df008c59aac6fc5ae9323b5d4"},
+    {file = "fastjsonschema-2.21.2-py3-none-any.whl", hash = "sha256:1c797122d0a86c5cace2e54bf4e819c36223b552017172f32c5c024a6b77e463"},
+    {file = "fastjsonschema-2.21.2.tar.gz", hash = "sha256:b1eb43748041c880796cd077f1a07c3d94e93ae84bba5ed36800a33554ae05de"},
 ]
 
 [package.extras]
@@ -1663,20 +1663,20 @@ test = ["jupyter-server (>=2.0.0)", "pytest (>=7.0)", "pytest-jupyter[server] (>
 
 [[package]]
 name = "jupyterlab"
-version = "4.4.5"
+version = "4.4.6"
 description = "JupyterLab computational environment"
 optional = false
 python-versions = ">=3.9"
 groups = ["dev"]
 files = [
-    {file = "jupyterlab-4.4.5-py3-none-any.whl", hash = "sha256:e76244cceb2d1fb4a99341f3edc866f2a13a9e14c50368d730d75d8017be0863"},
-    {file = "jupyterlab-4.4.5.tar.gz", hash = "sha256:0bd6c18e6a3c3d91388af6540afa3d0bb0b2e76287a7b88ddf20ab41b336e595"},
+    {file = "jupyterlab-4.4.6-py3-none-any.whl", hash = "sha256:e877e930f46dde2e3ee9da36a935c6cd4fdb15aa7440519d0fde696f9fadb833"},
+    {file = "jupyterlab-4.4.6.tar.gz", hash = "sha256:e0b720ff5392846bdbc01745f32f29f4d001c071a4bff94d8b516ba89b5a4157"},
 ]
 
 [package.dependencies]
 async-lru = ">=1.0.0"
-httpx = ">=0.25.0"
-ipykernel = ">=6.5.0"
+httpx = ">=0.25.0,<1"
+ipykernel = ">=6.5.0,<6.30.0 || >6.30.0"
 jinja2 = ">=3.0.3"
 jupyter-core = "*"
 jupyter-lsp = ">=2.0.0"
@@ -1991,14 +1991,14 @@ files = [
 
 [[package]]
 name = "narwhals"
-version = "2.1.1"
+version = "2.1.2"
 description = "Extremely lightweight compatibility layer between dataframe libraries"
 optional = false
 python-versions = ">=3.9"
 groups = ["dev"]
 files = [
-    {file = "narwhals-2.1.1-py3-none-any.whl", hash = "sha256:dee7d7582d456ef325cb831a65b80783041ef841bbf183180ec445d132a154c6"},
-    {file = "narwhals-2.1.1.tar.gz", hash = "sha256:308ec9d0e40616b66b61cd76ede4083a4232ae04942a3acef7e514d49641cb77"},
+    {file = "narwhals-2.1.2-py3-none-any.whl", hash = "sha256:136b2f533a4eb3245c54254f137c5d14cef5c4668cff67dc6e911a602acd3547"},
+    {file = "narwhals-2.1.2.tar.gz", hash = "sha256:afb9597e76d5b38c2c4b7c37d27a2418b8cc8049a66b8a5aca9581c92ae8f8bf"},
 ]
 
 [package.extras]
@@ -2584,19 +2584,19 @@ testing = ["coverage", "pytest", "pytest-benchmark"]
 
 [[package]]
 name = "polars"
-version = "1.32.2"
+version = "1.32.3"
 description = "Blazingly fast DataFrame library"
 optional = false
 python-versions = ">=3.9"
 groups = ["main"]
 files = [
-    {file = "polars-1.32.2-cp39-abi3-macosx_10_12_x86_64.whl", hash = "sha256:f21da6a5210898ec800b7e9e667fb53eb9161b7ceb812ee6555ff5661a00e517"},
-    {file = "polars-1.32.2-cp39-abi3-macosx_11_0_arm64.whl", hash = "sha256:d3f4e061312ef6c2a907378ce407a6132734fe1a13f261a1984a1a9ca2f6febc"},
-    {file = "polars-1.32.2-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:a711a750cfc19f1f883d2b46895dd698abf4d446ca41c3bf510ced0ff1178057"},
-    {file = "polars-1.32.2-cp39-abi3-manylinux_2_24_aarch64.whl", hash = "sha256:d1c53a828eedc215fb0dabc7cef02c6f4ad042157512ddb99840fd42b8da1e8a"},
-    {file = "polars-1.32.2-cp39-abi3-win_amd64.whl", hash = "sha256:5e1660a584e89e1d60cd89984feca38a695e491a966581fefe8be99c230ea154"},
-    {file = "polars-1.32.2-cp39-abi3-win_arm64.whl", hash = "sha256:cd390364f6f3927474bd0aed255103195b9d2b3eef0f0c5bb429db5e6311615e"},
-    {file = "polars-1.32.2.tar.gz", hash = "sha256:b4c5cefc7cf7a2461f8800cf2c09976c47cb1fd959c6ef3024d5618b497f05d3"},
+    {file = "polars-1.32.3-cp39-abi3-macosx_10_12_x86_64.whl", hash = "sha256:c7c472ea1d50a5104079cb64e34f78f85774bcc69b875ba8daf21233f4c70d42"},
+    {file = "polars-1.32.3-cp39-abi3-macosx_11_0_arm64.whl", hash = "sha256:fd87275f0cc795e72a2030b58293198cfa748d4b009cf52218e27db5397ed07f"},
+    {file = "polars-1.32.3-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:c9a9b9668ef310e5a77a7e7daa9c753874779c8da52e93f654bfd7953eb4b60b"},
+    {file = "polars-1.32.3-cp39-abi3-manylinux_2_24_aarch64.whl", hash = "sha256:c8f5d2f43b80b68e39bfaa2948ce632563633466576f12e74e8560d6481f5851"},
+    {file = "polars-1.32.3-cp39-abi3-win_amd64.whl", hash = "sha256:db56a7cb4898e173d62634e182f74bdff744c62be5470e0fe20df8d10f659af7"},
+    {file = "polars-1.32.3-cp39-abi3-win_arm64.whl", hash = "sha256:a2e3f87c60f54eefe67b1bebd3105918d84df0fd6d59cc6b870c2f16d2d26ca1"},
+    {file = "polars-1.32.3.tar.gz", hash = "sha256:57c500dc1b5cba49b0589034478db031815f3d57a20cb830b05ecee1a9ba56b1"},
 ]
 
 [package.extras]
@@ -2628,19 +2628,19 @@ xlsxwriter = ["xlsxwriter"]
 
 [[package]]
 name = "polars-lts-cpu"
-version = "1.32.2"
+version = "1.32.3"
 description = "Blazingly fast DataFrame library"
 optional = false
 python-versions = ">=3.9"
 groups = ["main"]
 files = [
-    {file = "polars_lts_cpu-1.32.2-cp39-abi3-macosx_10_12_x86_64.whl", hash = "sha256:10e43de31bc2abcce044e8227047f9124826c25cc21ed3e72a81a6e825771551"},
-    {file = "polars_lts_cpu-1.32.2-cp39-abi3-macosx_11_0_arm64.whl", hash = "sha256:0e7bf53559adb7bc64b1e64ba72cc126c3689e987761b809afc7bfa410ac2304"},
-    {file = "polars_lts_cpu-1.32.2-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:acb0d2eca691a23297479fb755635bc201a778a6655808b25c803af8959fc550"},
-    {file = "polars_lts_cpu-1.32.2-cp39-abi3-manylinux_2_24_aarch64.whl", hash = "sha256:9c8cff828ad5dcf86fce451b2c7fd5ea17d6f7c53f57c4283e05e8c3b7cff1de"},
-    {file = "polars_lts_cpu-1.32.2-cp39-abi3-win_amd64.whl", hash = "sha256:f60f807d418ff7f22d2813961c9173399b2e5cba89cb554bc7af35763db25f1d"},
-    {file = "polars_lts_cpu-1.32.2-cp39-abi3-win_arm64.whl", hash = "sha256:9b961980067021f145c9db399eadc20cbae256ffcb7d759ed8235cf20875b0cd"},
-    {file = "polars_lts_cpu-1.32.2.tar.gz", hash = "sha256:a2e22e642fe9f3bfe29e626b2156a5af197bb856e0e08b6d92a1d0e0340deaab"},
+    {file = "polars_lts_cpu-1.32.3-cp39-abi3-macosx_10_12_x86_64.whl", hash = "sha256:4ffd1231cbca1c0fc947ac0057122f5954daf3681ae00b5eb569877be8436ae8"},
+    {file = "polars_lts_cpu-1.32.3-cp39-abi3-macosx_11_0_arm64.whl", hash = "sha256:a81979937bc9f0f593b0f6c9939c92245060febddd195cd73b4e50604346b3dd"},
+    {file = "polars_lts_cpu-1.32.3-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:9bcb52fcba7cabe76a5a511ef2c98054951cd68833071ecc8e7a57c54dff4ec3"},
+    {file = "polars_lts_cpu-1.32.3-cp39-abi3-manylinux_2_24_aarch64.whl", hash = "sha256:57b20b0c6aaae8d4cf31037f868cbf7085d084554dcef05953b8182cffaed52d"},
+    {file = "polars_lts_cpu-1.32.3-cp39-abi3-win_amd64.whl", hash = "sha256:2bf2c0edc079c6122ed1cc982f3da771c8013ee9f47516ab3942aa0e878d989f"},
+    {file = "polars_lts_cpu-1.32.3-cp39-abi3-win_arm64.whl", hash = "sha256:92c29464c12c9ff217b0840f08900310c93dbc9e21c7b1baec0c47af2b23d41f"},
+    {file = "polars_lts_cpu-1.32.3.tar.gz", hash = "sha256:02749e5788c686040390544a0282308f2e3350901583fd2b0d4bd1da3e18cf67"},
 ]
 
 [package.extras]
@@ -4114,5 +4114,5 @@ type = ["pytest-mypy"]
 
 [metadata]
 lock-version = "2.1"
-python-versions = "^3.10, <3.13"
-content-hash = "c3353be7a6e776dcede38765257499bf1ea2fe88f5547d0b700d41b601a3c2eb"
+python-versions = "^3.10, <3.14"
+content-hash = "a5c33df90cb4b1007669d1e0eb58f44e903e721f5a5fa57f5e7e35c699db87dd"
