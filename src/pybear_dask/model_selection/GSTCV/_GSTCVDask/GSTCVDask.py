@@ -248,7 +248,7 @@ class GSTCVDask(_GSTCVMixin):
 
         See the `scoring` parameter to know more about multiple metric
         evaluation.
-    cv : numbers.Integral | Iterable | None, default=None
+    cv : int | Iterable | None, default=None
         Sets the cross-validation splitting strategy.
 
         Possible inputs for cv are:
@@ -445,7 +445,6 @@ class GSTCVDask(_GSTCVMixin):
     refit_time_ : float
         Seconds elapsed when refitting the best model on the whole
         dataset. Only exposed when `refit` is not False.
-
     multimetric_ : bool
         Whether several scoring metrics were used. False if one scorer
         was used, otherwise True. Always exposed after fit.

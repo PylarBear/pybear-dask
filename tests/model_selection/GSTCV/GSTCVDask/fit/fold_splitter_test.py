@@ -19,14 +19,6 @@ from pybear_dask.model_selection.GSTCV._GSTCVDask._fit._fold_splitter import \
 class TestFoldSplitter:
 
 
-    # def _fold_splitter(
-    #     train_idxs: DaskSlicerType,
-    #     test_idxs: DaskSlicerType,
-    #     *data_objects: DaskXType | DaskYType
-    # ) -> tuple[DaskSplitType, ...]:
-
-
-
     @pytest.mark.parametrize('bad_data_object',
         (1, 3.14, True, False, None, 'junk', min, [0,1], (0,1), {0,1},
         {'a':1}, lambda x: x, np.random.randint(0,10,(5,3)))

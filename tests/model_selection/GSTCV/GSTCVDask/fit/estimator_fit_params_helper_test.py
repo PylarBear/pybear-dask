@@ -21,12 +21,6 @@ from pybear_dask.model_selection.GSTCV._GSTCVDask._fit._estimator_fit_params_hel
 
 class TestEstimatorFitParamsHelper:
 
-    # def _estimator_fit_params_helper(
-    #     _data_len: int,
-    #     _fit_params: dict[str, Any],
-    #     _KFOLD: DaskKFoldType
-    # ) -> dict[int, dict[str, Any]]:
-
 
     # fixtures ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * **
 

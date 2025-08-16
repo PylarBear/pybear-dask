@@ -18,7 +18,7 @@ import dask.dataframe as ddf
 
 
 def _val_y(
-    _y: Iterable[numbers.Integral]  # not DaskYType... see the notes.
+    _y: Iterable[int]  # not DaskYType... see the notes.
 ) -> None:
     """Validate `_y`.
 
