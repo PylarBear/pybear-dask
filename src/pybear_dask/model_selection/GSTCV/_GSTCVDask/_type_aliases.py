@@ -13,15 +13,13 @@ from typing import (
     TypeAlias
 )
 
-import numbers
-
 import dask
 import distributed
 
 
 
 DaskXType: TypeAlias = Iterable
-DaskYType: TypeAlias = Sequence[numbers.Integral] | None
+DaskYType: TypeAlias = Sequence[int] | None
 
 DaskSlicerType: TypeAlias = dask.array.core.Array
 

@@ -11,8 +11,6 @@ from typing import (
     Sequence
 )
 
-import numbers
-
 from pybear.model_selection import autogridsearch_wrapper
 from pybear.model_selection.autogridsearch import autogridsearch_docs
 

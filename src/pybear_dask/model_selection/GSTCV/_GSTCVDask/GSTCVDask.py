@@ -511,7 +511,7 @@ class GSTCVDask(_GSTCVMixin):
         | ScorerCallableType | dict[str, ScorerCallableType]
 
     RefitCallableType:
-        Callable[[CVResultsType], numbers.Integral]
+        Callable[[CVResultsType], int]
 
     RefitType:
         bool | ScorerNameTypes | RefitCallableType
@@ -523,7 +523,7 @@ class GSTCVDask(_GSTCVMixin):
         Iterable
 
     DaskYType:
-        Sequence[numbers.Integral] | None
+        Sequence[int] | None
 
     CVResultsType:
         dict[str, np.ma.masked_array[Any]]
