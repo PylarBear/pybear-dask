@@ -52,6 +52,12 @@ pybear-dask
    :target: https://doi.org/10.5281/zenodo.16548280
    :alt: DOI
 
+|BMC|
+
+.. |BMC| image:: https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png
+   :target: https://www.buymeacoffee.com/<your-username>
+   :alt: Buy Me A Coffee
+
 .. |PythonVersion| replace:: >=3.10, <3.13
 .. |DaskVersion| replace:: <2025.1.0
 .. |DaskMLVersion| replace:: <2025.1.0
