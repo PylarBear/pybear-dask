@@ -38,7 +38,7 @@ pybear-dask
 .. |PyPI Build Status| image:: https://github.com/PylarBear/pybear-dask/actions/workflows/pypi-publish.yml/badge.svg
    :target: https://github.com/PylarBear/pybear-dask/actions/workflows/pypi-publish.yml
 
-.. |Version| image:: https://img.shields.io/pypi/v/pybear-dask
+.. |Version| image:: https://img.shields.io/pypi/v/pybear-dask?style=flat&color=blue
    :target: https://pypi.org/project/pybear-dask
    :alt: PyPI Version
 
