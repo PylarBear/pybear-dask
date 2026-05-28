@@ -3,6 +3,7 @@ pybear-dask
 
 |Tests|
 |Coverage|
+|Test Status 314|
 |Test Status 313|
 |Test Status 312|
 |Test Status 311|
@@ -13,6 +14,9 @@ pybear-dask
 
 .. |Coverage| image:: https://raw.githubusercontent.com/PylarBear/pybear-dask/main/.github/badges/coverage-badge.svg
    :target: https://github.com/PylarBear/pybear-dask/actions
+
+.. |Test Status 314| image:: https://github.com/PylarBear/pybear-dask/actions/workflows/matrix-tests-py314.yml/badge.svg
+   :target: https://github.com/PylarBear/pybear-dask/actions/workflows/matrix-tests-py314.yml
 
 .. |Test Status 313| image:: https://github.com/PylarBear/pybear-dask/actions/workflows/matrix-tests-py313.yml/badge.svg
    :target: https://github.com/PylarBear/pybear-dask/actions/workflows/matrix-tests-py313.yml
@@ -58,7 +62,7 @@ pybear-dask
    :target: https://www.buymeacoffee.com/pybear
    :alt: Buy Me A Coffee
 
-.. |PythonVersion| replace:: >=3.10, <3.13
+.. |PythonVersion| replace:: >=3.10
 .. |DaskVersion| replace:: <2025.1.0
 .. |DaskMLVersion| replace:: <2025.1.0
 .. |DistributedVersion| replace:: <2025.1.0
@@ -192,8 +196,8 @@ Testing
 ~~~~~~~
 
 pybear-dask 0.2 is tested via GitHub Actions to run on Linux, Windows, and MacOS,
-with Python versions 3.10, 3.11, and 3.12. pybear-dask is not tested on earlier
-versions, but some features may work.
+with Python versions 3.10, 3.11, 3.12, 3.13, and 3.14. pybear-dask is not tested
+on earlier versions, but some features may work.
 
 If you want to test pybear-dask yourself, you will need:
 
