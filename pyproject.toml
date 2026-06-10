@@ -33,9 +33,9 @@ dask = [
     {version = "==2026.3", python = "==3.14"},
 ]
 dask-ml = [
-    {version = "==2025.1", python = "==3.10"},  # can be 2025.1, if 2024.4.4 passes try 2024.3.20, if fails, must be 2025.1
-    {version = "==2025.1", python = "==3.11"},  # can be 2025.1, if 2024.4.4 passes try 2024.3.20, if fails, must be 2025.1
-    {version = "==2025.1", python = "==3.12"},  # can be 2025.1, if 2024.4.4 passes try 2024.3.20, if fails, must be 2025.1
+    {version = "==2024.4.4", python = "==3.10"},  # can be 2025.1, if 2024.4.4 passes try 2024.3.20, if fails, must be 2025.1
+    {version = "==2024.4.4", python = "==3.11"},  # can be 2025.1, if 2024.4.4 passes try 2024.3.20, if fails, must be 2025.1
+    {version = "==2024.4.4", python = "==3.12"},  # can be 2025.1, if 2024.4.4 passes try 2024.3.20, if fails, must be 2025.1
     {version = "==2025.1", python = "==3.13"},  # this must be 2025.1
     {version = "==2025.1", python = "==3.14"},
 ]
