@@ -29,7 +29,7 @@ dask = [
     {version = "==2024.11.1", python = "==3.10"},   # can be 2025.1, 2024.12.1, 2024.12.0, 2024.11.2 try 2024.11.1 then 2024.10.0
     {version = "==2024.11.1", python = "==3.11"},   # can be 2025.1, 2024.12.1, 2024.12.0, 2024.11.2 try 2024.11.1 then 2024.10.0
     {version = "==2024.11.1", python = "==3.12"},   # can be 2025.1, 2024.12.1, 2024.12.0, 2024.11.2 try 2024.11.1 then 2024.10.0
-    {version = ">=2025.1, ==2025.4.0", python = "==3.13"},	# this must be >= 2025.1, 2025.2.0 2025.3.0 works
+    {version = ">=2025.1, ==2025.3.0", python = "==3.13"},	# this must be >= 2025.1, 2025.2.0 2025.3.0 works
     {version = "==2026.3", python = "==3.14"},
 ]
 dask-ml = [
@@ -43,7 +43,7 @@ distributed = [
     {version = "==2024.11.1", python = "==3.10"},  # can be 2025.1, 2024.12.1, 2024.12.0, 2024.11.2 try 2024.11.1 then 2024.10.0
     {version = "==2024.11.1", python = "==3.11"},  # can be 2025.1, 2024.12.1, 2024.12.0, 2024.11.2 try 2024.11.1 then 2024.10.0
     {version = "==2024.11.1", python = "==3.12"},  # can be 2025.1, 2024.12.1, 2024.12.0, 2024.11.2 try 2024.11.1 then 2024.10.0
-    {version = ">=2025.1, ==2025.4.0", python = "==3.13"},	# this must be >= 2025.1, 2025.2.0 2025.3.0 works
+    {version = ">=2025.1, ==2025.3.0", python = "==3.13"},	# this must be >= 2025.1, 2025.2.0 2025.3.0 works
     {version = "==2026.3", python = "==3.14"},  # if this fails, maybe try a lower version
 ]
 numba = [
@@ -65,11 +65,11 @@ pybear = [
     {version = "==0.2.4", python = "==3.14"} 
 ]
 scikit-learn = [
-    {version = ">=1.3.0,==1.5.1,<1.8", python = "==3.10"},    # can be 1.6.1, 1.6.0, 1.5.2, cannot be 1.7.0, if 1.5.1 passes try 1.5.0
-	{version = ">=1.3.0,==1.5.1", python = "==3.11"},    # can be 1.6.1, 1.6.0, 1.5.2, cannot be 1.7.0, if 1.5.1 passes try 1.5.0
-	{version = ">=1.3.1,==1.5.1", python = "==3.12"},    # can be 1.6.1, 1.6.0, 1.5.2, cannot be 1.7.0, if 1.5.1 passes try 1.5.0
+    {version = ">=1.3.0,==1.5.0,<1.8", python = "==3.10"},    # can be 1.6.1, 1.6.0, 1.5.2, 1.5.1, cannot be 1.7.0, if 1.5.0 passes try 1.4.2
+	{version = ">=1.3.0,==1.5.0", python = "==3.11"},    # can be 1.6.1, 1.6.0, 1.5.2, 1.5.1, cannot be 1.7.0, if 1.5.0 passes try 1.4.2
+	{version = ">=1.3.1,==1.5.0", python = "==3.12"},    # can be 1.6.1, 1.6.0, 1.5.2, 1.5.1, cannot be 1.7.0, if 1.5.0 passes try 1.4.2
 	{version = ">=1.6.1,==1.6.1", python = "==3.13"},    # can be 1.6.1, 1.7.0, 1.7.1, 1.7.2, if 1.8.0 passes try 1.9.0..... 1.8.0 wants __sklearn_tags__
-	{version = ">=1.7.2,==1.7.2", python = "==3.14"}
+	{version = ">=1.7.2,==1.7.2", python = "==3.14"}     # 1.8.0 wants __sklearn_tags__
 ]
 
 [tool.poetry.group.dev.dependencies]
