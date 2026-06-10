@@ -29,7 +29,7 @@ dask = [
     {version = "==2024.12.1", python = "==3.10"},   # can be 2025.1, if 2024.12.1 fails must be 2025.1 if passes try 2024.12.0
     {version = "==2024.12.1", python = "==3.11"},   # can be 2025.1, if 2024.12.1 fails must be 2025.1 if passes try 2024.12.0
     {version = "==2024.12.1", python = "==3.12"},   # can be 2025.1, if 2024.12.1 fails must be 2025.1 if passes try 2024.12.0
-    {version = "==2024.12.1", python = "==3.13"},   # can be 2025.1, if 2024.12.1 fails must be 2025.1 if passes try 2024.12.0
+    {version = "==2025.1", python = "==3.13"},   # this must be 2025.1
     {version = "==2026.3", python = "==3.14"},
 ]
 dask-ml = [
