@@ -62,6 +62,7 @@ pybear-dask
    :target: https://www.buymeacoffee.com/pybear
    :alt: Buy Me A Coffee
 
+
 .. |PythonVersion| replace:: >=3.10
 .. |DaskVersion| replace:: <2025.1.0
 .. |DaskMLVersion| replace:: <2025.1.0

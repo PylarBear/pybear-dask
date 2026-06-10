@@ -1,14 +1,11 @@
 [tool.poetry]
 name = "pybear-dask"
-version = "0.2.3"
+version = "0.2.4"
 description = "Python modules for data analytics applications with dask"
 license = "BSD-3-clause"
 authors = ["Bill Sousa <WKSJR99@msn.com>"]
 maintainers = ["Bill Sousa"]
 readme = "README.rst"
-# The contents of the README file(s) are used to populate the Description field
-# of your distribution’s metadata (similar to long_description in setuptools).
-# When multiple files are specified they are concatenated with newlines.
 homepage = "https://github.com/PylarBear/pybear-dask"
 repository = "https://github.com/PylarBear/pybear-dask"
 #documentation
@@ -27,14 +24,49 @@ include = [
 
 
 [tool.poetry.dependencies]
-# These packages are mandatory and form the core of this package’s distribution.
-python = "^3.10, <3.13"
-dask = "<2025.1"
-dask-ml = "<2025.1"
-distributed = "<2025.1"
-pybear = ">=0.2.0"    #{ version = ">=0.1.22", source = "testpypi" }
-scikit-learn = "<1.7"
-
+python = ">=3.10"
+dask = [
+    {version = "<2025.1", python = "==3.10"},
+    {version = "<2025.1", python = "==3.11"},
+    {version = "<2025.1", python = "==3.12"},
+    {version = "<2025.1", python = "==3.13"},
+    {version = "<2025.1", python = "==3.14"},
+]
+dask-ml = [
+    {version = "<2025.1", python = "==3.10"},
+    {version = "<2025.1", python = "==3.11"},
+    {version = "<2025.1", python = "==3.12"},
+    {version = "<2025.1", python = "==3.13"},
+    {version = "<2025.1", python = "==3.14"},
+]
+distributed = [
+    {version = "<2025.1", python = "==3.10"},
+    {version = "<2025.1", python = "==3.11"},
+    {version = "<2025.1", python = "==3.12"},
+    {version = "<2025.1", python = "==3.13"},
+    {version = "<2025.1", python = "==3.14"},
+]
+pyarrow = [
+    {version = ">=6.0.0", python = "==3.10"},
+	{version = ">=10.0.1", python = "==3.11"},
+	{version = ">=14.0.0", python = "==3.12"},
+	{version = ">=18.0.0", python = "==3.13"},
+    {version = ">=22.0.0", python = "==3.14"}
+]
+pybear = [
+    {version = ">=0.2.0", python = "==3.10"},  #{ version = ">=0.1.22", source = "testpypi" }
+	{version = ">=0.2.0", python = "==3.11"},  #{ version = ">=0.1.22", source = "testpypi" }
+	{version = ">=0.2.0", python = "==3.12"},  #{ version = ">=0.1.22", source = "testpypi" }
+	{version = ">=0.2.0", python = "==3.13"},  #{ version = ">=0.1.22", source = "testpypi" }
+    {version = ">=0.2.0", python = "==3.14"}   #{ version = ">=0.1.22", source = "testpypi" }
+]
+scikit-learn = [
+    {version = "<1.7", python = "==3.10"},
+	{version = "<1.7", python = "==3.11"},
+	{version = "<1.7", python = "==3.12"},
+	{version = "<1.7", python = "==3.13"},
+    {version = "<1.7", python = "==3.14"}
+]
 
 [tool.poetry.group.dev.dependencies]
 bokeh = "*"
@@ -42,14 +74,16 @@ docutils = ">=0.20"
 graphviz = "*"
 jupyter = "*"
 notebook = "*"
-pyarrow = [
-    {version = ">=18.0.0", python = "<3.14"},
-    {version = ">=24.0.0", python = ">=3.14"}
-]
 
 
 [tool.poetry.group.test.dependencies]
-pytest = ">=7.0.0"
+pytest = [
+    {version = ">=7.0.0", python = "==3.10"},
+	{version = ">=7.0.0", python = "==3.11"},
+	{version = ">=7.0.0", python = "==3.12"},
+	{version = ">=7.0.0", python = "==3.13"},
+    {version = ">=8.0.0", python = "==3.14"}
+]
 pytest-cov = "*"
 pytest-html = "*"
 
@@ -65,7 +99,7 @@ pytest-html = "*"
 
 
 [tool.poetry.urls]
-# If you publish your package on PyPI, they will appear in the Project Links section.
+Homepage = "https://github.com/PylarBear/pybear"
 
 
 #[[tool.poetry.source]]
