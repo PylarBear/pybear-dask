@@ -26,47 +26,47 @@ include = [
 [tool.poetry.dependencies]
 python = ">=3.10"
 dask = [
-    {version = "==2025.1", python = "==3.10"},
-    {version = "==2025.1", python = "==3.11"},
-    {version = "==2025.1", python = "==3.12"},
-    {version = "==2025.1", python = "==3.13"},
-    {version = "==2025.1", python = "==3.14"},
+    {version = "==2024.12.1", python = "==3.10"},   # can be 2025.1, if 2024.12.1 fails must be 2025.1 if passes try 2024.12.0
+    {version = "==2024.12.1", python = "==3.11"},   # can be 2025.1, if 2024.12.1 fails must be 2025.1 if passes try 2024.12.0
+    {version = "==2024.12.1", python = "==3.12"},   # can be 2025.1, if 2024.12.1 fails must be 2025.1 if passes try 2024.12.0
+    {version = "==2024.12.1", python = "==3.13"},   # can be 2025.1, if 2024.12.1 fails must be 2025.1 if passes try 2024.12.0
+    {version = "==2026.3", python = "==3.14"},
 ]
 dask-ml = [
-    {version = "==2025.1", python = "==3.10"},
-    {version = "==2025.1", python = "==3.11"},
-    {version = "==2025.1", python = "==3.12"},
+    {version = "==2025.1", python = "==3.10"},  # can be 2025.1, if 2024.4.4 passes try 2024.3.20, if fails, must be 2025.1
+    {version = "==2025.1", python = "==3.11"},  # can be 2025.1, if 2024.4.4 passes try 2024.3.20, if fails, must be 2025.1
+    {version = "==2025.1", python = "==3.12"},  # can be 2025.1, if 2024.4.4 passes try 2024.3.20, if fails, must be 2025.1
     {version = "==2025.1", python = "==3.13"},  # this must be 2025.1
     {version = "==2025.1", python = "==3.14"},
 ]
 distributed = [
-    {version = "==2025.1", python = "==3.10"},
-    {version = "==2025.1", python = "==3.11"},
-    {version = "==2025.1", python = "==3.12"},
-    {version = "==2025.1", python = "==3.13"},
-    {version = "==2025.1", python = "==3.14"},
+    {version = "==2024.12.1", python = "==3.10"},  # can be 2025.1, if 2024.12.1 fails must be 2025.1 if passes try 2024.12.0
+    {version = "==2024.12.1", python = "==3.11"},  # can be 2025.1, if 2024.12.1 fails must be 2025.1 if passes try 2024.12.0
+    {version = "==2024.12.1", python = "==3.12"},  # can be 2025.1, if 2024.12.1 fails must be 2025.1 if passes try 2024.12.0
+    {version = "==2024.12.1", python = "==3.13"},	# can be 2025.1, if 2024.12.1 fails must be 2025.1 if passes try 2024.12.0
+    {version = "==2026.3", python = "==3.14"},  # if this fails, maybe try a lower version
 ]
 pyarrow = [
-    {version = ">=6.0.0", python = "==3.10"},
-	{version = ">=10.0.1", python = "==3.11"},
-	{version = ">=14.0.0", python = "==3.12"},
-	{version = ">=18.0.0", python = "==3.13"},
-    {version = ">=22.0.0", python = "==3.14"}
+    {version = "==6.0.0", python = "==3.10"},  # can be 24.0.0, if this fails, bump + 1
+	{version = "==10.0.1", python = "==3.11"},  # can be 24.0.0, if this fails, bump + 1
+	{version = "==14.0.0", python = "==3.12"},  # can be 24.0.0, if this fails, bump + 1
+	{version = "==18.0.0", python = "==3.13"},  # can be 24.0.0, if this fails, bump + 1
+    {version = "==22.0.0", python = "==3.14"}  # can be 24.0.0, if this fails, bump + 1
 ]
+#{ version = ">=0.1.22", source = "testpypi" }
 pybear = [
-    {version = ">=0.2.0", python = "==3.10"},  #{ version = ">=0.1.22", source = "testpypi" }
-	{version = ">=0.2.0", python = "==3.11"},  #{ version = ">=0.1.22", source = "testpypi" }
-	{version = ">=0.2.0", python = "==3.12"},  #{ version = ">=0.1.22", source = "testpypi" }
-	{version = ">=0.2.0", python = "==3.13"},  #{ version = ">=0.1.22", source = "testpypi" }
-    {version = ">=0.2.0", python = "==3.14"}   #{ version = ">=0.1.22", source = "testpypi" }
+    {version = ">=0.2.0", python = "==3.10"},  # 0.2.3 works, if 0.2.2 fails, must be 0.2.3, if passes try 0.2.1
+	{version = ">=0.2.0", python = "==3.11"},  # 0.2.3 works, if 0.2.2 fails, must be 0.2.3, if passes try 0.2.1
+	{version = ">=0.2.0", python = "==3.12"},  # 0.2.3 works, if 0.2.2 fails, must be 0.2.3, if passes try 0.2.1
+	{version = ">=0.2.0", python = "==3.13"},  # 0.2.3 works, if 0.2.2 fails, must be 0.2.3, if passes try 0.2.1
+    {version = ">=0.2.0", python = "==3.14"} 
 ]
 scikit-learn = [
-    {version = "<1.7", python = "==3.10"},
-	{version = "<1.7", python = "==3.11"},
-	{version = "<1.7", python = "==3.12"},
-	{version = ">=1.5.2,<1.7", python = "==3.13"},
-    # {version = ">=1.7.2,<1.7", python = "==3.14"}
-	{version = "<1.7", python = "==3.14"}
+    {version = "==1.7.0", python = "==3.10"},    # can be 1.6.1, if 1.7.0 passes try 1.7.1, if fails try 1.6.0
+	{version = "==1.7.0", python = "==3.11"},    # can be 1.6.1, if 1.7.0 passes try 1.7.1, if fails try 1.6.0
+	{version = "==1.7.0", python = "==3.12"},    # can be 1.6.1, if 1.7.0 passes try 1.7.1, if fails try 1.6.0
+	{version = "==1.7.0", python = "==3.13"},    # can be 1.6.1, if 1.7.0 passes try 1.7.1, if fails try 1.6.0
+	{version = ">=1.7.2", python = "==3.14"}
 ]
 
 [tool.poetry.group.dev.dependencies]
