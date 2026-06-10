@@ -29,21 +29,21 @@ dask = [
     {version = "<2025.1", python = "==3.10"},
     {version = "<2025.1", python = "==3.11"},
     {version = "<2025.1", python = "==3.12"},
-    {version = "<2025.1", python = "==3.13"},
+    {version = "==2025.1", python = "==3.13"},
     {version = "<2025.1", python = "==3.14"},
 ]
 dask-ml = [
     {version = "<2025.1", python = "==3.10"},
     {version = "<2025.1", python = "==3.11"},
     {version = "<2025.1", python = "==3.12"},
-    {version = "<2025.1", python = "==3.13"},
+    {version = "==2025.1", python = "==3.13"},
     {version = "<2025.1", python = "==3.14"},
 ]
 distributed = [
     {version = "<2025.1", python = "==3.10"},
     {version = "<2025.1", python = "==3.11"},
     {version = "<2025.1", python = "==3.12"},
-    {version = "<2025.1", python = "==3.13"},
+    {version = "==2025.1", python = "==3.13"},
     {version = "<2025.1", python = "==3.14"},
 ]
 pyarrow = [
@@ -64,8 +64,8 @@ scikit-learn = [
     {version = "<1.7", python = "==3.10"},
 	{version = "<1.7", python = "==3.11"},
 	{version = "<1.7", python = "==3.12"},
-	{version = "<1.7", python = "==3.13"},
-    {version = "<1.7", python = "==3.14"}
+	{version = ">=1.5.2,<1.7", python = "==3.13"},
+    {version = ">=1.7.2,<1.7", python = "==3.14"}
 ]
 
 [tool.poetry.group.dev.dependencies]
