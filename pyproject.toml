@@ -36,8 +36,8 @@ dask-ml = [
     {version = "==2025.1", python = "==3.10"},
     {version = "==2025.1", python = "==3.11"},
     {version = "==2025.1", python = "==3.12"},
-    {version = "==2025.1", python = "==3.13"},
-    {version = "<2025.1", python = "==3.14"},
+    {version = "==2025.1", python = "==3.13"},  # this must be 2025.1
+    {version = "==2025.1", python = "==3.14"},
 ]
 distributed = [
     {version = "==2025.1", python = "==3.10"},
