@@ -26,25 +26,25 @@ include = [
 [tool.poetry.dependencies]
 python = ">=3.10"
 dask = [
-    {version = "<2025.1", python = "==3.10"},
-    {version = "<2025.1", python = "==3.11"},
-    {version = "<2025.1", python = "==3.12"},
+    {version = "==2025.1", python = "==3.10"},
+    {version = "==2025.1", python = "==3.11"},
+    {version = "==2025.1", python = "==3.12"},
     {version = "==2025.1", python = "==3.13"},
-    {version = "<2025.1", python = "==3.14"},
+    {version = "==2025.1", python = "==3.14"},
 ]
 dask-ml = [
-    {version = "<2025.1", python = "==3.10"},
-    {version = "<2025.1", python = "==3.11"},
-    {version = "<2025.1", python = "==3.12"},
+    {version = "==2025.1", python = "==3.10"},
+    {version = "==2025.1", python = "==3.11"},
+    {version = "==2025.1", python = "==3.12"},
     {version = "==2025.1", python = "==3.13"},
     {version = "<2025.1", python = "==3.14"},
 ]
 distributed = [
-    {version = "<2025.1", python = "==3.10"},
-    {version = "<2025.1", python = "==3.11"},
-    {version = "<2025.1", python = "==3.12"},
+    {version = "==2025.1", python = "==3.10"},
+    {version = "==2025.1", python = "==3.11"},
+    {version = "==2025.1", python = "==3.12"},
     {version = "==2025.1", python = "==3.13"},
-    {version = "<2025.1", python = "==3.14"},
+    {version = "==2025.1", python = "==3.14"},
 ]
 pyarrow = [
     {version = ">=6.0.0", python = "==3.10"},
