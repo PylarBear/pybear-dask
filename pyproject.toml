@@ -47,9 +47,9 @@ distributed = [
     {version = "==2026.3", python = "==3.14"},  # if this fails, maybe try a lower version
 ]
 pyarrow = [
-    {version = "==14.0.1", python = "==3.10"},  # can be 24.0.0, must at least be 14.0.1, if this fails, bump + 1
-	{version = "==14.0.1", python = "==3.11"},  # can be 24.0.0, must at least be 14.0.1, if this fails, bump + 1
-	{version = "==14.0.1", python = "==3.12"},  # can be 24.0.0, must at least be 14.0.1, if this fails, bump + 1
+    {version = "==14.0.2", python = "==3.10"},  # can be 24.0.0, must at least be 14.0.1, if this fails, bump + 1
+	{version = "==14.0.2", python = "==3.11"},  # can be 24.0.0, must at least be 14.0.1, if this fails, bump + 1
+	{version = "==14.0.2", python = "==3.12"},  # can be 24.0.0, must at least be 14.0.1, if this fails, bump + 1
 	{version = "==18.0.0", python = "==3.13"},  # can be 24.0.0, must at least be 14.0.1, if this fails, bump + 1
     {version = "==22.0.0", python = "==3.14"}  # can be 24.0.0, if this fails, bump + 1
 ]
