@@ -29,7 +29,7 @@ dask = [
     {version = "==2024.11.1", python = "==3.10"},   # can be 2025.1, 2024.12.1, 2024.12.0, 2024.11.2 try 2024.11.1 then 2024.10.0
     {version = "==2024.11.1", python = "==3.11"},   # can be 2025.1, 2024.12.1, 2024.12.0, 2024.11.2 try 2024.11.1 then 2024.10.0
     {version = "==2024.11.1", python = "==3.12"},   # can be 2025.1, 2024.12.1, 2024.12.0, 2024.11.2 try 2024.11.1 then 2024.10.0
-    {version = ">=2025.1, ==2025.3.0", python = "==3.13"},	# this must be >= 2025.1, 2025.2.0 2025.3.0 works
+    {version = ">=2025.1, ==2025.3.0", python = "==3.13"},	# this must be >= 2025.1, 2025.2.0 2025.3.0 works... if 2025.4.0 keeps flaking then 3.0
     {version = "==2026.3", python = "==3.14"},
 ]
 dask-ml = [
@@ -43,7 +43,7 @@ distributed = [
     {version = "==2024.11.1", python = "==3.10"},  # can be 2025.1, 2024.12.1, 2024.12.0, 2024.11.2 try 2024.11.1 then 2024.10.0
     {version = "==2024.11.1", python = "==3.11"},  # can be 2025.1, 2024.12.1, 2024.12.0, 2024.11.2 try 2024.11.1 then 2024.10.0
     {version = "==2024.11.1", python = "==3.12"},  # can be 2025.1, 2024.12.1, 2024.12.0, 2024.11.2 try 2024.11.1 then 2024.10.0
-    {version = ">=2025.1, ==2025.3.0", python = "==3.13"},	# this must be >= 2025.1, 2025.2.0 2025.3.0 works
+    {version = ">=2025.1, ==2025.3.0", python = "==3.13"},	# this must be >= 2025.1, 2025.2.0 2025.3.0 works... if 2025.4.0 keeps flaking then 3.0
     {version = "==2026.3", python = "==3.14"},  # if this fails, maybe try a lower version
 ]
 numba = [
