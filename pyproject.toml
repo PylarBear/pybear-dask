@@ -58,10 +58,10 @@ pyarrow = [
 ]
 #{ version = ">=0.1.22", source = "testpypi" }
 pybear = [
-    {version = "==0.2.0", python = "==3.10"},  # 0.2.3 works, if 0.2.2 fails, must be 0.2.3, if passes try 0.2.1
-	{version = "==0.2.0", python = "==3.11"},  # 0.2.3 works, if 0.2.2 fails, must be 0.2.3, if passes try 0.2.1
-	{version = "==0.2.0", python = "==3.12"},  # 0.2.3 works, if 0.2.2 fails, must be 0.2.3, if passes try 0.2.1
-	{version = "==0.2.0", python = "==3.13"},  # 0.2.3 works, if 0.2.2 fails, must be 0.2.3, if passes try 0.2.1
+    {version = "==0.2.4", python = "==3.10"},  # 0.2.3 works, if 0.2.2 fails, must be 0.2.3, if passes try 0.2.1
+	{version = "==0.2.4", python = "==3.11"},  # 0.2.3 works, if 0.2.2 fails, must be 0.2.3, if passes try 0.2.1
+	{version = "==0.2.4", python = "==3.12"},  # 0.2.3 works, if 0.2.2 fails, must be 0.2.3, if passes try 0.2.1
+	{version = "==0.2.4", python = "==3.13"},  # 0.2.3 works, if 0.2.2 fails, must be 0.2.3, if passes try 0.2.1
     {version = "==0.2.4", python = "==3.14"} 
 ]
 scikit-learn = [
