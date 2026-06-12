@@ -68,8 +68,8 @@ scikit-learn = [
     {version = ">=1.6.1,<1.7", python = "==3.10"},    # 1.4.2 not working; 1.5.0-1.6.1 work; 1.7.0 not working
 	{version = ">=1.6.1,<1.7", python = "==3.11"},    # 1.4.2 not working; 1.5.0-1.6.1 work; 1.7.0 not working
 	{version = ">=1.6.1,<1.7", python = "==3.12"},    # 1.4.2 not working; 1.5.0-1.6.1 work; 1.7.0 not working
-	{version = ">=1.6.1,<2.0", python = "==3.13"},    # must be >= 1.6.1; 1.6.1-1.7.2 work; 1.8.0 wants __sklearn_tags__
-	{version = ">=1.7.2,<2.0", python = "==3.14"}     # must be >= 1.7.2; 1.7.2 works; 1.8.0 wants __sklearn_tags__
+	{version = ">=1.6.1,<1.8,<2.0", python = "==3.13"},    # must be >= 1.6.1; 1.6.1-1.7.2 work; 1.8.0 wants __sklearn_tags__
+	{version = ">=1.7.2,<1.8,<2.0", python = "==3.14"}     # must be >= 1.7.2; 1.7.2 works; 1.8.0 wants __sklearn_tags__
 ]
 
 [tool.poetry.group.dev.dependencies]
