@@ -72,6 +72,7 @@ scikit-learn = [
 	{version = ">=1.7.2,<1.8,<2.0", python = "==3.14"}     # must be >= 1.7.2; 1.7.2 works; 1.8.0 wants __sklearn_tags__
 ]
 
+
 [tool.poetry.group.dev.dependencies]
 bokeh = "*"
 docutils = ">=0.20"
