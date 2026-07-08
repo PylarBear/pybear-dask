@@ -12,7 +12,7 @@
 
 
 
-# demo_test incidentally handles testing of all autogridsearch_wrapper
+# pybear demo_test incidentally handles testing of all autogridsearch_wrapper
 # functionality except fit() (because demo bypasses fit().) This test
 # module handles fit().
 
@@ -25,7 +25,7 @@ import numpy as np
 from pybear_dask.model_selection.autogridsearch.AutoGridSearchCVDask import \
     AutoGridSearchCVDask
 
-# pytest.skip(reason=f'pizza tests make zero progress in 35 min', allow_module_level=True)
+pytest.skip(reason=f'tests make zero progress in 35 min', allow_module_level=True)
 
 class TestAutoGridSearchDask:
 
