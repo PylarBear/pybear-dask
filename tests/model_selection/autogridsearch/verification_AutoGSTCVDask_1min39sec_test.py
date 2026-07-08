@@ -12,7 +12,7 @@
 
 
 
-# demo_test incidentally handles testing of all autogridsearch_wrapper
+# pybear demo_test incidentally handles testing of all autogridsearch_wrapper
 # functionality except fit() (because demo bypasses fit().) This test
 # module handles fit().
 

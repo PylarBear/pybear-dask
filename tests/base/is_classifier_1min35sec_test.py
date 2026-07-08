@@ -1,9 +1,8 @@
-# Authors:
-#
-#       Bill Sousa
+# Author:
+#         Bill Sousa
 #
 # License: BSD 3 clause
-
+#
 
 
 import pytest

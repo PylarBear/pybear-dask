@@ -54,6 +54,41 @@ def mock_estimator():
             self.param_b = param_b
 
 
+        def __sklearn_tags__(self):
+
+            # spoof output --- if we don't fudge this functionality, the
+            # alternative would be to abandon mock_estimator and pass an
+            # actual sk estimator to tests in place of mock_estimator
+            class Tags:
+                estimator_type: str = "estimator"
+                class TargetTags:
+                    required: bool = False
+                target_tags = TargetTags()
+                class TransformerTags:
+                    preserves_dtype: list = []
+                transformer_tags = TransformerTags()
+                classifier_tags = None
+                regressor_tags = None
+                array_api_support: bool = False
+                no_validation: bool = True
+                non_deterministic: bool = False
+                requires_fit: bool = True
+                class InputTags:
+                    one_d_array: bool = False
+                    two_d_array: bool = True
+                    three_d_array: bool = False
+                    sparse: bool = False
+                    categorical: bool = True
+                    string: bool = True
+                    dict: bool = False
+                    positive_only: bool = False
+                    allow_nan: bool = True
+                    pairwise: bool = False
+                input_tags = InputTags()
+
+            return Tags
+
+
         def partial_fit(self, X):
             if isinstance(X, da.core.Array):
                 _min_dim = min(X.shape)
@@ -75,7 +110,7 @@ def mock_estimator():
             return self
 
 
-        def fit(self, X, y):
+        def fit(self, X):
 
             if isinstance(X, da.core.Array):
                 X = X.astype(np.float64)
