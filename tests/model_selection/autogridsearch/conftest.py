@@ -139,7 +139,6 @@ def dask_estimator_1():
         random_state=None,
         solver='lbfgs',
         max_iter=100,
-        multi_class='deprecated',
         verbose=0,
         warm_start=False,
         n_jobs=None,
