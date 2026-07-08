@@ -24,7 +24,7 @@ include = [
 
 
 [tool.poetry.dependencies]
-python = ">=3.10
+python = ">=3.10"
 dask = [
     {version = "==2025.2.0", python = "==3.10"},   # 2024.6.0-2024.9.1 work; 2024.10.0 not working; 2024.11.1-2025.1.0 work; 2026.1.1, 2026.3.0 not working
     {version = "==2025.2.0", python = "==3.11"},   # 2024.6.0-2024.9.1 work; 2024.10.0 not working; 2024.11.1-2025.1.0 work; 2026.1.1, 2026.3.0 not working

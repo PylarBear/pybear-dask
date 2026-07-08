@@ -318,11 +318,27 @@ class TestXFactory:
             elif _dtype == 'int':
                 assert all([__ in [np.int32, np.int64] for __ in out.dtypes])
             elif _dtype == 'str':
-                assert all([__ == object for __ in out.dtypes])
+                if int(str(pd.__version__)[0]) >= 3:
+                    assert all([isinstance(__, pd.StringDtype) for __ in out.dtypes])
+                else:
+                    assert all([__ == object for __ in out.dtypes])
             elif _dtype == 'obj':
-                assert all([__ == object for __ in out.dtypes])
+                if int(str(pd.__version__)[0]) >= 3:
+                    assert all([isinstance(__, pd.StringDtype) for __ in out.dtypes])
+                else:
+                    assert all([__ == object for __ in out.dtypes])
             elif _dtype == 'hybrid':
-                assert all([__ == object for __ in out.dtypes])
+                for idx, _dtype in enumerate(out.dtypes):
+                    # EVERY 3rd COLUMN IN hybrid IS STRING-TYPE
+                    if idx % 3 == 0:
+                        assert _dtype == object
+                    if idx % 3 == 1:
+                        assert _dtype == object
+                    if idx % 3 == 2:
+                        if int(str(pd.__version__).split('.')[0]) >= 3:
+                            assert isinstance(_dtype, pd.StringDtype)
+                        else:
+                            assert _dtype == object
         elif _format == 'pl':
             assert isinstance(out, pl.DataFrame)
             if _dtype == 'flt':

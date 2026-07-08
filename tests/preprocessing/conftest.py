@@ -210,7 +210,10 @@ def _X_factory():
         if _has_nan:
 
             if _format == 'pd':
-                _choices = [np.nan, pd.NA, None, 'nan', 'NaN', 'NAN', '<NA>']
+                if int(str(pd.__version__)[0]) >= 3 and _dtype in ['int', 'flt', 'hybrid']:
+                    _choices = [np.nan, pd.NA, None]
+                else:
+                    _choices = [np.nan, pd.NA, None, 'nan', 'NaN', 'NAN', '<NA>']
             elif _format == 'pl':
                 if _dtype == 'int':
                     warnings.warn(
