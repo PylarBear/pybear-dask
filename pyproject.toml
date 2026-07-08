@@ -26,25 +26,25 @@ include = [
 [tool.poetry.dependencies]
 python = ">=3.10"
 dask = [
-    {version = "==2025.2.0", python = "==3.10"},   # 2024.6.0-2024.9.1 work; 2024.10.0 not working; 2024.11.1-2025.1.0 work; 2026.1.1, 2026.3.0 not working
-    {version = "==2025.2.0", python = "==3.11"},   # 2024.6.0-2024.9.1 work; 2024.10.0 not working; 2024.11.1-2025.1.0 work; 2026.1.1, 2026.3.0 not working
-    {version = "==2025.2.0", python = "==3.12"},   # 2024.6.0-2024.9.1 work; 2024.10.0 not working; 2024.11.1-2025.1.0 work; 2026.1.1, 2026.3.0 not working
-    {version = "==2026.6.0", python = "==3.13"},   # must be >= 2025.1.0; 2025.1.0-2025.3.1 work; 2025.4.0-2025.4.1 not working; 2025.5.0-2026.3.0 work
-    {version = ">=2025.1.0, ==2026.1.2", python = "==3.14"},  # must be >= 2025.1.0; 2025.1.0-2025.3.1 work; 2025.4.0-2025.4.1 not working; 2025.5.0-2026.1.1, 2026.3.0 work
+    {version = "==2025.3.0", python = "==3.10"},   # 2024.6.0-2024.9.1 work; 2024.10.0 not working; 2024.11.1-2025.2.0 work; 2026.1.1, 2026.3.0 not working
+    {version = "==2025.3.0", python = "==3.11"},   # 2024.6.0-2024.9.1 work; 2024.10.0 not working; 2024.11.1-2025.2.0 work; 2026.1.1, 2026.3.0 not working
+    {version = "==2025.3.0", python = "==3.12"},   # 2024.6.0-2024.9.1 work; 2024.10.0 not working; 2024.11.1-2025.2.0 work; 2026.1.1, 2026.3.0 not working
+    {version = "==2026.7.0", python = "==3.13"},   # must be >= 2025.1.0; 2025.1.0-2025.3.1 work; 2025.4.0-2025.4.1 not working; 2025.5.0-2026.6.0 work
+    {version = ">=2025.1.0, ==2026.6.0", python = "==3.14"},  # must be >= 2025.1.0; 2025.1.0-2025.3.1 work; 2025.4.0-2025.4.1 not working; 2025.5.0-2026.3.0 work
 ]
 dask-ml = [
-    {version = "==2025.1.0, <2026", python = "==3.10"},   # 2023.3.24 not working; 2024.3.20-2025.1.0 work
-    {version = "==2025.1.0, <2026", python = "==3.11"},   # 2023.3.24 not working; 2024.3.20-2025.1.0 work
-    {version = "==2025.1.0, <2026", python = "==3.12"},   # 2023.3.24 not working; 2024.3.20-2025.1.0 work
+    {version = "==2024.3.20, <2026", python = "==3.10"},   # 2023.3.24 not working; 2024.3.20-2025.1.0 work
+    {version = "==2024.3.20, <2026", python = "==3.11"},   # 2023.3.24 not working; 2024.3.20-2025.1.0 work
+    {version = "==2024.3.20, <2026", python = "==3.12"},   # 2023.3.24 not working; 2024.3.20-2025.1.0 work
     {version = "==2025.1.0", python = "==3.13"},   # must == 2025.1
     {version = "==2025.1.0", python = "==3.14"},   # must == 2025.1
 ]
 distributed = [
-    {version = "==2025.2.0", python = "==3.10"},   # 2024.6.0-2024.9.1 work; 2024.10.0 not working; 2024.11.1-2025.1.0 work; 2026.1.1, 2026.3.0 not working
-    {version = "==2025.2.0", python = "==3.11"},   # 2024.6.0-2024.9.1 work; 2024.10.0 not working; 2024.11.1-2025.1.0 work; 2026.1.1, 2026.3.0 not working
-    {version = "==2025.2.0", python = "==3.12"},   # 2024.6.0-2024.9.1 work; 2024.10.0 not working; 2024.11.1-2025.1.0 work; 2026.1.1, 2026.3.0 not working
-    {version = "==2026.6.0", python = "==3.13"},   # must be >= 2025.1.0; 2025.1.0-2025.3.1 work; 2025.4.0-2025.4.1 not working; 2025.5.0-2026.3.0 work
-    {version = ">=2025.1.0, ==2026.1.2", python = "==3.14"},  # must be >= 2025.1.0; 2025.1.0-2025.3.1 work; 2025.4.0-2025.4.1 not working; 2025.5.0-2026.1.1, 2026.3.0 work
+    {version = "==2025.3.0", python = "==3.10"},   # 2024.6.0-2024.9.1 work; 2024.10.0 not working; 2024.11.1-2025.2.0 work; 2026.1.1, 2026.3.0 not working
+    {version = "==2025.3.0", python = "==3.11"},   # 2024.6.0-2024.9.1 work; 2024.10.0 not working; 2024.11.1-2025.2.0 work; 2026.1.1, 2026.3.0 not working
+    {version = "==2025.3.0", python = "==3.12"},   # 2024.6.0-2024.9.1 work; 2024.10.0 not working; 2024.11.1-2025.2.0 work; 2026.1.1, 2026.3.0 not working
+    {version = "==2026.7.0", python = "==3.13"},   # must be >= 2025.1.0; 2025.1.0-2025.3.1 work; 2025.4.0-2025.4.1 not working; 2025.5.0-2026.6.0 work
+    {version = ">=2025.1.0, ==2026.6.0", python = "==3.14"},  # must be >= 2025.1.0; 2025.1.0-2025.3.1 work; 2025.4.0-2025.4.1 not working; 2025.5.0-2026.3.0 work
 ]
 numba = [
     {version = ">=0.63.0,==0.66.0,<1", python = "==3.14"},  # 0.62.1 not working; 0.63.0, 0.65.1 work
@@ -57,16 +57,16 @@ pyarrow = [
     {version = "==22.0.0,<25", python = "==3.14"}   # done
 ]
 pybear = [
-    {version = "==0.2.4", python = "==3.10"},  # 0.2.3 works
-	{version = "==0.2.4", python = "==3.11"},  # 0.2.3 works
-	{version = "==0.2.4", python = "==3.12"},  # 0.2.3 works
-	{version = "==0.2.4", python = "==3.13"},  # 0.2.3 works
-    {version = "==0.2.4", python = "==3.14"}   # can only be ">=0.2.4"
+    {version = "==0.2.2", python = "==3.10"},  # 0.2.3-0.2.4 work
+	{version = "==0.2.2", python = "==3.11"},  # 0.2.3-0.2.4 work
+	{version = "==0.2.2", python = "==3.12"},  # 0.2.3-0.2.4 work
+	{version = "==0.2.2", python = "==3.13"},  # 0.2.3-0.2.4 work
+    {version = "==0.2.5", python = "==3.14"}   # can only be ">=0.2.4"
 ]
 scikit-learn = [
-    {version = ">=1.3.0,==1.6.1,<1.7,<1.8", python = "==3.10"},    # 1.4.2 not working; 1.5.0-1.6.1 work; 1.7.0 not working
-	{version = ">=1.3.0,==1.6.1,<1.7", python = "==3.11"},    # 1.4.2 not working; 1.5.0-1.6.1 work; 1.7.0 not working
-	{version = ">=1.3.1,==1.6.1,<1.7", python = "==3.12"},    # 1.4.2 not working; 1.5.0-1.6.1 work; 1.7.0 not working
+    {version = ">=1.3.0,==1.4.2,<1.7,<1.8", python = "==3.10"},    # 1.4.2 not working; 1.5.0-1.6.1 work; 1.7.0 not working
+	{version = ">=1.3.0,==1.4.2,<1.7", python = "==3.11"},    # 1.4.2 not working; 1.5.0-1.6.1 work; 1.7.0 not working
+	{version = ">=1.3.1,==1.4.2,<1.7", python = "==3.12"},    # 1.4.2 not working; 1.5.0-1.6.1 work; 1.7.0 not working
 	{version = ">=1.6.1,==1.6.1,<2.0", python = "==3.13"},    # must be >= 1.6.1; 1.6.1-1.9.0 work
 	{version = ">=1.7.2,==1.7.2,<2.0", python = "==3.14"}     # must be >= 1.7.2; 1.7.2-1.9.0 work
 ]
