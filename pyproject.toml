@@ -33,11 +33,11 @@ dask = [
     {version = ">=2025.1.0", python = "==3.14"},   # must be >= 2025.1.0; 2025.4.0-2025.4.1 not working
 ]
 #NEED TO FIND THE ACTUAL FLOOR HERE
-dask-expr = [
-    {version = "*", python = "==3.10"},
-    {version = "*", python = "==3.11"},
-    {version = "*", python = "==3.12"},
-]
+#dask-expr = [
+#    {version = "*", python = "==3.10"},
+#    {version = "*", python = "==3.11"},
+#    {version = "*", python = "==3.12"},
+#]
 dask-ml = [
     {version = ">=2024.4.4,==2024.4.4,<2026", python = "==3.10"},   # 2023.3.24 not working; 2024.3.20-2025.1.0 work
     {version = ">=2024.4.4,==2024.4.4,<2026", python = "==3.11"},   # 2023.3.24 not working; 2024.3.20-2025.1.0 work
@@ -77,11 +77,11 @@ scikit-learn = [
 	{version = ">=1.7.2,<2.0", python = "==3.14"}    # must be >= 1.7.2; 1.7.2-1.9.0 work
 ]
 # NEED TO FIND THE ACTUAL FLOOR HERE
-setuptools = [
-    {version = ">=58.0.0,<82.0.0", python = "==3.10"},   # pkg_resources depricated in 82.0.0
-    {version = ">=58.0.0,<82.0.0", python = "==3.11"},   # pkg_resources depricated in 82.0.0
-    {version = ">=58.0.0,<82.0.0", python = "==3.12"},   # pkg_resources depricated in 82.0.0
-]
+#setuptools = [
+#    {version = ">=58.0.0,<82.0.0", python = "==3.10"},   # pkg_resources depricated in 82.0.0
+#    {version = ">=58.0.0,<82.0.0", python = "==3.11"},   # pkg_resources depricated in 82.0.0
+#    {version = ">=58.0.0,<82.0.0", python = "==3.12"},   # pkg_resources depricated in 82.0.0
+#]
 
 
 [tool.poetry.group.dev.dependencies]
