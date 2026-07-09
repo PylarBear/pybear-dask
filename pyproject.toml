@@ -70,6 +70,11 @@ scikit-learn = [
 	{version = ">=1.6.1,<2.0", python = "==3.13"},    # must be >= 1.6.1; 1.6.1-1.9.0 work
 	{version = ">=1.7.2,<2.0", python = "==3.14"}     # must be >= 1.7.2; 1.7.2-1.9.0 work
 ]
+setuptools = [
+    {version = ">=58.0.0", python = "==3.10"},
+    {version = ">=58.0.0", python = "==3.11"},
+    {version = ">=58.0.0", python = "==3.12"},
+]
 
 
 [tool.poetry.group.dev.dependencies]
