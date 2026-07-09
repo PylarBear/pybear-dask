@@ -32,6 +32,12 @@ dask = [
     {version = ">=2025.1.0", python = "==3.13"},   # must be >= 2025.1.0; 2025.4.0-2025.4.1 not working
     {version = ">=2025.1.0", python = "==3.14"},   # must be >= 2025.1.0; 2025.4.0-2025.4.1 not working
 ]
+# NEED TO FIND THE ACTUAL FLOOR HERE
+dask-expr = [
+    {version = ">=0.1.0,==0.1.0", python = "==3.10"},
+    {version = ">=0.1.0,==0.1.0", python = "==3.11"},
+    {version = ">=0.1.0,==0.1.0", python = "==3.12"},
+]
 dask-ml = [
     {version = ">=2024.3.20,==2024.3.20,<2026", python = "==3.10"},   # 2023.3.24 not working; 2024.3.20-2025.1.0 work
     {version = ">=2024.3.20,==2024.3.20,<2026", python = "==3.11"},   # 2023.3.24 not working; 2024.3.20-2025.1.0 work
