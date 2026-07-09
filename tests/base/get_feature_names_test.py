@@ -60,7 +60,7 @@ class TestGetFeatureNamesDask:
             _X_wip = da.from_array(_X_np, chunks=_shape)
         elif _format in ['dask_ddf', 'dask_series']:
             _X_wip = ddf.from_array(
-                arr=_X_np,
+                _X_np,
                 columns=_columns if _columns_is_passed else None,
                 chunksize=_shape
             )
