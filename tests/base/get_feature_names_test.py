@@ -62,7 +62,8 @@ class TestGetFeatureNamesDask:
             _X_wip = ddf.from_array(
                 _X_np,
                 columns=_columns if _columns_is_passed else None,
-                chunksize=_shape
+                # 26_06_10_15_01_00 pizza CHANGED chunksize FROM _shape TO _shape[0]
+                chunksize=_shape[0]
             )
             if _format == 'dask_series':
                 _X_wip = _X_wip.iloc[:, 0].squeeze()
