@@ -77,9 +77,9 @@ pybear = [
     {version = ">=0.2.4", python = "==3.14"}    # can only be ">=0.2.4"
 ]
 scikit-learn = [
-    {version = ">=1.4.2,==1.4.2,<1.8", python = "==3.10"},   # 1.4.0 not working; 1.4.2-1.7.2 work
-	{version = ">=1.4.2,==1.4.2,<1.8", python = "==3.11"},   # 1.4.0 not working; 1.4.2-1.9.0 work
-	{version = ">=1.4.2,==1.4.2,<1.8", python = "==3.12"},   # 1.4.0 not working; 1.4.2-1.9.0 work
+    {version = ">=1.4.0,==1.4.0,<1.8", python = "==3.10"},   # 1.4.0 not working; 1.4.2-1.7.2 work
+	{version = ">=1.4.2,==1.4.2,<2.0", python = "==3.11"},   # 1.4.0 not working; 1.4.2-1.9.0 work
+	{version = ">=1.4.2,==1.4.2,<2.0", python = "==3.12"},   # 1.4.0 not working; 1.4.2-1.9.0 work
 	{version = ">=1.6.1,<2.0", python = "==3.13"},   # must be >= 1.6.1; 1.6.1-1.9.0 work
 	{version = ">=1.7.2,<2.0", python = "==3.14"},   # must be >= 1.7.2; 1.7.2-1.9.0 work
 ]
