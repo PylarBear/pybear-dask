@@ -26,9 +26,9 @@ include = [
 [tool.poetry.dependencies]
 python = ">=3.10"
 dask = [
-    {version = ">=2024.3.0", python = "==3.10"},   # >=2024.3.0; (2023.12.1-2024.2.1, 2024.10.0, 2025.4.0-2025.4.1, 2026.1.0 not working)
-    {version = ">=2024.4.1", python = "==3.11"},   # >=2024.4.1; (2024.1.0-2024.4.0, 2024.10.0, 2025.4.0-2025.4.1, 2026.1.0 not working)
-    {version = ">=2024.4.1", python = "==3.12"},   # >=2024.4.1; (2024.1.0-2024.4.0, 2024.10.0, 2025.4.0-2025.4.1, 2026.1.0 not working)
+    {version = ">=2024.3.0", python = "==3.10"},
+    {version = ">=2024.4.1", python = "==3.11"},
+    {version = ">=2024.4.1", python = "==3.12"},
     {version = ">=2025.1.0", python = "==3.13"},   # must be >= 2025.1.0; 2025.4.0-2025.4.1 not working
     {version = ">=2025.1.0", python = "==3.14"},   # must be >= 2025.1.0; 2025.4.0-2025.4.1 not working
 ]
@@ -36,22 +36,22 @@ dask-expr = [
     {version = ">=1.0,<2.0.0", python = "==3.10"},
 ]
 dask-ml = [
-    {version = ">=2024.3.20,<2026", python = "==3.10"},   # 2023.3.24 not working; 2024.3.20-2025.1.0 work
-    {version = ">=2024.3.20,<2026", python = "==3.11"},   # 2023.3.24 not working; 2024.3.20-2025.1.0 work
-    {version = ">=2024.3.20,<2026", python = "==3.12"},   # 2023.3.24 not working; 2024.3.20-2025.1.0 work
+    {version = ">=2024.3.20,<2026", python = "==3.10"},
+    {version = ">=2024.3.20,<2026", python = "==3.11"},
+    {version = ">=2024.3.20,<2026", python = "==3.12"},
     {version = ">=2025.1.0,<2026", python = "==3.13"},   # must be == 2025.1
     {version = ">=2025.1.0,<2026", python = "==3.14"},   # must be == 2025.1
 ]
 distributed = [
-    {version = ">=2024.3.0,", python = "==3.10"},   # >=2024.3.0; (2023.12.1-2024.2.1, 2024.10.0, 2025.4.0-2025.4.1, 2026.1.0 not working)
-    {version = ">=2024.4.1,", python = "==3.11"},   # >=2024.4.1; (2024.1.0-2024.4.0, 2024.10.0, 2025.4.0-2025.4.1, 2026.1.0 not working)
-    {version = ">=2024.4.1,", python = "==3.12"},   # >=2024.4.1; (2024.1.0-2024.4.0, 2024.10.0, 2025.4.0-2025.4.1, 2026.1.0 not working)
+    {version = ">=2024.3.0,", python = "==3.10"},
+    {version = ">=2024.4.1,", python = "==3.11"},
+    {version = ">=2024.4.1,", python = "==3.12"},
     {version = ">=2025.1.0", python = "==3.13"},   # must be >= 2025.1.0; 2025.4.0-2025.4.1 not working
     {version = ">=2025.1.0", python = "==3.14"},   # must be >= 2025.1.0; 2025.4.0-2025.4.1 not working
 ]
 # FOR DEP FLOOR TESTING ONLY
 #numba = [
-#    {version = ">=0.63.0", python = "==3.14"},  # 0.62.1 not working; 0.63.0-0.66.0 work
+#    {version = ">=0.63.0", python = "==3.14"},
 #]
 # FOR DEP FLOOR TESTING ONLY
 #numpy = [
@@ -75,18 +75,19 @@ pybear = [
 ]
 scikit-learn = [
     {version = ">=1.3.0,<1.8", python = "==3.10"},   # 1.3.0-1.7.2 work
-	{version = ">=1.4.2,<2.0", python = "==3.11"},   # 1.4.0 not working; 1.4.2-1.9.0 work
-	{version = ">=1.4.2,<2.0", python = "==3.12"},   # 1.4.0 not working; 1.4.2-1.9.0 work
+	{version = ">=1.4.2,<2.0", python = "==3.11"},   # 1.4.2-1.9.0 work
+	{version = ">=1.4.2,<2.0", python = "==3.12"},   # 1.4.2-1.9.0 work
 	{version = ">=1.6.1,<2.0", python = "==3.13"},   # must be >= 1.6.1; 1.6.1-1.9.0 work
 	{version = ">=1.7.2,<2.0", python = "==3.14"},   # must be >= 1.7.2; 1.7.2-1.9.0 work
 ]
 # FOR DEP FLOOR TESTING ONLY
 # NEED pkg_resources VIA setuptools FOR SOME OLDER VERSIONS OF dask_ml
-# dask==2024.1.0 pins setuptools>=62.6.0(22_06_19)
+# dask==2024.1.0 PINS setuptools>=62.6.0(22_06_19)
+# pkg_resources DEPRECATED IN setuptools 82.0.0
 #setuptools = [
-#    {version = ">=62.6.0,==62.6.0,<82.0.0", python = "==3.10"},   # pkg_resources deprecated in 82.0.0
-#    {version = ">=62.6.0,==62.6.0,<82.0.0", python = "==3.11"},   # pkg_resources deprecated in 82.0.0
-#    {version = ">=66.1.0,==66.1.0,<82.0.0", python = "==3.12"},   # pkg_resources deprecated in 82.0.0
+#    {version = ">=62.6.0,<82.0.0", python = "==3.10"},
+#    {version = ">=62.6.0,<82.0.0", python = "==3.11"},
+#    {version = ">=66.1.0,<82.0.0", python = "==3.12"},
 #]
 
 
