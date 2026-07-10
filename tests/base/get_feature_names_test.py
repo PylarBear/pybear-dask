@@ -49,6 +49,8 @@ class TestGetFeatureNamesDask:
             _shape=_shape
         )
 
+    # END FIXTURES ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** *
+
 
     @pytest.mark.parametrize('_format', ('dask_array', 'dask_series', 'dask_ddf'))
     @pytest.mark.parametrize('_columns_is_passed', (True, False))
