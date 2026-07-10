@@ -26,55 +26,38 @@ include = [
 [tool.poetry.dependencies]
 python = ">=3.10"
 dask = [
-    {version = ">=2024.4.1,==2024.4.1", python = "==3.10"},   # >=2024.3.0; (2024.1.0-2024.2.1, 2024.10.0, 2025.4.0-2025.4.1, 2026.1.0 not working)
-    {version = ">=2024.4.1,==2024.4.1", python = "==3.11"},   # >=2024.4.1; (2024.1.0-2024.4.0, 2024.10.0, 2025.4.0-2025.4.1, 2026.1.0 not working)
-    {version = ">=2024.4.1,==2024.4.1", python = "==3.12"},   # >=2024.4.1; (2024.1.0-2024.4.0, 2024.10.0, 2025.4.0-2025.4.1, 2026.1.0 not working)
+    {version = ">=2024.4.0,==2024.4.0", python = "==3.10"},   # >=2024.3.0; (2024.1.0-2024.2.1, 2024.10.0, 2025.4.0-2025.4.1, 2026.1.0 not working)
+    {version = ">=2024.4.0,==2024.4.0", python = "==3.11"},   # >=2024.4.1; (2024.1.0-2024.4.0, 2024.10.0, 2025.4.0-2025.4.1, 2026.1.0 not working)
+    {version = ">=2024.4.0,==2024.4.0", python = "==3.12"},   # >=2024.4.1; (2024.1.0-2024.4.0, 2024.10.0, 2025.4.0-2025.4.1, 2026.1.0 not working)
     {version = ">=2025.1.0", python = "==3.13"},   # must be >= 2025.1.0; 2025.4.0-2025.4.1 not working
     {version = ">=2025.1.0", python = "==3.14"},   # must be >= 2025.1.0; 2025.4.0-2025.4.1 not working
 ]
-#NEED TO FIND THE ACTUAL FLOOR HERE
+# NEED TO FIND THE ACTUAL FLOOR HERE
+# FOR DEP FLOOR TESTING ONLY
 #dask-expr = [
 #    {version = "*", python = "==3.10"},
 #    {version = "*", python = "==3.11"},
 #    {version = "*", python = "==3.12"},
 #]
 dask-ml = [
-    {version = ">=2024.3.20,==2024.3.20,<2026", python = "==3.10"},   # 2023.3.24-2024.3.20 not working; 2024.4.4-2025.1.0 work
-    {version = ">=2024.3.20,==2024.3.20,<2026", python = "==3.11"},   # 2023.3.24-2024.3.20 not working; 2024.4.4-2025.1.0 work
-    {version = ">=2024.3.20,==2024.3.20,<2026", python = "==3.12"},   # 2023.3.24-2024.3.20 not working; 2024.4.4-2025.1.0 work
+    {version = ">=2024.3.20,==2024.3.20,<2026", python = "==3.10"},   # 2023.3.24 not working; 2024.3.20-2025.1.0 work
+    {version = ">=2024.3.20,==2024.3.20,<2026", python = "==3.11"},   # 2023.3.24 not working; 2024.3.20-2025.1.0 work
+    {version = ">=2024.3.20,==2024.3.20,<2026", python = "==3.12"},   # 2023.3.24 not working; 2024.3.20-2025.1.0 work
     {version = ">=2025.1.0,<2026", python = "==3.13"},   # must be == 2025.1
     {version = ">=2025.1.0,<2026", python = "==3.14"},   # must be == 2025.1
 ]
 distributed = [
-    {version = ">=2024.4.1,==2024.4.1", python = "==3.10"},   # >=2024.3.0; (2024.1.0-2024.2.1, 2024.10.0, 2025.4.0-2025.4.1, 2026.1.0 not working)
-    {version = ">=2024.4.1,==2024.4.1", python = "==3.11"},   # >=2024.4.1; (2024.1.0-2024.4.0, 2024.10.0, 2025.4.0-2025.4.1, 2026.1.0 not working)
-    {version = ">=2024.4.1,==2024.4.1", python = "==3.12"},   # >=2024.4.1; (2024.1.0-2024.4.0, 2024.10.0, 2025.4.0-2025.4.1, 2026.1.0 not working)
+    {version = ">=2024.4.0,==2024.4.0", python = "==3.10"},   # >=2024.3.0; (2024.1.0-2024.2.1, 2024.10.0, 2025.4.0-2025.4.1, 2026.1.0 not working)
+    {version = ">=2024.4.0,==2024.4.0", python = "==3.11"},   # >=2024.4.1; (2024.1.0-2024.4.0, 2024.10.0, 2025.4.0-2025.4.1, 2026.1.0 not working)
+    {version = ">=2024.4.0,==2024.4.0", python = "==3.12"},   # >=2024.4.1; (2024.1.0-2024.4.0, 2024.10.0, 2025.4.0-2025.4.1, 2026.1.0 not working)
     {version = ">=2025.1.0", python = "==3.13"},   # must be >= 2025.1.0; 2025.4.0-2025.4.1 not working
     {version = ">=2025.1.0", python = "==3.14"},   # must be >= 2025.1.0; 2025.4.0-2025.4.1 not working
 ]
-numba = [
-    {version = ">=0.63.0", python = "==3.14"},  # 0.62.1 not working; 0.63.0-0.66.0 work
-]
-#numpy = [
-#    {version = ">=1.23.3,<2.3.0", python = "==3.10"},
-#    {version = ">=1.23.3", python = "==3.11"},
-#    {version = ">=1.26.0", python = "==3.12"},
+# FOR DEP FLOOR TESTING ONLY
+#numba = [
+#    {version = ">=0.63.0", python = "==3.14"},  # 0.62.1 not working; 0.63.0-0.66.0 work
 #]
-#pandas = [
-#    {version = ">=1.3.4,<3.0.0", python = "==3.10"},
-#    {version = ">=1.5.1,<3.0.0", python = "==3.11"},
-#    {version = ">=2.1.1,<3.0.0", python = "==3.12"},
-#]
-#pyarrow = [
-##   {version = ">=16.0.0", python = "==3.10"},
-##	{version = ">=16.0.0", python = "==3.11"},
-##	{version = ">=16.0.0", python = "==3.12"},
-#    {version = ">=6.0.0,==10.0.1", python = "==3.10"},
-#	{version = ">=10.0.1,==10.0.1", python = "==3.11"},
-#	{version = ">=14.0.0,==14.0.0", python = "==3.12"},
-#	{version = ">=18.0.0", python = "==3.13"},
-#    {version = ">=22.0.0", python = "==3.14"}
-#]
+# pyarrow --- managed by pybear/dask/dask-ml
 pybear = [
     {version = ">=0.2.0", python = "==3.10"},   # 0.2.0-0.2.5 work
 	{version = ">=0.2.0", python = "==3.11"},   # 0.2.0-0.2.5 work
@@ -90,6 +73,7 @@ scikit-learn = [
 	{version = ">=1.7.2,<2.0", python = "==3.14"}    # must be >= 1.7.2; 1.7.2-1.9.0 work
 ]
 # NEED TO FIND THE ACTUAL FLOOR HERE
+# FOR DEP FLOOR TESTING ONLY
 # dask==2024.1.0 pins setuptools>=62.6.0(22_06_19)
 setuptools = [
     {version = ">=62.6.0,==62.6.0,<82.0.0", python = "==3.10"},   # pkg_resources depricated in 82.0.0
