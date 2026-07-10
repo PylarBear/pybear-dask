@@ -94,7 +94,7 @@ scikit-learn = [
 setuptools = [
     {version = ">=62.6.0,==62.6.0,<82.0.0", python = "==3.10"},   # pkg_resources depricated in 82.0.0
     {version = ">=62.6.0,==62.6.0,<82.0.0", python = "==3.11"},   # pkg_resources depricated in 82.0.0
-    {version = ">=66.0.0,==66.0.0,<82.0.0", python = "==3.12"},   # pkg_resources depricated in 82.0.0
+    {version = ">=66.1.0,==66.1.0,<82.0.0", python = "==3.12"},   # pkg_resources depricated in 82.0.0
 ]
 
 
