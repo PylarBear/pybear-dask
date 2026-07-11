@@ -63,17 +63,54 @@ pybear-dask
    :alt: Buy Me A Coffee
 
 
-.. |PythonVersion| replace:: >=3.10
-.. |DaskVersion| replace:: <2025.1.0
-.. |DaskMLVersion| replace:: <2025.1.0
-.. |DistributedVersion| replace:: <2025.1.0
-.. |PybearVersion| replace:: >=0.2.0
-.. |PytestVersion| replace:: >=7.0.0
+.. |PythonVersion314| replace:: ==3.14
+.. |DaskVersion314| replace:: >=2025.1.0
+.. |DaskMLVersion314| replace:: >=2025.1.0
+.. |DistributedVersion314| replace:: >=2025.1.0
+.. |PybearVersion314| replace:: >=0.2.4
+.. |PytestVersion314| replace:: >=8.0.0
+.. |ScikitVersion314| replace:: >=1.7.2
+
+.. |PythonVersion313| replace:: ==3.13
+.. |DaskVersion313| replace:: >=2025.1.0
+.. |DaskMLVersion313| replace:: >=2025.1.0
+.. |DistributedVersion313| replace:: >=2025.1.0
+.. |PybearVersion313| replace:: >=0.2.0
+.. |PytestVersion313| replace:: >=7.0.0
+.. |ScikitVersion313| replace:: >=1.6.1
+
+.. |PythonVersion312| replace:: ==3.12
+.. |DaskVersion312| replace:: >=2024.4.1
+.. |DaskMLVersion312| replace:: >=2024.3.20
+.. |DistributedVersion312| replace:: >=2024.4.1
+.. |PybearVersion312| replace:: >=0.2.0
+.. |PytestVersion312| replace:: >=7.0.0
+.. |ScikitVersion312| replace:: >=1.4.2
+
+.. |PythonVersion311| replace:: ==3.11
+.. |DaskVersion311| replace:: >=2024.4.1
+.. |DaskMLVersion311| replace:: >=2024.3.20
+.. |DistributedVersion311| replace:: >=2024.4.1
+.. |PybearVersion311| replace:: >=0.2.0
+.. |PytestVersion311| replace:: >=7.0.0
+.. |ScikitVersion311| replace:: >=1.4.2
+
+.. |PythonVersion310| replace:: ==3.10
+.. |DaskVersion310| replace:: >=2024.3.0
+.. |DaskExprVersion310| replace:: >=1.0,<2.0.0
+.. |DaskMLVersion310| replace:: >=2024.3.20
+.. |DistributedVersion310| replace:: >=2024.3.0
+.. |PybearVersion310| replace:: >=0.2.0
+.. |PytestVersion310| replace:: >=7.0.0
+.. |ScikitVersion310| replace:: >=1.3.0,<1.8
 
 
+Python packages that augment your data analytics experience.
 
-pybear-dask is a Python computing library that supplements the pybear
-library with analogous modules that have dask capability.
+pybear-dask is a scikit-style Python computing library that supplements the
+pybear library with analogous modules that have dask capability.
+
+Python versions 3.10, 3.11, 3.12, 3.13, and 3.14 are supported.
 
 Website: https://github.com/PylarBear/pybear-dask
 
@@ -90,13 +127,51 @@ Installation
 Dependencies
 ~~~~~~~~~~~~
 
-pybear-dask requires:
+pybear-dask operating on Python 3.14 requires:
 
-- Python (|PythonVersion|)
-- dask (|DaskVersion|)
-- dask-ml (|DaskMLVersion|)
-- distributed (|DistributedVersion|)
-- pybear (|PybearVersion|)
+- Python (|PythonVersion314|)
+- dask (|DaskVersion314|)
+- dask-ml (|DaskMLVersion314|)
+- distributed (|DistributedVersion314|)
+- pybear (|PybearVersion314|)
+- scikit-learn (|ScikitVersion314|)
+
+pybear-dask operating on Python 3.13 requires:
+
+- Python (|PythonVersion313|)
+- dask (|DaskVersion313|)
+- dask-ml (|DaskMLVersion313|)
+- distributed (|DistributedVersion313|)
+- pybear (|PybearVersion313|)
+- scikit-learn (|ScikitVersion313|)
+
+pybear-dask operating on Python 3.12 requires:
+
+- Python (|PythonVersion312|)
+- dask (|DaskVersion312|)
+- dask-ml (|DaskMLVersion312|)
+- distributed (|DistributedVersion312|)
+- pybear (|PybearVersion312|)
+- scikit-learn (|ScikitVersion312|)
+
+pybear-dask operating on Python 3.11 requires:
+
+- Python (|PythonVersion311|)
+- dask (|DaskVersion311|)
+- dask-ml (|DaskMLVersion311|)
+- distributed (|DistributedVersion311|)
+- pybear (|PybearVersion311|)
+- scikit-learn (|ScikitVersion311|)
+
+pybear-dask operating on Python 3.10 requires:
+
+- Python (|PythonVersion310|)
+- dask (|DaskVersion310|)
+- dask-expr (|DaskExprVersion310|)
+- dask-ml (|DaskMLVersion310|)
+- distributed (|DistributedVersion310|)
+- pybear (|PybearVersion310|)
+- scikit-learn (|ScikitVersion310|)
 
 User installation
 ~~~~~~~~~~~~~~~~~
@@ -105,8 +180,7 @@ Install pybear-dask from the online PyPI package repository using ``pip``::
 
    (your-env) $ pip install pybear-dask
 
-Conda distributions are expected to be made available sometime after release to
-PyPI.
+A Conda distribution is not expected to be made available anytime soon.
 
 =======
 
@@ -192,24 +266,29 @@ Contributing
 ~~~~~~~~~~~~
 
 pybear-dask is not ready for contributions at this time!
+If you have a good idea that uses dask, it may be better to try to contribute
+directly to
+`dask <https://image.dask.org/en/latest/contributing.html>`__ or
+`dask-ml <https://ml.dask.org/contributing.html>`__.
 
 Testing
 ~~~~~~~
 
 pybear-dask 0.2 is tested via GitHub Actions to run on Linux, Windows, and MacOS,
-with Python versions 3.10, 3.11, 3.12, 3.13, and 3.14. pybear-dask is not tested
-on earlier versions, but some features may work.
+with Python versions 3.10, 3.11, 3.12, 3.13, and 3.14. pybear-dask is not supported
+nor tested on earlier versions.
 
 If you want to test pybear-dask yourself, you will need:
 
-- pytest (|PytestVersion|)
+- pytest (|PytestVersion314|) for Python version 3.14
+- pytest (|PytestVersion313|) for Python versions 3.13, 3.12, 3.11, and 3.10
 
 The tests are not available in the PyPI pip installation. You can get
 the tests by downloading the tarball from the pybear-dask project page on
 `pypi.org <https://pypi.org/project/pybear-dask/>`_ or cloning the pybear-dask
 repo from `GitHub <https://github.com/PylarBear/pybear-dask>`_. Once you have
 the source files in a local project folder, create a poetry environment for the
-project and install the test dependencies. After installation, launch the poetry
+project and install the test dependencies. After installation, open the poetry
 environment shell and you can launch the test suite from the root of your
 pybear-dask project folder with::
 
@@ -231,6 +310,7 @@ Documentation
 Documentation is not expected to be made available via a website for this
 package. Use the documentation for similar packages in the main pybear package.
 See the repo for pybear: https://github.com/PylarBear/pybear/
+See the online docs for pybear: https://pybear.readthedocs.io/en/stable/index.html
 
 Communication
 ~~~~~~~~~~~~~
