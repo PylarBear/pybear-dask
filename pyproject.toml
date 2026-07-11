@@ -27,8 +27,8 @@ include = [
 python = ">=3.10"
 dask = [
     {version = ">=2024.3.0", python = "==3.10"},
-    {version = ">=2024.4.1", python = "==3.11"},
-    {version = ">=2024.4.1", python = "==3.12"},
+    {version = ">=2024.4.1", python = "==3.11"},   # After PY3.11.9 patch, inspect excepts on all earlier dask
+    {version = ">=2024.4.1", python = "==3.12"},   # After PY3.12.3 patch, inspect excepts on all earlier dask
     {version = ">=2025.1.0", python = "==3.13"},   # must be >= 2025.1.0; 2025.4.0-2025.4.1 not working
     {version = ">=2025.1.0", python = "==3.14"},   # must be >= 2025.1.0; 2025.4.0-2025.4.1 not working
 ]
@@ -44,8 +44,8 @@ dask-ml = [
 ]
 distributed = [
     {version = ">=2024.3.0,", python = "==3.10"},
-    {version = ">=2024.4.1,", python = "==3.11"},
-    {version = ">=2024.4.1,", python = "==3.12"},
+    {version = ">=2024.4.1,", python = "==3.11"},   # After PY3.11.9 patch, inspect excepts on all earlier dask
+    {version = ">=2024.4.1,", python = "==3.12"},   # After PY3.12.3 patch, inspect excepts on all earlier dask
     {version = ">=2025.1.0", python = "==3.13"},   # must be >= 2025.1.0; 2025.4.0-2025.4.1 not working
     {version = ">=2025.1.0", python = "==3.14"},   # must be >= 2025.1.0; 2025.4.0-2025.4.1 not working
 ]

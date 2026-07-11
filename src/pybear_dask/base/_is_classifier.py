@@ -152,7 +152,8 @@ def is_classifier(estimator_) -> bool:
         _path = _path[_path.find("'", 0, -1) + 1:_path.find("'", -1, 0) - 1]
 
         _split = _path.split(sep='.')
-        if len(_split) == 4: _split.pop(-2)
+        if len(_split) == 4:
+            _split.pop(-2)
 
         _split[0] = 'sklearn'
 
