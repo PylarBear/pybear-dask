@@ -85,7 +85,7 @@ from dask_ml.model_selection import (
 from sklearn.pipeline import Pipeline
 from dask_ml.wrappers import Incremental, ParallelPostFit
 
-# pytest.skip(reason=f"pizza already knows this is failing", allow_module_level=True)
+
 
 # a = XGBClassifier
 # b = XGBRegressor
