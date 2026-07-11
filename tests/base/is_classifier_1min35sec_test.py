@@ -13,6 +13,7 @@ from dask import delayed
 import dask.array as da
 import dask.dataframe as ddf
 import scipy.sparse as ss
+import sklearn
 
 from pybear_dask.base import is_classifier
 
@@ -375,10 +376,30 @@ class TestGSCVSConformingEstimators:   # _estimator ACCEPTS EMPTY ()
     @pytest.mark.parametrize('_est_name, _estimator', zip(NAMES, ALL_ESTIMATORS))
     def test_uninstantiated(self, _est_name, _estimator, gscv_name, gscv):
 
+        # 26_07_11
+        # _is_classifier() has its own special handling for 'blockwisevotingxxx'
+        # which diverts 'estimator' directly into sklearn is_classifier.
+        # sklearn>=1.8 get_tags() requiring estimator instance, not class,
+        # i.e., the estimator must be instantiated. But in these tests,
+        # 'blockwisevotingxxx' is left empty and passed to the gscv, which
+        # makes these tests see 'blockwisevotingxxx' as the estimator. It
+        # is sent into the sklearn is_classifier diverter, and fails because
+        # of get_tags(). Everything other true estimator that is not
+        # instantiated is sent all the way down to the bottom of _is_classifier
+        # where it is conditionally processed as 'estimator' or 'estimator()'
+        # and therefore passes these tests.
+
         new_est_name, feed_fxn = \
             wrap_with_gscv(_est_name, _estimator, gscv_name, gscv)
 
-        assert IS_CLF_LOOKUP.loc[_est_name, 'TRUTH'] == is_classifier(feed_fxn)
+        _sk_version = str(sklearn.__version__).split(".")
+        _flt_sk_version = float(int(_sk_version[0]) + int(_sk_version[1])/10)
+
+        if _flt_sk_version >= 1.8 and 'blockwise' in str(_estimator).lower():
+            with pytest.raises(TypeError):
+                is_classifier(feed_fxn)
+        else:
+            assert IS_CLF_LOOKUP.loc[_est_name, 'TRUTH'] == is_classifier(feed_fxn)
 
 
     @pytest.mark.parametrize('gscv_name, gscv', zip(GSCV_NAMES, GSCVS))
