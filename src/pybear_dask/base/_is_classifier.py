@@ -7,6 +7,8 @@
 
 
 import importlib
+
+import sklearn
 from sklearn.pipeline import Pipeline
 from sklearn.base import is_classifier as sk_is_classifier
 
@@ -134,6 +136,8 @@ def is_classifier(estimator_) -> bool:
     elif 'blockwisevoting' in str(estimator_).lower():
         # use hard strings, dont import the actual modules to avoid
         # circular imports
+        # 'blockwisevotingxxx' itself cannot be instantiated, so there is
+        # no point in creating a conditional for estimator_() also.
         return sk_is_classifier(estimator_)
 
     try:
@@ -174,7 +178,12 @@ def is_classifier(estimator_) -> bool:
         except:
             raise ImportError(_base_err_msg + f"{_function} from {_package}")
 
-        return sk_is_classifier(sklearn_dummy_function)
+        _sk_version = str(sklearn.__version__).split(".")
+        _flt_sk_version = float(int(_sk_version[0]) + int(_sk_version[1])/10)
+        if _flt_sk_version < 1.8:
+            return sk_is_classifier(sklearn_dummy_function)
+        else:
+            return sk_is_classifier(sklearn_dummy_function())
 
     return False
 
