@@ -3,6 +3,7 @@ pybear-dask
 
 |Tests|
 |Coverage|
+|Test Status 315|
 |Test Status 314|
 |Test Status 313|
 |Test Status 312|
@@ -14,6 +15,9 @@ pybear-dask
 
 .. |Coverage| image:: https://raw.githubusercontent.com/PylarBear/pybear-dask/main/.github/badges/coverage-badge.svg
    :target: https://github.com/PylarBear/pybear-dask/actions
+
+.. |Test Status 315| image:: https://github.com/PylarBear/pybear-dask/actions/workflows/matrix-tests-py315.yml/badge.svg
+   :target: https://github.com/PylarBear/pybear-dask/actions/workflows/matrix-tests-py315.yml
 
 .. |Test Status 314| image:: https://github.com/PylarBear/pybear-dask/actions/workflows/matrix-tests-py314.yml/badge.svg
    :target: https://github.com/PylarBear/pybear-dask/actions/workflows/matrix-tests-py314.yml
@@ -63,6 +67,14 @@ pybear-dask
    :alt: Buy Me A Coffee
 
 
+.. |PythonVersion315| replace:: ==3.15
+.. |DaskVersion315| replace:: XXX
+.. |DaskMLVersion315| replace:: XXX
+.. |DistributedVersion315| replace:: XXX
+.. |PybearVersion315| replace:: XXX
+.. |PytestVersion315| replace:: XXX
+.. |ScikitVersion315| replace:: XXX
+
 .. |PythonVersion314| replace:: ==3.14
 .. |DaskVersion314| replace:: >=2025.1.0
 .. |DaskMLVersion314| replace:: >=2025.1.0
@@ -110,7 +122,7 @@ Python packages that augment your data analytics experience.
 pybear-dask is a scikit-style Python computing library that supplements the
 pybear library with analogous modules that have dask capability.
 
-Python versions 3.10, 3.11, 3.12, 3.13, and 3.14 are supported.
+Python versions 3.10, 3.11, 3.12, 3.13, 3.14, and 3.15 are supported.
 
 Website: https://github.com/PylarBear/pybear-dask
 
@@ -126,6 +138,15 @@ Installation
 
 Dependencies
 ~~~~~~~~~~~~
+
+pybear-dask operating on Python 3.15 requires:
+
+- Python (|PythonVersion315|)
+- dask (|DaskVersion315|)
+- dask-ml (|DaskMLVersion315|)
+- distributed (|DistributedVersion315|)
+- pybear (|PybearVersion315|)
+- scikit-learn (|ScikitVersion315|)
 
 pybear-dask operating on Python 3.14 requires:
 
@@ -275,11 +296,12 @@ Testing
 ~~~~~~~
 
 pybear-dask 0.3 is tested via GitHub Actions to run on Linux, Windows, and MacOS,
-with Python versions 3.10, 3.11, 3.12, 3.13, and 3.14. pybear-dask is not supported
-nor tested on earlier versions.
+with Python versions 3.10, 3.11, 3.12, 3.13, 3.14, and 3.15. pybear-dask is not
+supported nor tested on earlier versions.
 
 If you want to test pybear-dask yourself, you will need:
 
+- pytest (|PytestVersion315|) for Python version 3.15
 - pytest (|PytestVersion314|) for Python version 3.14
 - pytest (|PytestVersion313|) for Python versions 3.13, 3.12, 3.11, and 3.10
 
