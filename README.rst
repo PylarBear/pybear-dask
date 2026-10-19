@@ -295,7 +295,7 @@ directly to
 Testing
 ~~~~~~~
 
-pybear-dask 0.3 is tested via GitHub Actions to run on Linux, Windows, and MacOS,
+pybear-dask 0.4 is tested via GitHub Actions to run on Linux, Windows, and MacOS,
 with Python versions 3.10, 3.11, 3.12, 3.13, 3.14, and 3.15. pybear-dask is not
 supported nor tested on earlier versions.
 
