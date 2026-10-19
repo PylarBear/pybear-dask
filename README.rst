@@ -68,12 +68,12 @@ pybear-dask
 
 
 .. |PythonVersion315| replace:: ==3.15
-.. |DaskVersion315| replace:: XXX
-.. |DaskMLVersion315| replace:: XXX
-.. |DistributedVersion315| replace:: XXX
-.. |PybearVersion315| replace:: XXX
-.. |PytestVersion315| replace:: XXX
-.. |ScikitVersion315| replace:: XXX
+.. |DaskVersion315| replace:: >=2026.8.0
+.. |DaskMLVersion315| replace:: >=2025.1.0
+.. |DistributedVersion315| replace:: >=2026.8.0
+.. |PybearVersion315| replace:: >=0.4.0
+.. |PytestVersion315| replace:: >=8.0.0
+.. |ScikitVersion315| replace:: >=1.9.1
 
 .. |PythonVersion314| replace:: ==3.14
 .. |DaskVersion314| replace:: >=2025.1.0
@@ -301,8 +301,7 @@ supported nor tested on earlier versions.
 
 If you want to test pybear-dask yourself, you will need:
 
-- pytest (|PytestVersion315|) for Python version 3.15
-- pytest (|PytestVersion314|) for Python version 3.14
+- pytest (|PytestVersion315|) for Python version 3.15 and 3.14
 - pytest (|PytestVersion313|) for Python versions 3.13, 3.12, 3.11, and 3.10
 
 The tests are not available in the PyPI pip installation. You can get
