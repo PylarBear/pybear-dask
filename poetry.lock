@@ -3388,7 +3388,7 @@ description = "Blazingly fast DataFrame library"
 optional = false
 python-versions = ">=3.10"
 groups = ["main"]
-markers = "python_version < \"3.15\""
+markers = "python_version <= \"3.15\""
 files = [
     {file = "polars-2.0.0-py3-none-any.whl", hash = "sha256:35d62f3541b7a6d4c360a2e2f07fccc0c2bcbd33b0ea51c83a25417a47a3f3ad"},
     {file = "polars-2.0.0.tar.gz", hash = "sha256:62da109e27a19a9d36657ee25dc035c9d3f87e7bd610526fe467dc37ea7dc115"},
@@ -3433,7 +3433,7 @@ description = "Blazingly fast DataFrame library"
 optional = false
 python-versions = ">=3.10"
 groups = ["main"]
-markers = "python_version < \"3.15\""
+markers = "python_version <= \"3.15\""
 files = [
     {file = "polars_runtime_32-2.0.0-cp310-abi3-macosx_10_12_x86_64.whl", hash = "sha256:ffb7ac6cf4e8c4a652df1951e3c3840c7c23a033603d5a9efd422fa8dd699d82"},
     {file = "polars_runtime_32-2.0.0-cp310-abi3-macosx_11_0_arm64.whl", hash = "sha256:7012d8a0201bd95638545ce8f256c0efe2c5cab0f806eb043021dddde5a9498b"},
@@ -3659,15 +3659,15 @@ files = [
 
 [[package]]
 name = "pybear"
-version = "0.3.0"
+version = "0.4.0"
 description = "Python modules for miscellaneous data analytics applications"
 optional = false
 python-versions = ">=3.10"
 groups = ["main"]
 markers = "python_version <= \"3.15\""
 files = [
-    {file = "pybear-0.3.0-py3-none-any.whl", hash = "sha256:969896ef9b9d7a76cc540727ec58bf325c902f0c8d25442628da91a5a19e62f4"},
-    {file = "pybear-0.3.0.tar.gz", hash = "sha256:41ff6e3c7346927801f77d9dd71d8b1942842d46eb6cc92a25b6c16f83864f8b"},
+    {file = "pybear-0.4.0-py3-none-any.whl", hash = "sha256:573f6fbf35e1162a8d61657c6e563a7d24845434334aa4d8678b07e3c8d8276b"},
+    {file = "pybear-0.4.0.tar.gz", hash = "sha256:9baf7994aa5a5dbd5d2fc6c704a5e6aa07a9decefebd2ffd6a1c22d42e72039a"},
 ]
 
 [package.dependencies]
@@ -3681,6 +3681,7 @@ numpy = [
     {version = ">=1.26.0", markers = "python_version == \"3.12\""},
     {version = ">=2.1.0", markers = "python_version == \"3.13\""},
     {version = ">=2.3.2", markers = "python_version == \"3.14\""},
+    {version = ">=2.5.2", markers = "python_version == \"3.15\""},
 ]
 pandas = [
     {version = ">=1.3.4,<3.0", markers = "python_version == \"3.10\""},
@@ -3688,6 +3689,7 @@ pandas = [
     {version = ">=2.1.1", markers = "python_version == \"3.12\""},
     {version = ">=2.2.3", markers = "python_version == \"3.13\""},
     {version = ">=2.3.3", markers = "python_version == \"3.14\""},
+    {version = ">=3.0.6", markers = "python_version == \"3.15\""},
 ]
 polars = {version = ">=1.19.0", markers = "python_version == \"3.10\""}
 psutil = [
@@ -3701,6 +3703,7 @@ pyarrow = [
     {version = ">=14.0.0", markers = "python_version == \"3.12\""},
     {version = ">=18.0.0", markers = "python_version == \"3.13\""},
     {version = ">=22.0.0", markers = "python_version == \"3.14\""},
+    {version = ">=26.0.0", markers = "python_version == \"3.15\""},
 ]
 scikit-learn = [
     {version = ">=1.3.0,<1.8", markers = "python_version == \"3.10\""},
@@ -3708,6 +3711,7 @@ scikit-learn = [
     {version = ">=1.3.1", markers = "python_version == \"3.12\""},
     {version = ">=1.5.2", markers = "python_version == \"3.13\""},
     {version = ">=1.7.2", markers = "python_version == \"3.14\""},
+    {version = ">=1.9.1", markers = "python_version == \"3.15\""},
 ]
 scipy = [
     {version = ">=1.12.0,<1.16.0", markers = "python_version == \"3.10\""},
@@ -3715,6 +3719,7 @@ scipy = [
     {version = ">=1.12.0", markers = "python_version == \"3.12\""},
     {version = ">=1.14.1", markers = "python_version == \"3.13\""},
     {version = ">=1.16.1", markers = "python_version == \"3.14\""},
+    {version = ">=1.18.1", markers = "python_version == \"3.15\""},
 ]
 typing_extensions = {version = ">=4.6.0", markers = "python_version == \"3.10\""}
 
@@ -5117,7 +5122,7 @@ files = [
     {file = "typing_extensions-4.16.0-py3-none-any.whl", hash = "sha256:481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8"},
     {file = "typing_extensions-4.16.0.tar.gz", hash = "sha256:dc983d19a509c94dba722ee6abd33940f7c05a89e243c47e907eb4db6f1a43e5"},
 ]
-markers = {main = "python_version < \"3.15\"", test = "python_version == \"3.10\""}
+markers = {main = "python_version <= \"3.15\"", test = "python_version == \"3.10\""}
 
 [[package]]
 name = "tzdata"
@@ -5311,4 +5316,4 @@ type = ["pytest-mypy (>=1.0.1) ; platform_python_implementation != \"PyPy\""]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.10"
-content-hash = "11c20f684911d88b659aa6a809a8cccf73f3e9db2a91f14404de837e2610d39f"
+content-hash = "cfdc0a7f061bc009c312ff1bd28b2b1231a1c4c16d5c4c2af383535649daecf5"
