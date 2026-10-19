@@ -31,7 +31,7 @@ dask = [
     {version = ">=2024.4.1", python = "==3.12"},   # After PY3.12.3 patch, inspect excepts on all earlier dask
     {version = ">=2025.1.0", python = "==3.13"},   # must be >= 2025.1.0; 2025.4.0-2025.4.1 not working
     {version = ">=2025.1.0", python = "==3.14"},   # must be >= 2025.1.0; 2025.4.0-2025.4.1 not working
-    {version = "==2026.1.1", python = "==3.15"}
+    {version = "==2026.8.0", python = "==3.15"}
 ]
 dask-expr = [
     {version = ">=1.0,<2.0.0", python = "==3.10"},
@@ -50,7 +50,7 @@ distributed = [
     {version = ">=2024.4.1,", python = "==3.12"},   # After PY3.12.3 patch, inspect excepts on all earlier dask
     {version = ">=2025.1.0", python = "==3.13"},   # must be >= 2025.1.0; 2025.4.0-2025.4.1 not working
     {version = ">=2025.1.0", python = "==3.14"},   # must be >= 2025.1.0; 2025.4.0-2025.4.1 not working
-    {version = "==2026.1.1", python = "==3.15"}
+    {version = "==2026.8.0", python = "==3.15"}
 ]
 # FOR DEP FLOOR TESTING ONLY
 #numba = [
